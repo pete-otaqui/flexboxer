@@ -1,0 +1,38 @@
+{
+  "name": "flexboxer",
+  "version": "0.1.0",
+  "description": "Flexbox Layout Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pete-otaqui/flexboxer.git"
+  },
+  "keywords": [
+    "flexbox",
+    "designer"
+  ],
+  "author": "Pete Otaqui <pete@otaqui.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pete-otaqui/flexboxer/issues"
+  },
+  "homepage": "https://github.com/pete-otaqui/flexboxer#readme",
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "dependencies": {
+      "jsx": "github:floatdrop/plugin-jsx@^1.1.0",
+      "react": "npm:react@^0.14.0-beta3",
+      "react-dom": "npm:react-dom@^0.14.0-beta3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
+  }
+}
