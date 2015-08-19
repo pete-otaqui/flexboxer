@@ -1,4 +1,3 @@
-
 var React = require('react');
 var ReactDom = require('react-dom');
 
@@ -11,5 +10,4 @@ var HelloMessage = React.createClass({
 var root = document.querySelector('#root');
 
 ReactDom.render(<HelloMessage name="World" />, root);
-
 
