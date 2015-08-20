@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "jspm bundle-sfx lib/main.jsx! dist/build.js",
-    "uglify": "uglify -s dist/build.js -o dist/build.min.js"
+    "uglify": "uglify -s dist/build.js -o dist/build.min.js",
+    "html-dist": "html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html"
   },
   "repository": {
     "type": "git",
