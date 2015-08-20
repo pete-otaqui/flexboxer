@@ -1,6 +1,6 @@
 {
   "name": "flexboxer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Flexbox Layout Builder",
   "main": "index.js",
   "scripts": {
