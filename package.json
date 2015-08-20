@@ -4,7 +4,7 @@
   "description": "Flexbox Layout Builder",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "jspm bundle-sfx lib/main.jsx! dist/build.js"
   },
   "repository": {
@@ -38,11 +38,36 @@
   },
   "eslintConfig": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "modules": true
     },
     "env": {
       "browser": true,
       "es6": true
     }
+  },
+  "devDependencies": {
+    "babel-jest": "^5.3.0",
+    "jest-cli": "^0.5.0",
+    "react": "^0.13.3"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/src/jspm_packages/"
+    ],
+    "scriptPreprocessor": "./node_modules/babel-jest",
+    "testFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "unmockedModulePathPatterns": [
+      "./node_modules/react",
+      "./src/lib"
+    ]
   }
 }

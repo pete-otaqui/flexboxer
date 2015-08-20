@@ -1,13 +1,8 @@
-var React = require('react');
-var ReactDom = require('react-dom');
+import React from 'react';
+import ReactDom from 'react-dom';
 
-var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
+import Hello from 'lib/hello.jsx!';
 
 var root = document.querySelector('#root');
 
-ReactDom.render(<HelloMessage name="World" />, root);
-
+ReactDom.render(<Hello name="World" />, root);

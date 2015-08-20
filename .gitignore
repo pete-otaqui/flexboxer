@@ -1,2 +1,2 @@
-src/jspm_packages
-
+/src/jspm_packages
+/node_modules
