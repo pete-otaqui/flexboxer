@@ -12,9 +12,12 @@ class CssRule extends React.Component {
 
 class CssOutput extends React.Component {
   render() {
-    var ruleNodes = this.props.rules.map((rule, index) => {
-      return (<CssRule {...rule} key={`rule-${index}`} />);
-    });
+    let ruleNodes = [];
+    let key, rule;
+    for (key in this.props.rules ) {
+      rule = this.props.rules[key];
+      ruleNodes.push(<CssRule {...rule} key={`rule-${key}`} />);
+    };
     return <div>
       <h2>Css Output</h2>
       <div className="css-rules">{ruleNodes}</div>

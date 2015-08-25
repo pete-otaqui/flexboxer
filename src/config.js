@@ -15,8 +15,11 @@ System.config({
   map: {
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
-    "core-js": "npm:core-js@0.9.18",
+    "core-js": "npm:core-js@1.1.1",
+    "es6-promise": "npm:es6-promise@3.0.2",
+    "events": "npm:events@1.0.2",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
+    "object-assign": "npm:object-assign@4.0.1",
     "react": "npm:react@0.14.0-beta3",
     "react-dom": "npm:react-dom@0.14.0-beta3",
     "github:floatdrop/plugin-jsx@1.1.0": {
@@ -164,12 +167,7 @@ System.config({
     "npm:constants-browserify@0.0.1": {
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:core-js@0.9.18": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "process": "github:jspm/nodelibs-process@0.1.1",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
-    },
-    "npm:core-js@1.1.0": {
+    "npm:core-js@1.1.1": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -234,6 +232,9 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "through": "npm:through@2.3.8"
     },
+    "npm:es6-promise@3.0.2": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:esprima-fb@13001.1001.0-dev-harmony-fb": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1"
@@ -243,7 +244,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:fbjs@0.1.0-alpha.4": {
-      "core-js": "npm:core-js@1.1.0",
+      "core-js": "npm:core-js@1.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",

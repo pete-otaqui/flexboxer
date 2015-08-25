@@ -9,7 +9,7 @@ import CssOutput from "../css-output.jsx";
 var TestUtils = React.addons.TestUtils;
 
 describe('CssOutput', () => {
-  it('print a list rules', () => {
+  it('print a list of rules', () => {
 
     let rules = [
       {selector: '.one', properties: []},

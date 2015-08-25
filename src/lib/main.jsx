@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import Hello from 'lib/hello.jsx!';
-import CssOutput from 'lib/css-output.jsx!';
+import FlexBoxerApp from 'lib/components/flexboxer-app.jsx!';
+
+// var myLayout = layoutModel.createNewLayout();
 
 var root = document.querySelector('#root');
 
@@ -12,4 +13,4 @@ let rules = [
   {selector: '.three', properties: []}
 ];
 
-ReactDom.render(<div><Hello name="World" /><CssOutput rules={rules} /></div>, root);
+ReactDom.render(<FlexBoxerApp />, root);
