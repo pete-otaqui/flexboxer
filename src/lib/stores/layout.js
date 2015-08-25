@@ -8,9 +8,9 @@ var CHANGE_EVENT = 'change';
 
 
 let _rows = {
-  '0': {selector: '.one', properties: []},
-  '1': {selector: '.two', properties: []},
-  '2': {selector: '.three', properties: []}
+  '0': {selector: '.one', properties: {display: 'flex'}},
+  '1': {selector: '.two', properties: {display: 'flex'}},
+  '2': {selector: '.three', properties: {display: 'flex'}}
 };
 
 /**
