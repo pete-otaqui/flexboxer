@@ -9,21 +9,22 @@ class CssRule extends React.Component {
       propNodes.push(
         <div className="css-property" key={`prop-${prop}`}>
           <div className="css-property-property">
-            {prop}
+            {prop}:&nbsp;
           </div>
           <div className="css-property-value">
-            {val}
+            {val};
           </div>
         </div>
       )
     }
     return <div className="css-rule">
       <div className="css-selector">
-        {this.props.selector}
+        {this.props.selector} {'{'}
       </div>
       <div className="css-properties">
         {propNodes}
       </div>
+      {'}'}
     </div>;
   }
 }
