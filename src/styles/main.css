@@ -3,7 +3,19 @@
 **********************************************************************/
 
 body {
-  font-family: Laksaman,sans-serif;
+  font-family: Laksaman, sans-serif;
+  color: #333333;
+  background-color: #eeeeee;
+}
+
+
+
+/**********************************************************************
+ BUILDER
+**********************************************************************/
+
+.builder-button {
+  font-family: monospace;
 }
 
 
@@ -28,4 +40,3 @@ body {
 .css-property-value {
   display: inline-block;
 }
-

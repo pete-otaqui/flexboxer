@@ -13,8 +13,7 @@ describe('CssOutput', () => {
 
     let rules = [
       {selector: '.one', properties: []},
-      {selector: '.two', properties: []},
-      {selector: '.three', properties: []}
+      {selector: '.two', properties: []}
     ];
 
     // Render a checkbox with label in the document
@@ -24,7 +23,7 @@ describe('CssOutput', () => {
 
     // Verify that it's Off by default
     let lis = TestUtils.scryRenderedDOMComponentsWithClass(cssOutput, 'css-selector');
-    expect(lis.length).toEqual(3);
+    expect(lis.length).toEqual(2);
 
   });
 });

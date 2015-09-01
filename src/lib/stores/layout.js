@@ -15,14 +15,14 @@ let _rows = {
 
 /**
  * Create a ROW item.
- * @param {string} className the class name of the ROW
  */
-function create(className) {
+function create() {
   // Using the current timestamp in place of a real id.
   var id = Date.now();
   _rows[id] = {
     id: id,
-    className: className
+    selector: '.foo',
+    properties: {display: 'flex'}
   };
 }
 
@@ -64,15 +64,11 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
   dispatcherIndex: AppDispatcher.register((payload) => {
     var action = payload.action;
-    var text;
 
     switch(action.actionType) {
       case FlexboxerConstants.FB_CREATE_ROW:
-        className = action.className.trim();
-        if (className !== '') {
-          create(className);
-          LayoutStore.emitChange();
-        }
+        create();
+        LayoutStore.emitChange();
         break;
 
       case FlexboxerConstants.FB_DESTROY_ROW:
