@@ -40,3 +40,19 @@ body {
 .css-property-value {
   display: inline-block;
 }
+
+
+
+/**********************************************************************
+ VISUALISER
+**********************************************************************/
+
+.visualiser-container {
+  display: flex;
+  padding: 4px;
+  border: 1px solid #ccc;
+}
+.visualiser-div {
+  border: 1px solid #ccc;
+  padding: 4px;
+}

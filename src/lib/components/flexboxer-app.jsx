@@ -1,6 +1,7 @@
 import React from 'react';
 import LayoutStore from 'lib/stores/layout';
 import Builder from 'lib/components/builder.jsx!';
+import Visualiser from 'lib/components/visualiser.jsx!';
 import CssOutput from 'lib/components/css-output.jsx!';
 
 function getFBState() {
@@ -31,6 +32,7 @@ let FlexBoxerApp = React.createClass({
     return (
       <div>
         <Builder />
+        <Visualiser rules={this.state.rules} />
         <CssOutput rules={this.state.rules} />
       </div>
     );
