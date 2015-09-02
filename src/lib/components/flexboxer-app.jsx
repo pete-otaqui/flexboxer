@@ -32,7 +32,7 @@ let FlexBoxerApp = React.createClass({
     return (
       <div>
         <Builder />
-        <Visualiser rules={this.state.rules} />
+        <Visualiser children={this.state.rules} />
         <CssOutput rules={this.state.rules} />
       </div>
     );

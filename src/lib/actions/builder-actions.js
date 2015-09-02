@@ -6,7 +6,8 @@ let BuilderActions = {
   addRow: function(where) {
     AppDispatcher.handleViewAction({
       actionType: Constants.FB_CREATE_ROW,
-      where: where
+      where: where,
+      contents: 'foo'
     });
   },
 

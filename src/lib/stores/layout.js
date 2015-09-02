@@ -8,21 +8,22 @@ var CHANGE_EVENT = 'change';
 
 
 let _rows = {
-  '0': {selector: '.one', properties: {display: 'flex', padding: '4px'}},
-  '1': {selector: '.two', properties: {display: 'flex'}},
-  '2': {selector: '.three', properties: {display: 'flex'}}
+  '0': {contents: 'one', selector: '.one', properties: {}},
+  '1': {contents: 'two', selector: '.two', properties: {'flex-grow': '2'}},
+  '2': {contents: 'thr', selector: '.three', properties: {}}
 };
 
 /**
  * Create a ROW item.
  */
-function create() {
+function create(contents) {
   // Using the current timestamp in place of a real id.
   var id = Date.now();
   _rows[id] = {
     id: id,
     selector: '.foo',
-    properties: {display: 'flex'}
+    properties: {},
+    contents: contents
   };
 }
 
@@ -67,7 +68,7 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
     switch(action.actionType) {
       case FlexboxerConstants.FB_CREATE_ROW:
-        create();
+        create(action.contents);
         LayoutStore.emitChange();
         break;
 

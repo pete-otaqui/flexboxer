@@ -52,7 +52,7 @@ body {
   padding: 4px;
   border: 1px solid #ccc;
 }
-.visualiser-div {
+.visualiser-child {
   border: 1px solid #ccc;
   padding: 4px;
 }

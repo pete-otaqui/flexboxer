@@ -2,45 +2,43 @@ import React from 'react';
 
 
 class VisualiserNode extends React.Component {
-  render() {
-    let propNodes = [];
-    let prop, val;
-    for ( prop in this.props.properties ) {
-      val = this.props.properties[prop];
-      propNodes.push(
-        <div className="css-property" key={`prop-${prop}`}>
-          <div className="css-property-property">
-            {prop}:&nbsp;
-          </div>
-          <div className="css-property-value">
-            {val};
-          </div>
-        </div>
-      )
+  mapProperties(properties) {
+    let mKey, key, mapped = {};
+    for ( key in properties ) {
+      mKey = this.mapPropertyName(key);
+      mapped[mKey] = properties[key];
     }
-    return <div className="css-rule">
-      <div className="css-selector">
-        {this.props.selector} {'{'}
-      </div>
-      <div className="css-properties">
-        {propNodes}
-      </div>
-      {'}'}
+    return mapped;
+  }
+  mapPropertyName(propertyName) {
+    return propertyName
+      .split('-')
+      .map(function(p, i) {
+        if ( i === 0 ) return p;
+        p = p.replace(/^./, function(s) { return s.toUpperCase(); });
+      })
+      .join('');
+  }
+  render() {
+    let mapped = this.mapProperties(this.props.properties);
+    return <div className={`visualiser-child ${this.props.selector}`} style={mapped}>
+      {this.props.contents}
     </div>;
   }
 }
 
 class Visualiser extends React.Component {
   render() {
-    let ruleNodes = [];
-    let key, rule;
-    for ( key in this.props.rules ) {
-      rule = this.props.rules[key];
-      ruleNodes.push(<VisualiserNode {...rule} key={`rule-${key}`} />);
+    let childNodes = [];
+    let key, child;
+    for ( key in this.props.children ) {
+      child = this.props.children[key];
+      childNodes.push(<VisualiserNode {...child} key={`child-${key}`} />);
     };
+    console.log(childNodes);
     return <div>
       <h2>Visualiser</h2>
-      <div className="visualiser-rules">{ruleNodes}</div>
+      <div className="visualiser-container">{childNodes}</div>
     </div>
   }
 };
