@@ -1,5 +1,5 @@
 import Dispatcher from './dispatcher';
-import FlexBoxerConstants from '../constants/flexboxer-constants';
+import * as FlexBoxerConstants from '../constants/flexboxer-constants';
 import assign from 'object-assign';
 
 let AppDispatcher = assign({}, Dispatcher.prototype, {

@@ -8,6 +8,7 @@ class Builder extends React.Component {
     console.log('pressed add!');
   }
   onPressRemove() {
+    BuilderActions.removeRow();
     console.log('pressed remove!');
   }
   render() {

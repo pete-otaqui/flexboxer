@@ -56,3 +56,21 @@ body {
   border: 1px solid #ccc;
   padding: 4px;
 }
+
+
+
+/**********************************************************************
+ TREE
+**********************************************************************/
+.tree-node {
+  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
+}
+.node-children {
+  
+}
+.selected {
+  background-color: #000;
+  color: #fff;
+}

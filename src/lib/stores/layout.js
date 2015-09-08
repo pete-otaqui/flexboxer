@@ -1,16 +1,21 @@
 import AppDispatcher from 'lib/dispatchers/app-dispatcher';
 import {EventEmitter} from 'events';
-
-import FlexboxerConstants from 'lib/constants/flexboxer-constants';
 import assign from 'object-assign';
+
+import * as FlexboxerConstants from 'lib/constants/flexboxer-constants';
 
 var CHANGE_EVENT = 'change';
 
-
-let _rows = {
-  '0': {contents: 'one', selector: '.one', properties: {}},
-  '1': {contents: 'two', selector: '.two', properties: {'flex-grow': '2'}},
-  '2': {contents: 'thr', selector: '.three', properties: {}}
+let _root = {
+  id: 1,
+  contents: '',
+  properties: {display: 'flex'},
+  selector: '.root',
+  children: [
+    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, selected: true},
+    {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}},
+    {id: 4, contents: 'thr', selector: '.three', properties: {}}
+  ]
 };
 
 /**
@@ -19,7 +24,7 @@ let _rows = {
 function create(contents) {
   // Using the current timestamp in place of a real id.
   var id = Date.now();
-  _rows[id] = {
+  _root[id] = {
     id: id,
     selector: '.foo',
     properties: {},
@@ -32,7 +37,18 @@ function create(contents) {
  * @param {string} id
  */
 function destroy(id) {
-  delete _rows[id];
+  delete _root[id];
+}
+
+
+function select(id, node) {
+  if ( !node ) node = _root;
+  if ( !node.children ) node.children = [];
+  console.log(id, node.id);
+  node.selected = (node.id === id);
+  node.children.forEach(function(child) {
+    select(id, child);
+  });
 }
 
 var LayoutStore = assign({}, EventEmitter.prototype, {
@@ -41,8 +57,8 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
    * Get the entire collection of ROWs.
    * @return {object}
    */
-  getAll: function() {
-    return _rows;
+  getLayout: function() {
+    return _root;
   },
 
   emitChange: function() {
@@ -59,23 +75,28 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
   /**
    * @param {function} callback
    */
-  removeChangeListener: (callback) => {
+  removeChangeListener: function(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   },
 
   dispatcherIndex: AppDispatcher.register((payload) => {
-    var action = payload.action;
+    let action = payload.action;
 
     switch(action.actionType) {
-      case FlexboxerConstants.FB_CREATE_ROW:
+      case FlexboxerConstants.FB_CREATE_NODE:
         create(action.contents);
         LayoutStore.emitChange();
         break;
 
-      case FlexboxerConstants.FB_DESTROY_ROW:
+      case FlexboxerConstants.FB_DESTROY_NODE:
         destroy(action.id);
         LayoutStore.emitChange();
         break;
+
+      case FlexboxerConstants.FB_SELECT_NODE:
+        console.log(action);
+        select(action.id);
+        LayoutStore.emitChange();
 
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }
