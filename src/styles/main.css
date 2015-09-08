@@ -73,3 +73,20 @@ body {
   background-color: #000;
   color: #fff;
 }
+
+
+
+/**********************************************************************
+ INSPECTOR
+**********************************************************************/
+.inspector-prop {
+  
+}
+.inspector-prop-name {
+  display: inline-block;
+  width: 20%;
+}
+.inspector-prop-val {
+  display: inline-block;
+  width: 80%;
+}

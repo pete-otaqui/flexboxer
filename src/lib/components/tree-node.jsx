@@ -10,7 +10,6 @@ class TreeNode extends React.Component {
     this.selectNode();
   }
   selectNode() {
-    console.log(this.props);
     LayoutActions.selectNode(this.props.node.id);
   }
   render() {

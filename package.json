@@ -45,6 +45,10 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "ecmaFeatures": {
+      "arrowFunctions": true,
+      "blockBindings": true,
+      "classes": true,
+      "templateStrings": true,
       "jsx": true,
       "modules": true,
       "spread": true
@@ -55,6 +59,7 @@
     }
   },
   "devDependencies": {
+    "babel-eslint": "^4.1.1",
     "babel-jest": "^5.3.0",
     "eslint": "^1.2.0",
     "gulp": "^3.9.0",

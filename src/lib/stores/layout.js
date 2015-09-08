@@ -44,15 +44,32 @@ function destroy(id) {
 function select(id, node) {
   if ( !node ) node = _root;
   if ( !node.children ) node.children = [];
-  console.log(id, node.id);
   node.selected = (node.id === id);
   node.children.forEach(function(child) {
     select(id, child);
   });
 }
 
+function getSelected(node) {
+  var _actual;
+  if ( !node ) node = _root;
+  if ( !node.children ) node.children = [];
+  if ( node.selected ) {
+    _actual = node;
+  } else {
+    node.children.forEach(function(child) {
+      var temp = getSelected(child);
+      if ( temp ) _actual = temp;
+    });
+  }
+  return _actual;
+}
+
 var LayoutStore = assign({}, EventEmitter.prototype, {
 
+  getSelected: function() {
+    return getSelected();
+  },
   /**
    * Get the entire collection of ROWs.
    * @return {object}

@@ -4,10 +4,12 @@ import Builder from 'lib/components/builder.jsx!';
 import Visualiser from 'lib/components/visualiser.jsx!';
 import CssOutput from 'lib/components/css-output.jsx!';
 import TreeLayout from 'lib/components/tree-layout.jsx!';
+import Inspector from 'lib/components/inspector.jsx!';
 
 function getFBState() {
   return {
-    layout: LayoutStore.getLayout()
+    layout: LayoutStore.getLayout(),
+    selectedNode: LayoutStore.getSelected()
   };
 }
 
@@ -32,6 +34,7 @@ let FlexBoxerApp = React.createClass({
   render: function() {
     return (
       <div>
+        <Inspector node={this.state.selectedNode} />
         <TreeLayout layout={this.state.layout} />
         <Visualiser layout={this.state.layout} />
       </div>
