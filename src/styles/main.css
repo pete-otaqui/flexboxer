@@ -64,11 +64,10 @@ body {
 **********************************************************************/
 .tree-node {
   padding: 0.5em;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #eee;
   color: #000;
 }
 .node-children {
-  
 }
 .selected {
   background-color: #000;

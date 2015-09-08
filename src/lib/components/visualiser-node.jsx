@@ -26,7 +26,9 @@ class VisualiserNode extends React.Component {
     let contents = node.contents;
     let children = node.children || [];
     let mapped = this.mapProperties(properties);
-    return <div className={`visualiser-child ${selector}`} style={mapped}>
+    let className = `visualiser-child ${selector}`;
+    if ( node.selected ) className += ' selected';
+    return <div className={className} style={mapped}>
       {contents}
       {children.map(function(child) {
           return <VisualiserNode key={child.id} node={child}/>;
