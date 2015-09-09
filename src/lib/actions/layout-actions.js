@@ -1,8 +1,6 @@
 import AppDispatcher from '../dispatchers/app-dispatcher';
 import * as Constants from '../constants/flexboxer-constants';
 
-console.log(Constants);
-
 let LayoutActions = {
 
   addNode: function(parentId, contents) {

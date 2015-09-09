@@ -19,6 +19,7 @@ System.config({
     "es6-promise": "npm:es6-promise@3.0.2",
     "events": "npm:events@1.0.2",
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
+    "lodash": "npm:lodash@3.10.1",
     "object-assign": "npm:object-assign@4.0.1",
     "react": "npm:react@0.14.0-beta3",
     "react-dom": "npm:react-dom@0.14.0-beta3",
@@ -302,6 +303,9 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "source-map": "npm:source-map@0.1.31"
+    },
+    "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:miller-rabin@2.0.1": {
       "bn.js": "npm:bn.js@2.2.0",

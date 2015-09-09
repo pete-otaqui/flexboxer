@@ -4,8 +4,6 @@ import assign from 'object-assign';
 
 import * as FlexboxerConstants from 'lib/constants/flexboxer-constants';
 
-var CHANGE_EVENT = 'change';
-
 let _root = {
   id: 1,
   contents: '',
@@ -79,21 +77,21 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
   },
 
   emitChange: function() {
-    this.emit(CHANGE_EVENT);
+    this.emit(FlexboxerConstants.CHANGE_EVENT);
   },
 
   /**
    * @param {function} callback
    */
   addChangeListener: function(callback) {
-    this.on(CHANGE_EVENT, callback);
+    this.on(FlexboxerConstants.CHANGE_EVENT, callback);
   },
 
   /**
    * @param {function} callback
    */
   removeChangeListener: function(callback) {
-    this.removeListener(CHANGE_EVENT, callback);
+    this.removeListener(FlexboxerConstants.CHANGE_EVENT, callback);
   },
 
   dispatcherIndex: AppDispatcher.register((payload) => {
@@ -111,7 +109,6 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
         break;
 
       case FlexboxerConstants.FB_SELECT_NODE:
-        console.log(action);
         select(action.id);
         LayoutStore.emitChange();
 
