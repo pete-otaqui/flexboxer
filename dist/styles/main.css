@@ -1,0 +1,92 @@
+/**********************************************************************
+ MAIN
+**********************************************************************/
+
+body {
+  font-family: Laksaman, sans-serif;
+  color: #333333;
+  background-color: #eeeeee;
+}
+
+
+
+/**********************************************************************
+ BUILDER
+**********************************************************************/
+
+.builder-button {
+  font-family: monospace;
+}
+
+
+
+/**********************************************************************
+ CSS OUTPUT
+**********************************************************************/
+
+.css-rules {
+  font-family: Consolas, Inconsolata, monospace;
+}
+
+
+.css-properties {
+  margin-left: 1.2rem;
+}
+
+.css-property-property {
+  display: inline-block;
+}
+
+.css-property-value {
+  display: inline-block;
+}
+
+
+
+/**********************************************************************
+ VISUALISER
+**********************************************************************/
+
+.visualiser-container {
+  display: flex;
+  padding: 4px;
+  border: 1px solid #ccc;
+}
+.visualiser-child {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+
+
+/**********************************************************************
+ TREE
+**********************************************************************/
+.tree-node {
+  padding: 0.5em;
+  background-color: #eee;
+  color: #000;
+}
+.node-children {
+}
+.selected {
+  background-color: #000;
+  color: #fff;
+}
+
+
+
+/**********************************************************************
+ INSPECTOR
+**********************************************************************/
+.inspector-prop {
+  
+}
+.inspector-prop-name {
+  display: inline-block;
+  width: 20%;
+}
+.inspector-prop-val {
+  display: inline-block;
+  width: 80%;
+}

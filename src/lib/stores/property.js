@@ -4,6 +4,7 @@ import assign from 'object-assign';
 import _ from 'lodash';
 
 import * as FlexboxerConstants from 'lib/constants/flexboxer-constants';
+import LayoutStore from 'lib/stores/layout';
 
 var properties = {
 
@@ -75,6 +76,7 @@ var properties = {
 }
 
 var PropertyStore = assign({}, EventEmitter.prototype, {
+
   getPropertyListFor(node) {
     let ps = _.clone(properties);
     Object.keys(node.properties).forEach((p) => {
@@ -87,9 +89,40 @@ var PropertyStore = assign({}, EventEmitter.prototype, {
     for ( let pn in ps ) {
       p = ps[pn];
       p.name = pn;
+      if ( !p.value ) p.value = '';
       pa.push(p);
     }
     return pa;
+  },
+
+  getPropertyValueFor(property) {
+    let node = LayoutStore.getSelected();
+    let list = this.getPropertyListFor(node);
+    let val;
+    if ( list[property] ) {
+      val = list[property].value || '';
+    } else {
+      val = '';
+    }
+    return val;
+  },
+
+  emitChange: function() {
+    this.emit(FlexboxerConstants.CHANGE_EVENT);
+  },
+
+  /**
+   * @param {function} callback
+   */
+  addChangeListener: function(callback) {
+    this.on(FlexboxerConstants.CHANGE_EVENT, callback);
+  },
+
+  /**
+   * @param {function} callback
+   */
+  removeChangeListener: function(callback) {
+    this.removeListener(FlexboxerConstants.CHANGE_EVENT, callback);
   }
 });
 

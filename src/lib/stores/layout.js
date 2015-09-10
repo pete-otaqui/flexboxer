@@ -68,6 +68,15 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
   getSelected: function() {
     return getSelected();
   },
+
+  getSelectedValueFor: function(name) {
+    var selected = this.getSelected();
+    var property = selected.properties[name];
+    var value = property ? selected.properties[name] : '';
+    // console.log(selected.selector, name, value, selected.properties);
+    return value;
+  },
+
   /**
    * Get the entire collection of ROWs.
    * @return {object}

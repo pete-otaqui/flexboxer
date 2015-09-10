@@ -8,12 +8,13 @@ class InspectorProp extends React.Component {
     let valueNode;
     let value = this.props.value;
     let options = this.props.options;
+    let name = this.props.name;
     switch(this.props.type) {
       case 'select':
-        valueNode = <InspectorValueSelect options={options} value={value} />;
+        valueNode = <InspectorValueSelect name={name} options={options} defaultValue={value} />;
         break;
       default:
-        valueNode = <InspectorValueInput value={this.props.value} />;
+        valueNode = <InspectorValueInput name={name} value={value} />;
         break;
     }
     return (

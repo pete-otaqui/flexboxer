@@ -34,7 +34,7 @@ let FlexBoxerApp = React.createClass({
   render: function() {
     return (
       <div>
-        <Inspector node={this.state.selectedNode} />
+        <Inspector />
         <TreeLayout layout={this.state.layout} />
         <Visualiser layout={this.state.layout} />
       </div>
