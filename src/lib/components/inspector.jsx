@@ -31,7 +31,6 @@ let Inspector = React.createClass({
 
   render: function() {
     let node = this.state.node;
-    console.log(node.properties);
     return (
       <div className="inspector">
         <h2>Inspector</h2>

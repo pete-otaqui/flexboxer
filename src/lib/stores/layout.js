@@ -52,7 +52,6 @@ function select(id, node) {
 function setProperty(name, value) {
   let node = getSelected();
   node.properties[name] = value;
-  console.log(node.properties);
 }
 
 function getSelected(node) {
