@@ -9,10 +9,12 @@ let _root = {
   contents: '',
   properties: {display: 'flex'},
   selector: '.root',
+  selected: true,
   children: [
-    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, selected: true},
+    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}},
     {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}},
-    {id: 4, contents: 'thr', selector: '.three', properties: {}}
+    {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}},
+    {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}}
   ]
 };
 

@@ -73,6 +73,12 @@ let Inspector = React.createClass({
               name="flex-grow"
               type="input"
               value={node.properties['flex-grow']} />
+          <InspectorProp
+              key={`${node.id}-order`}
+              node={node}
+              name="order"
+              type="input"
+              value={node.properties['order']} />
         </div>
       </div>
     );

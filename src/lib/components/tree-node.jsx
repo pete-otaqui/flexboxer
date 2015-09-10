@@ -19,6 +19,14 @@ class TreeNode extends React.Component {
     }
     let node = this.props.node;
     let children = node.children || [];
+    let childNodeContainer = '';
+    if ( children.length ) {
+      childNodeContainer = <div className="node-children">
+          {children.map(function(child) {
+              return <TreeNode key={child.id} node={child}/>;
+          }.bind(this))}
+      </div>;
+    }
     return (
         <div ref="node" className={classes} onClick={this.clicked.bind(this)}>
             <div className="node-selector">
@@ -27,11 +35,7 @@ class TreeNode extends React.Component {
             <div className="node-contents" data-id={node.id}>
                 {node.name}
             </div>
-            <div className="node-children">
-                {children.map(function(child) {
-                    return <TreeNode key={child.id} node={child}/>;
-                }.bind(this))}
-            </div>
+            {childNodeContainer}
         </div>
     );
   }
