@@ -7,8 +7,8 @@ class TreeLayout extends React.Component {
     let classes = '';
     let node = this.props.layout;
     return (
-        <div>
-            <h2>Tree</h2>
+        <div className="tree">
+            <h2 className="fb-subheader">Tree</h2>
             <TreeNode node={node} />
         </div>
     );

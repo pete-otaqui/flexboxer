@@ -6,6 +6,7 @@ body {
   font-family: Laksaman, sans-serif;
   color: #333333;
   background-color: #eeeeee;
+
 }
 
 
@@ -14,6 +15,13 @@ body {
 }
 .fb-tabheader {
   margin: 0;
+}
+.fb-control {
+  width: 100%;
+  border: 1px solid #999;
+  background-color: #ccc;
+  font-size: 10px;
+  padding: 4px;
 }
 
 /**********************************************************************
@@ -68,6 +76,12 @@ body {
 /**********************************************************************
  TREE
 **********************************************************************/
+.tree {
+  vertical-align: top;
+  width: 400px;
+  display: inline-block;
+  font-size: 10px;
+}
 .tree-node {
   padding: 0.5em;
   background-color: #eee;
@@ -86,19 +100,24 @@ body {
  INSPECTOR
 **********************************************************************/
 .inspector {
-  width: 150px;
+  vertical-align: top;
+  width: 335px;
   font-size: 10px;
+  display: inline-block;
 }
 .inspector-selector {
   margin: 0;
 }
 .inspector-props {
 }
+.inspector-prop {
+  margin-bottom: 4px;
+}
 .inspector-prop-name {
   display: inline-block;
-  width: 50%;
+  width: 90px;
 }
 .inspector-prop-val {
   display: inline-block;
-  width: 50%;
+  width: 210px;
 }

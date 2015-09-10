@@ -29,7 +29,7 @@ let InspectorValue = React.createClass({
 
   render() {
     let value = this.state.value;
-    return <input value={value} onChange={this.onControlChange} />;
+    return <input className="fb-control" value={value} onChange={this.onControlChange} />;
   },
 
   getInitialState: function() {
