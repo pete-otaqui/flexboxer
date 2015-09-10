@@ -9,6 +9,9 @@ body {
 }
 
 
+.fb-subheader {
+  margin: 0;
+}
 
 /**********************************************************************
  BUILDER
@@ -79,14 +82,19 @@ body {
 /**********************************************************************
  INSPECTOR
 **********************************************************************/
-.inspector-prop {
-  
+.inspector {
+  width: 150px;
+}
+.inspector-selector {
+  margin: 0;
+}
+.inspector-props {
 }
 .inspector-prop-name {
   display: inline-block;
-  width: 20%;
+  width: 50%;
 }
 .inspector-prop-val {
   display: inline-block;
-  width: 80%;
+  width: 50%;
 }

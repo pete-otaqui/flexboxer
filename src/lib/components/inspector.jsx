@@ -33,8 +33,8 @@ let Inspector = React.createClass({
     let node = this.state.node;
     return (
       <div className="inspector">
-        <h2>Inspector</h2>
-        {node.selector}
+        <h2 className="fb-subheader">Inspector</h2>
+        <p className="inspector-selector">{node.selector}</p>
         <div className="inspector-props inspector-props-container">
           <InspectorProp
               key={`${node.id}-display`}
