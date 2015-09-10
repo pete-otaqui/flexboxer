@@ -67,7 +67,7 @@ body {
   border: 1px solid #ccc;
 }
 .visualiser-child {
-  border: 1px solid #ccc;
+  border: 1px solid #999;
   padding: 4px;
 }
 
@@ -86,12 +86,13 @@ body {
   padding: 0.5em;
   background-color: #eee;
   color: #000;
+  border: 1px solid #999;
+  margin-bottom: 2px;
 }
 .node-children {
 }
 .selected {
-  background-color: #000;
-  color: #fff;
+  background-color: #ccc;
 }
 
 

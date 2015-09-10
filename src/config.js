@@ -13,7 +13,7 @@ System.config({
   },
 
   map: {
-    "babel": "npm:babel-core@5.8.23",
+    "babel": "npm:babel-core@5.8.24",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.1.4",
     "es6-promise": "npm:es6-promise@3.0.2",
@@ -21,8 +21,8 @@ System.config({
     "jsx": "github:floatdrop/plugin-jsx@1.1.0",
     "lodash": "npm:lodash@3.10.1",
     "object-assign": "npm:object-assign@4.0.1",
-    "react": "npm:react@0.14.0-beta3",
-    "react-dom": "npm:react-dom@0.14.0-beta3",
+    "react": "npm:react@0.14.0-rc1",
+    "react-dom": "npm:react-dom@0.14.0-rc1",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
     },
@@ -247,10 +247,8 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:fbjs@0.1.0-alpha.4": {
+    "npm:fbjs@0.2.1": {
       "core-js": "npm:core-js@1.1.4",
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "promise": "npm:promise@7.0.4",
       "whatwg-fetch": "npm:whatwg-fetch@0.9.0"
@@ -376,9 +374,8 @@ System.config({
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:react-dom@0.14.0-beta3": {
-      "fbjs": "npm:fbjs@0.1.0-alpha.4",
-      "react": "npm:react@0.14.0-beta3"
+    "npm:react-dom@0.14.0-rc1": {
+      "react": "npm:react@0.14.0-rc1"
     },
     "npm:react-tools@0.13.3": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
@@ -386,10 +383,9 @@ System.config({
       "jstransform": "npm:jstransform@10.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:react@0.14.0-beta3": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+    "npm:react@0.14.0-rc1": {
       "envify": "npm:envify@3.4.0",
-      "fbjs": "npm:fbjs@0.1.0-alpha.4",
+      "fbjs": "npm:fbjs@0.2.1",
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:readable-stream@1.1.13": {
