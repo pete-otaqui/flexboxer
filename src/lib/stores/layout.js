@@ -50,6 +50,7 @@ function select(id, node) {
 
 
 function setProperty(name, value) {
+  if ( !name ) return;
   let node = getSelected();
   node.properties[name] = value;
 }

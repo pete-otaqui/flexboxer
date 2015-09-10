@@ -8,7 +8,7 @@ class InspectorValueSelect extends InspectorValue {
   render() {
     let value = this.props.value;
     let defaultValue = this.props.defaultValue;
-    return <select value={value} defaultValue={defaultValue} onChange={this.onSelectChange}>
+    return <select value={value} defaultValue={defaultValue} onChange={this.onControlChange}>
       <option value="">--unset--</option>
       {this.props.options.map((option) => {
         return <option value={option} key={`option-${option}`}>{option}</option>

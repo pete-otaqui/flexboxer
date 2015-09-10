@@ -12,6 +12,9 @@ body {
 .fb-subheader {
   margin: 0;
 }
+.fb-tabheader {
+  margin: 0;
+}
 
 /**********************************************************************
  BUILDER
@@ -84,6 +87,7 @@ body {
 **********************************************************************/
 .inspector {
   width: 150px;
+  font-size: 10px;
 }
 .inspector-selector {
   margin: 0;
