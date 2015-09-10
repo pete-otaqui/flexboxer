@@ -9,7 +9,9 @@
     "bundle": "jspm bundle-sfx lib/main.jsx! dist/build.js",
     "uglify": "uglify -s dist/build.js -o dist/build.min.js",
     "html-dist": "html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
-    "styles": "cp -R src/styles dist/"
+    "styles": "cp -R src/styles dist/",
+    "serve": "serve src/",
+    "serve-dist": "serve dist/"
   },
   "repository": {
     "type": "git",
@@ -64,8 +66,6 @@
     "babel-eslint": "^4.1.1",
     "babel-jest": "^5.3.0",
     "eslint": "^1.2.0",
-    "gulp": "^3.9.0",
-    "gulp-util": "^3.0.6",
     "jest-cli": "^0.5.0",
     "jspm": "^0.16.0",
     "react": "^0.13.3"
