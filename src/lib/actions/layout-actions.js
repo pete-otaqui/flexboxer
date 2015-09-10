@@ -24,6 +24,14 @@ let LayoutActions = {
       actionType: Constants.FB_SELECT_NODE,
       id: id
     });
+  },
+
+  setPropertyValue: function(name, value) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_SET_PROPERTY,
+      name: name,
+      value: value
+    });
   }
 
 };

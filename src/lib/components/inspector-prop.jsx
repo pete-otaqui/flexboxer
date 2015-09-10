@@ -1,7 +1,7 @@
 import React from 'react';
 
 import InspectorValueSelect from './inspector-value-select.jsx!';
-import InspectorValueInput from './inspector-value-input.jsx!';
+import InspectorValueInput from './inspector-value.jsx!';
 
 class InspectorProp extends React.Component {
   render() {

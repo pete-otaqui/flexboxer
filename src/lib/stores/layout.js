@@ -48,6 +48,13 @@ function select(id, node) {
   });
 }
 
+
+function setProperty(name, value) {
+  let node = getSelected();
+  node.properties[name] = value;
+  console.log(node.properties);
+}
+
 function getSelected(node) {
   var _actual;
   if ( !node ) node = _root;
@@ -119,6 +126,10 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
       case FlexboxerConstants.FB_SELECT_NODE:
         select(action.id);
+        LayoutStore.emitChange();
+
+      case FlexboxerConstants.FB_SET_PROPERTY:
+        setProperty(action.name, action.value);
         LayoutStore.emitChange();
 
       // add more cases for other actionTypes, like TODO_UPDATE, etc.

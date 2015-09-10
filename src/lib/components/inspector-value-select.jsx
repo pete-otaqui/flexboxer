@@ -1,29 +1,11 @@
 import React from 'react';
-import PropertyStore from 'lib/stores/property';
+import LayoutStore from 'lib/stores/layout';
+import LayoutActions from 'lib/actions/layout-actions';
+import InspectorValue from './inspector-value.jsx!';
 
+class InspectorValueSelect extends InspectorValue {
 
-let InspectorValueSelect = React.createClass({
-
-  componentDidMount: function() {
-    PropertyStore.addChangeListener(this._onChange);
-  },
-
-  componentWillUnmount: function() {
-    PropertyStore.removeChangeListener(this._onChange);
-  },
-
-  _onChange: function() {
-    var value = PropertyStore.getPropertyValueFor(this.props.name);
-    this.setState({
-      value: value
-    });
-  },
-
-  onSelectChange: function() {
-
-  },
-
-  render: function() {
+  render() {
     let value = this.props.value;
     let defaultValue = this.props.defaultValue;
     return <select value={value} defaultValue={defaultValue} onChange={this.onSelectChange}>
@@ -32,14 +14,9 @@ let InspectorValueSelect = React.createClass({
         return <option value={option} key={`option-${option}`}>{option}</option>
       })}
     </select>;
-  },
-
-  getInitialState: function() {
-    return {
-      value: PropertyStore.getPropertyValueFor(this.props.name)
-    };
   }
-});
+
+};
 
 
 export default InspectorValueSelect;
