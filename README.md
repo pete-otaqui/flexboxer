@@ -9,7 +9,9 @@ A flexbox layout builder.  Flexboxer is a visual tool for creating flexbox css r
   * selector overlay on hover;
   * look and feel;
   * implement flexbox for the app itself, instead of inline-blocks.
-* Reinstate CSSOutput component.
+* Improve defaults for new layout items:
+  * random colour bg;
+  * magic incrementing selector
 * Create predefined layout picker.
 * Use tabs in Inspector.
 * Hover highlighting in Tree / Visualiser.
