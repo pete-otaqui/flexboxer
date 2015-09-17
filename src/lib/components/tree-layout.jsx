@@ -3,6 +3,11 @@ import React from 'react';
 import TreeNode from 'lib/components/tree-node.jsx!'
 
 class TreeLayout extends React.Component {
+
+  constructor() {
+    super();
+  }
+
   render() {
     let classes = '';
     let node = this.props.layout;
@@ -14,5 +19,6 @@ class TreeLayout extends React.Component {
     );
   }
 }
+
 
 export default TreeLayout;

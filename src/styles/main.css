@@ -78,7 +78,7 @@ body {
 **********************************************************************/
 .tree {
   vertical-align: top;
-  width: 400px;
+  width: 200px;
   display: inline-block;
   font-size: 10px;
 }
@@ -88,6 +88,15 @@ body {
   color: #000;
   border: 1px solid #999;
   margin-bottom: 2px;
+}
+.node-selector {
+  display: inline-block;
+  width: 60%;
+}
+.node-actions {
+  display: inline-block;
+  width: 40%;
+  text-align: right;
 }
 .node-children {
 }

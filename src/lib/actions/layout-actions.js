@@ -3,10 +3,11 @@ import * as Constants from '../constants/flexboxer-constants';
 
 let LayoutActions = {
 
-  addNode: function(parentId, contents) {
+  addNode: function(parentId, contents, selector) {
     contents = contents || 'NEW';
+    selector = selector || '.new';
     AppDispatcher.handleViewAction({
-      actionType: Constants.FB_CREATE_NODE,
+      actionType: Constants.FB_ADD_CHILD,
       parentId: parentId,
       contents: contents
     });
@@ -31,6 +32,20 @@ let LayoutActions = {
       actionType: Constants.FB_SET_PROPERTY,
       name: name,
       value: value
+    });
+  },
+
+  addChild: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_ADD_CHILD,
+      id: id
+    });
+  },
+
+  deleteNode: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_DELETE_NODE,
+      id: id
     });
   }
 

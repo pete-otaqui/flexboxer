@@ -11,12 +11,15 @@ let _root = {
   selector: '.root',
   selected: true,
   children: [
-    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}},
-    {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}},
-    {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}},
-    {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}}
+    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: []},
+    {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}, children: []},
+    {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}, children: []},
+    {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}, children: []}
   ]
 };
+
+let _idIndex = 5;
+
 
 /**
  * Create a ROW item.
@@ -37,7 +40,53 @@ function create(contents) {
  * @param {string} id
  */
 function destroy(id) {
-  delete _root[id];
+  let parent = findParentById(id);
+  let child = findNodeById(id);
+  let index = parent.children.indexOf(child);
+  parent.children.splice(index, 1);
+  select(_root.id);
+}
+
+
+function findNodeById(id, parent) {
+  let node;
+  if ( !parent ) {
+    parent = _root;
+  }
+  if ( parent.id === id ) {
+    node = parent;
+  } else {
+    parent.children.forEach((child) => {
+      let found = findNodeById(id, child);
+      if ( found ) node = found;
+    });
+  }
+  return node;
+}
+
+
+function findParentById(id, parent) {
+  let node;
+  if ( !parent ) {
+    parent = _root;
+  }
+  if ( parent.id === id ) {
+    node = parent;
+  } else {
+    parent.children.forEach((child) => {
+      let found = findNodeById(id, child);
+      if ( found ) node = parent;
+    });
+  }
+  return node;
+}
+
+
+function addChild(id, _source) {
+  _idIndex++;
+  let child = {id: _idIndex, contents: 'new', selector: '.new', properties: {}, children: []};
+  let parent = findNodeById(id);
+  parent.children.push(child);
 }
 
 
@@ -109,19 +158,19 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
    * @param {function} callback
    */
   removeChangeListener: function(callback) {
+    // console.log('removing change listener');
     this.removeListener(FlexboxerConstants.CHANGE_EVENT, callback);
   },
 
   dispatcherIndex: AppDispatcher.register((payload) => {
     let action = payload.action;
-
     switch(action.actionType) {
       case FlexboxerConstants.FB_CREATE_NODE:
         create(action.contents);
         LayoutStore.emitChange();
         break;
 
-      case FlexboxerConstants.FB_DESTROY_NODE:
+      case FlexboxerConstants.FB_DELETE_NODE:
         destroy(action.id);
         LayoutStore.emitChange();
         break;
@@ -133,6 +182,12 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
       case FlexboxerConstants.FB_SET_PROPERTY:
         setProperty(action.name, action.value);
         LayoutStore.emitChange();
+        break;
+
+      case FlexboxerConstants.FB_ADD_CHILD:
+        addChild(action.parentId, action.contents, action.selector);
+        LayoutStore.emitChange();
+        break;
 
       // add more cases for other actionTypes, like TODO_UPDATE, etc.
     }

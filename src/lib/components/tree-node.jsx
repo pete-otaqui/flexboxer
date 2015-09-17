@@ -9,6 +9,11 @@ class TreeNode extends React.Component {
     e.preventDefault();
     this.selectNode();
   }
+  clickedAdd(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    LayoutActions.addNode(this.props.node.id, 'New');
+  }
   selectNode() {
     LayoutActions.selectNode(this.props.node.id);
   }
@@ -31,9 +36,8 @@ class TreeNode extends React.Component {
         <div ref="node" className={classes} onClick={this.clicked.bind(this)}>
             <div className="node-selector">
               {node.selector}
-            </div>
-            <div className="node-contents" data-id={node.id}>
-                {node.name}
+            </div><div className="node-actions">
+              <button onClick={this.clickedAdd.bind(this)}>+</button>
             </div>
             {childNodeContainer}
         </div>
