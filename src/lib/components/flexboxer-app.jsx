@@ -1,6 +1,5 @@
 import React from 'react';
 import LayoutStore from 'lib/stores/layout';
-import Builder from 'lib/components/builder.jsx!';
 import Visualiser from 'lib/components/visualiser.jsx!';
 import CssOutput from 'lib/components/css-output.jsx!';
 import TreeLayout from 'lib/components/tree-layout.jsx!';

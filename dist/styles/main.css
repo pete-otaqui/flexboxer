@@ -13,9 +13,6 @@ body {
 .fb-subheader {
   margin: 0;
 }
-.fb-tabheader {
-  margin: 0;
-}
 .fb-control {
   width: 100%;
   border: 1px solid #999;
@@ -78,7 +75,7 @@ body {
 **********************************************************************/
 .tree {
   vertical-align: top;
-  width: 400px;
+  width: 200px;
   display: inline-block;
   font-size: 10px;
 }
@@ -88,6 +85,16 @@ body {
   color: #000;
   border: 1px solid #999;
   margin-bottom: 2px;
+  cursor: pointer;
+}
+.node-selector {
+  display: inline-block;
+  width: 40%;
+}
+.node-actions {
+  display: inline-block;
+  width: 60%;
+  text-align: right;
 }
 .node-children {
 }
@@ -110,6 +117,14 @@ body {
   margin: 0;
 }
 .inspector-props {
+  display: none;
+}
+.inspector-tab.active .inspector-props {
+  display: block;
+}
+.inspector-tab-header {
+  margin: 0;
+  cursor: pointer;
 }
 .inspector-prop {
   margin-bottom: 4px;

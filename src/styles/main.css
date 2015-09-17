@@ -13,9 +13,6 @@ body {
 .fb-subheader {
   margin: 0;
 }
-.fb-tabheader {
-  margin: 0;
-}
 .fb-control {
   width: 100%;
   border: 1px solid #999;
@@ -88,6 +85,7 @@ body {
   color: #000;
   border: 1px solid #999;
   margin-bottom: 2px;
+  cursor: pointer;
 }
 .node-selector {
   display: inline-block;
@@ -123,6 +121,10 @@ body {
 }
 .inspector-tab.active .inspector-props {
   display: block;
+}
+.inspector-tab-header {
+  margin: 0;
+  cursor: pointer;
 }
 .inspector-prop {
   margin-bottom: 4px;

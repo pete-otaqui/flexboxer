@@ -11,7 +11,7 @@
     "html-dist": "html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
     "styles": "cp -R src/styles dist/",
     "serve": "serve src/",
-    "serve-dist": "serve dist/"
+    "serve-dist": "serve --compress dist/"
   },
   "repository": {
     "type": "git",

@@ -46,7 +46,7 @@ let Inspector = React.createClass({
         <h2 className="fb-subheader">Inspector</h2>
         <p className="inspector-selector">{node.selector}</p>
         <div className={`inspector-tab inspector-tab-common ${commonActive}`}>
-          <h3 className="fb-tabheader" onClick={this.setActivePane} data-pane="common">Common</h3>
+          <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="common">Common</h3>
           <div className="inspector-props">
             <InspectorProp
               key={`${node.id}-contents`}
@@ -75,7 +75,7 @@ let Inspector = React.createClass({
           </div>
         </div>
         <div className={`inspector-tab inspector-tab-container ${containerActive}`}>
-          <h3 className="fb-tabheader" onClick={this.setActivePane} data-pane="container">Container</h3>
+          <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="container">Flex Container</h3>
           <div className="inspector-props">
             <InspectorProp
               key={`${node.id}-display`}
@@ -101,7 +101,7 @@ let Inspector = React.createClass({
           </div>
         </div>
         <div className={`inspector-tab inspector-tab-child ${childActive}`}>
-          <h3 className="fb-tabheader" onClick={this.setActivePane} data-pane="child">Child</h3>
+          <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="child">Flex Child</h3>
           <div className="inspector-props">
             <InspectorProp
               key={`${node.id}-flex-grow`}
