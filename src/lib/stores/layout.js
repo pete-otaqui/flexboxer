@@ -253,4 +253,6 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
 });
 
+LayoutStore.setMaxListeners(100);
+
 export default LayoutStore;

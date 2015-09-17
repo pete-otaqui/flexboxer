@@ -119,6 +119,10 @@ body {
   margin: 0;
 }
 .inspector-props {
+  display: none;
+}
+.inspector-tab.active .inspector-props {
+  display: block;
 }
 .inspector-prop {
   margin-bottom: 4px;
