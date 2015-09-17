@@ -47,6 +47,20 @@ let LayoutActions = {
       actionType: Constants.FB_DESTROY_NODE,
       id: id
     });
+  },
+
+  moveUp: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_MOVE_UP,
+      id: id
+    });
+  },
+
+  moveDown: function(id) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_MOVE_DOWN,
+      id: id
+    });
   }
 
 };

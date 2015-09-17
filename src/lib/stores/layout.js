@@ -89,6 +89,28 @@ function addChild(id, _source) {
   parent.children.push(child);
 }
 
+function moveUp(id) {
+  let child = findNodeById(id);
+  let parent = findParentById(id);
+  if ( !parent ) return;
+  let index = parent.children.indexOf(child);
+  if ( index > 0 ) {
+    parent.children.splice(index, 1);
+    parent.children.splice(index - 1, 0, child);
+  }
+}
+
+function moveDown(id) {
+  let child = findNodeById(id);
+  let parent = findParentById(id);
+  if ( !parent ) return;
+  let index = parent.children.indexOf(child);
+  if ( parent.children.length > index + 1 ) {
+    parent.children.splice(index, 1);
+    parent.children.splice(index + 1, 0, child);
+  }
+}
+
 
 function select(id, node) {
   if ( !node ) node = _root;
@@ -120,6 +142,10 @@ function getSelected(node) {
   }
   return _actual;
 }
+
+
+
+
 
 var LayoutStore = assign({}, EventEmitter.prototype, {
 
@@ -186,6 +212,16 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
       case FlexboxerConstants.FB_ADD_CHILD:
         addChild(action.parentId, action.contents, action.selector);
+        LayoutStore.emitChange();
+        break;
+
+      case FlexboxerConstants.FB_MOVE_UP:
+        moveUp(action.id);
+        LayoutStore.emitChange();
+        break;
+
+      case FlexboxerConstants.FB_MOVE_DOWN:
+        moveDown(action.id);
         LayoutStore.emitChange();
         break;
 
