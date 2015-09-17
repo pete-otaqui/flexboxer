@@ -170,7 +170,7 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
         LayoutStore.emitChange();
         break;
 
-      case FlexboxerConstants.FB_DELETE_NODE:
+      case FlexboxerConstants.FB_DESTROY_NODE:
         destroy(action.id);
         LayoutStore.emitChange();
         break;

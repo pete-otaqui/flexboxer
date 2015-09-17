@@ -42,9 +42,9 @@ let LayoutActions = {
     });
   },
 
-  deleteNode: function(id) {
+  destroyNode: function(id) {
     AppDispatcher.handleViewAction({
-      actionType: Constants.FB_DELETE_NODE,
+      actionType: Constants.FB_DESTROY_NODE,
       id: id
     });
   }
