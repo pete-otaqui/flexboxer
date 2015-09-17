@@ -9,9 +9,8 @@ let _root = {
   contents: '',
   properties: {display: 'flex'},
   selector: '.root',
-  selected: true,
   children: [
-    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: []},
+    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: [], selected: true},
     {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}, children: []},
     {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}, children: []},
     {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}, children: []}
@@ -125,7 +124,11 @@ function select(id, node) {
 function setProperty(name, value) {
   if ( !name ) return;
   let node = getSelected();
-  node.properties[name] = value;
+  if ( node.properties[name] ) {
+    node.properties[name] = value;
+  } else {
+    node[name] = value;
+  }
 }
 
 function getSelected(node) {
@@ -156,7 +159,7 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
   getSelectedValueFor: function(name) {
     var selected = this.getSelected();
     var property = selected.properties[name];
-    var value = property ? selected.properties[name] : '';
+    var value = property ? selected.properties[name] : selected[name] || '';
     // console.log(selected.selector, name, value, selected.properties);
     return value;
   },

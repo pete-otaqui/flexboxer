@@ -35,6 +35,21 @@ let Inspector = React.createClass({
       <div className="inspector">
         <h2 className="fb-subheader">Inspector</h2>
         <p className="inspector-selector">{node.selector}</p>
+        <div className="instpector-props inspector-props-common">
+          <h3 className="fb-tabheader">Common</h3>
+          <InspectorProp
+            key={`${node.id}-contents`}
+            node={node}
+            name="contents"
+            type="input"
+            value={node.contents} />
+          <InspectorProp
+            key={`${node.id}-selector`}
+            node={node}
+            name="selector"
+            type="input"
+            value={node.selector} />
+        </div>
         <div className="inspector-props inspector-props-container">
           <h3 className="fb-tabheader">Container</h3>
           <InspectorProp
