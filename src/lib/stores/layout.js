@@ -124,10 +124,10 @@ function select(id, node) {
 function setProperty(name, value) {
   if ( !name ) return;
   let node = getSelected();
-  if ( node.properties[name] ) {
-    node.properties[name] = value;
-  } else {
+  if ( node[name] !== undefined ) {
     node[name] = value;
+  } else {
+    node.properties[name] = value;
   }
 }
 
@@ -169,7 +169,14 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
   getSelectedValueFor: function(name) {
     var selected = this.getSelected();
     var property = selected.properties[name];
-    var value = property ? selected.properties[name] : selected[name] || '';
+    var value;
+    if ( selected[name] !== undefined ) {
+      value =selected[name];
+    } else if (selected.properties[name] !== undefined) {
+      value = selected.properties[name]
+    } else {
+      value = '';
+    }
     // console.log(selected.selector, name, value, selected.properties);
     return value;
   },
