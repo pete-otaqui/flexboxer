@@ -31,16 +31,19 @@ class CssRule extends React.Component {
 
 class CssOutput extends React.Component {
   render() {
-    let ruleNodes = [];
-    let key, rule;
-    for (key in this.props.rules ) {
-      rule = this.props.rules[key];
-      ruleNodes.push(<CssRule {...rule} key={`rule-${key}`} />);
-    };
-    return <div>
+    // let ruleNodes = [];
+    // let key, rule;
+    // for (key in this.props.rules ) {
+    //   rule = this.props.rules[key];
+    //   ruleNodes.push(<CssRule {...rule} key={`rule-${key}`} />);
+    // };
+    console.log(this.props);
+    return (<div>
       <h2>Css Output</h2>
-      <div className="css-rules">{ruleNodes}</div>
-    </div>;
+      <div className="css-rules">{this.props.rules.map(function(rule) {
+          return <CssRule {...rule} key={`rule-${rule.id}`} />;
+        })}</div>
+    </div>);
   }
 }
 

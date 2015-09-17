@@ -32,11 +32,13 @@ let FlexBoxerApp = React.createClass({
   },
 
   render: function() {
+    let rules = LayoutStore.getFlattenedRules();
     return (
       <div>
         <Inspector />
         <TreeLayout layout={this.state.layout} />
         <Visualiser layout={this.state.layout} />
+        <CssOutput rules={rules} />
       </div>
     );
   }

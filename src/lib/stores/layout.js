@@ -152,6 +152,16 @@ function getSelected(node) {
 
 var LayoutStore = assign({}, EventEmitter.prototype, {
 
+  getFlattenedRules: function(rules, node) {
+    if ( !rules ) rules = [];
+    if ( !node ) node = _root;
+    rules.push(node);
+    node.children.forEach(function(child) {
+      this.getFlattenedRules(rules, child);
+    }.bind(this));
+    return rules;
+  },
+
   getSelected: function() {
     return getSelected();
   },
