@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import LayoutStore from 'lib/stores/layout';
 import InspectorProp from './inspector-prop.jsx!';
+import classNames from 'classnames';
 
 let activePane = 'common';
 
@@ -36,16 +37,18 @@ let Inspector = React.createClass({
     this.setState(getState());
   },
 
+  getTabClassNames: function(tabName) {
+    let active = (tabName === this.state.active);
+    return classNames('inspector-tab', `inspector-tab-${tabName}`, {active: active})
+  },
+
   render: function() {
     let node = this.state.node;
-    let commonActive = (this.state.active === 'common') ? 'active' : '';
-    let containerActive = (this.state.active === 'container') ? 'active' : '';
-    let childActive = (this.state.active === 'child') ? 'active' : '';
     return (
       <div className="inspector">
         <h2 className="fb-subheader">Inspector</h2>
         <p className="inspector-selector">{node.selector}</p>
-        <div className={`inspector-tab inspector-tab-common ${commonActive}`}>
+        <div className={this.getTabClassNames('common')}>
           <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="common">Common</h3>
           <div className="inspector-props">
             <InspectorProp
@@ -74,7 +77,7 @@ let Inspector = React.createClass({
               value={node.properties.width} />
           </div>
         </div>
-        <div className={`inspector-tab inspector-tab-container ${containerActive}`}>
+        <div className={this.getTabClassNames('container')}>
           <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="container">Flex Container</h3>
           <div className="inspector-props">
             <InspectorProp
@@ -100,7 +103,7 @@ let Inspector = React.createClass({
               options={['nowrap', 'wrap', 'wrap-reverse']} />
           </div>
         </div>
-        <div className={`inspector-tab inspector-tab-child ${childActive}`}>
+        <div className={this.getTabClassNames('child')}>
           <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="child">Flex Child</h3>
           <div className="inspector-props">
             <InspectorProp
