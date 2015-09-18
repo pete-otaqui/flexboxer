@@ -7,11 +7,11 @@
     "test": "jest",
     "build": "npm run bundle && npm run uglify && npm run html-dist && npm run styles",
     "bundle": "jspm bundle-sfx lib/main.jsx! dist/build.js",
-    "uglify": "uglify -s dist/build.js -o dist/build.min.js",
-    "html-dist": "html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
+    "uglify": "node_modules/.bin/uglify -s dist/build.js -o dist/build.min.js",
+    "html-dist": "node_modules/.bin/html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
     "styles": "cp -R src/styles dist/",
-    "serve": "serve src/",
-    "serve-dist": "serve --compress dist/"
+    "serve": "node_modules/.bin/serve src/",
+    "serve-dist": "node_modules/.bin/serve --compress dist/"
   },
   "repository": {
     "type": "git",
