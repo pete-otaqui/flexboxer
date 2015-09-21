@@ -14,7 +14,9 @@ class TreeLayout extends React.Component {
     return (
         <div className="tree fb-panel">
             <h2 className="fb-subheader">Tree</h2>
-            <TreeNode node={node} />
+            <div className="tree-nodes">
+              <TreeNode node={node} />
+            </div>
         </div>
     );
   }

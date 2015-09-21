@@ -37,9 +37,11 @@ let FlexBoxerApp = React.createClass({
         <div className="fb-tools">
           <TreeLayout layout={this.state.layout} />
           <Inspector />
+        </div>
+        <div className="fb-output">
+          <Visualiser layout={this.state.layout} />
           <CssOutput rules={rules} />
         </div>
-        <Visualiser layout={this.state.layout} />
       </div>
     );
   }

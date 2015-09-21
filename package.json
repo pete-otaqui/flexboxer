@@ -10,7 +10,7 @@
     "uglify": "node_modules/.bin/uglify -s dist/build.js -o dist/build.min.js",
     "html-dist": "node_modules/.bin/html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
     "styles": "cp -R src/styles dist/",
-    "serve": "node_modules/.bin/serve src/",
+    "serve": "node_modules/.bin/serve --no-less src/",
     "serve-dist": "node_modules/.bin/serve --compress dist/"
   },
   "repository": {
