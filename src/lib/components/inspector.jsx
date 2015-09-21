@@ -45,9 +45,8 @@ let Inspector = React.createClass({
   render: function() {
     let node = this.state.node;
     return (
-      <div className="inspector">
-        <h2 className="fb-subheader">Inspector</h2>
-        <p className="inspector-selector">{node.selector}</p>
+      <div className="inspector fb-panel">
+        <h2 className="fb-subheader">Inspector [{node.selector}]</h2>
         <div className={this.getTabClassNames('common')}>
           <h3 className="inspector-tab-header" onClick={this.setActivePane} data-pane="common">Common</h3>
           <div className="inspector-props">
@@ -101,6 +100,13 @@ let Inspector = React.createClass({
               type="select"
               value={node.properties['flex-wrap']}
               options={['nowrap', 'wrap', 'wrap-reverse']} />
+            <InspectorProp
+              key={`${node.id}-align-items`}
+              node={node}
+              name="align-items"
+              type="select"
+              value={node.properties['align-items']}
+              options={['flex-start', 'flex-end', 'center', 'baseline', 'stretch']} />
           </div>
         </div>
         <div className={this.getTabClassNames('child')}>

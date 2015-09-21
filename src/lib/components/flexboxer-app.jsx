@@ -33,11 +33,13 @@ let FlexBoxerApp = React.createClass({
   render: function() {
     let rules = LayoutStore.getFlattenedRules();
     return (
-      <div>
-        <Inspector />
-        <TreeLayout layout={this.state.layout} />
+      <div className="fb-app">
+        <div className="fb-tools">
+          <TreeLayout layout={this.state.layout} />
+          <Inspector />
+          <CssOutput rules={rules} />
+        </div>
         <Visualiser layout={this.state.layout} />
-        <CssOutput rules={rules} />
       </div>
     );
   }
