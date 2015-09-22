@@ -14,7 +14,7 @@ class InspectorValueSelect extends InspectorValue {
       onChange={this.onControlChange}
       className="fb-control"
     >
-      <option value="">--unset--</option>
+      <option value=""></option>
       {this.props.options.map((option) => {
         return <option value={option} key={`option-${option}`}>{option}</option>
       })}

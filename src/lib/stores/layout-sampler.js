@@ -3,11 +3,12 @@ import _ from 'lodash';
 let samples = {
   "default": {
     id: 1,
+    selected: true,
     contents: '',
     properties: {display: 'flex'},
     selector: '.root',
     children: [
-      {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: [], selected: true},
+      {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: []},
       {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}, children: []},
       {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}, children: []},
       {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}, children: []}

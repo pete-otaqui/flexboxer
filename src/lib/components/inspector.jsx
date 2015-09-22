@@ -75,6 +75,24 @@ let Inspector = React.createClass({
                 name="width"
                 type="input"
                 value={node.properties.width} />
+              <InspectorProp
+                key={`${node.id}-border`}
+                node={node}
+                name="border"
+                type="input"
+                value={node.properties.border} />
+              <InspectorProp
+                key={`${node.id}-padding`}
+                node={node}
+                name="padding"
+                type="input"
+                value={node.properties.padding} />
+              <InspectorProp
+                key={`${node.id}-margin`}
+                node={node}
+                name="margin"
+                type="input"
+                value={node.properties.margin} />
             </div>
           </div>
           <div className={this.getTabClassNames('container')}>
@@ -102,12 +120,26 @@ let Inspector = React.createClass({
                 value={node.properties['flex-wrap']}
                 options={['nowrap', 'wrap', 'wrap-reverse']} />
               <InspectorProp
+                key={`${node.id}-justify-content`}
+                node={node}
+                name="justify-content"
+                type="select"
+                value={node.properties['justify-content']}
+                options={['flex-start', 'flex-end', 'center', 'space-between', 'space-around']} />
+              <InspectorProp
                 key={`${node.id}-align-items`}
                 node={node}
                 name="align-items"
                 type="select"
                 value={node.properties['align-items']}
-                options={['flex-start', 'flex-end', 'center', 'baseline', 'stretch']} />
+                options={['flex-start', 'flex-end', 'center', 'stretch', 'baseline']} />
+              <InspectorProp
+                key={`${node.id}-align-content`}
+                node={node}
+                name="align-content"
+                type="select"
+                value={node.properties['align-content']}
+                options={['flex-start', 'flex-end', 'center', 'stretch', 'space-between', 'space-around']} />
             </div>
           </div>
           <div className={this.getTabClassNames('child')}>
@@ -120,11 +152,36 @@ let Inspector = React.createClass({
                 type="input"
                 value={node.properties['flex-grow']} />
               <InspectorProp
+                key={`${node.id}-flex-shrink`}
+                node={node}
+                name="flex-shrink"
+                type="input"
+                value={node.properties['flex-shrink']} />
+              <InspectorProp
+                key={`${node.id}-flex-basis`}
+                node={node}
+                name="flex-basis"
+                type="input"
+                value={node.properties['flex-basis']} />
+              <InspectorProp
+                key={`${node.id}-flex`}
+                node={node}
+                name="flex"
+                type="input"
+                value={node.properties['flex']} />
+              <InspectorProp
                 key={`${node.id}-order`}
                 node={node}
                 name="order"
                 type="input"
                 value={node.properties['order']} />
+              <InspectorProp
+                key={`${node.id}-align-self`}
+                node={node}
+                name="align-self"
+                type="select"
+                value={node.properties['align-self']}
+                options={['flex-start', 'flex-end', 'center', 'stretch', 'baseline']} />
             </div>
           </div>
         </div>
