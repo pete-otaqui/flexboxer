@@ -35,11 +35,7 @@ The `npm run build` command is actually running all these, in the following orde
 
 * Better visual design for the layout, specifically:
   * selector overlay on hover;
-  * look and feel;
   * className tidy up throughout, clean up main.css;
-  * implement flexbox for the app itself, instead of inline-blocks.
-* Remove old files
-* Create predefined layout picker.
 * Complete list of properties in Inspector
 * Better README
 * Launch ... on github.io?
