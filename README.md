@@ -31,11 +31,6 @@ The `npm run build` command is actually running all these, in the following orde
 * `npm run html-dist` - copy `index.html` from `src/` to `dist` and replace the script tags for release
 * `npm run styles` - copy the stylesheet from `src/styles` to `dist/styles`
 
-## TODO, v1.0
-
-* Better visual design for the layout, specifically:
-  * selector overlay on hover;
-* Launch ... on github.io?
 
 ## TODO, v1.1
 
