@@ -24,7 +24,7 @@ body {
   display: flex;
 }
 .fb-tools {
-  width: 230px;
+  width: 300px;
   margin: 12px;
 }
 .fb-output {
@@ -48,6 +48,15 @@ body {
   text-align: center;
   padding: 0.5em;
   border-top: 5px solid @col_dark;
+}
+.fb-footer {
+  margin: 20px;
+  font-size: 10px;
+  color: @col_bright;
+  text-align: center;
+}
+.fb-footer a {
+  color: @col_bright;
 }
 .fb-title {
   font-family: Pacifico, Aladin;
@@ -105,6 +114,16 @@ body {
 
 
 /**********************************************************************
+ LOADER
+**********************************************************************/
+
+.loader {
+  text-align: center;
+}
+
+
+
+/**********************************************************************
  TREE
 **********************************************************************/
 .tree {
@@ -116,20 +135,20 @@ body {
 .tree-node {
   padding-left: 20px;
   cursor: pointer;
+  position: relative;
 }
-.tree > .tree-node {
+.tree-nodes > .tree-node {
   padding-left: 0;
 }
 .node-selector {
-  display: inline-block;
-  width: 40%;
   min-height: 1.4em;
   vertical-align: top;
 }
 .node-actions {
   display: none;
-  width: 60%;
-  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .selected > .node-actions {
   display: inline-block;
@@ -157,7 +176,7 @@ body {
   margin: 0;
 }
 .inspector-props {
-  max-height: 0;
+  /*max-height: 0;*/
   overflow: hidden;
   -webkit-transition: max-height 0.4s;
   -moz-transition: max-height 0.4s;
@@ -169,7 +188,7 @@ body {
   border-bottom: 1px solid @col_dark;
 }
 .inspector-tab.active .inspector-props {
-  max-height: 400px;
+  /*max-height: 400px;*/
   -webkit-transition: max-height 0.4s;
   -moz-transition: max-height 0.4s;
   transition: max-height 0.4s;

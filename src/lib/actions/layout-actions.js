@@ -61,6 +61,13 @@ let LayoutActions = {
       actionType: Constants.FB_MOVE_DOWN,
       id: id
     });
+  },
+
+  loadSample: function(sample) {
+    AppDispatcher.handleViewAction({
+      actionType: Constants.FB_LOAD_SAMPLE,
+      sample: sample
+    });
   }
 
 };

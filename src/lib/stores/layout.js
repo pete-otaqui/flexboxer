@@ -3,19 +3,9 @@ import {EventEmitter} from 'events';
 import assign from 'object-assign';
 
 import * as FlexboxerConstants from 'lib/constants/flexboxer-constants';
+import layoutSampler from './layout-sampler';
 
-let _root = {
-  id: 1,
-  contents: '',
-  properties: {display: 'flex'},
-  selector: '.root',
-  children: [
-    {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: [], selected: true},
-    {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}, children: []},
-    {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}, children: []},
-    {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}, children: []}
-  ]
-};
+let _root = layoutSampler('default');
 
 let _idIndex = 5;
 
@@ -146,7 +136,9 @@ function getSelected(node) {
   return _actual;
 }
 
-
+function loadSample(sample) {
+  _root = layoutSampler(sample);
+}
 
 
 
@@ -160,6 +152,10 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
       this.getFlattenedRules(rules, child);
     }.bind(this));
     return rules;
+  },
+
+  getSamples: function() {
+    return layoutSampler.sampleNames;
   },
 
   getSelected: function() {
@@ -242,6 +238,11 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
       case FlexboxerConstants.FB_MOVE_DOWN:
         moveDown(action.id);
+        LayoutStore.emitChange();
+        break;
+
+      case FlexboxerConstants.FB_LOAD_SAMPLE:
+        loadSample(action.sample);
         LayoutStore.emitChange();
         break;
 

@@ -8,3 +8,4 @@ export const FB_MOVE_UP = 'fb-move-up';
 export const FB_MOVE_DOWN = 'fb-move-down';
 export const CHANGE_EVENT = 'change-event';
 export const FB_SET_PROPERTY = 'fb-select-property';
+export const FB_LOAD_SAMPLE = 'fb-load-sample';
