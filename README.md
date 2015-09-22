@@ -35,9 +35,6 @@ The `npm run build` command is actually running all these, in the following orde
 
 * Better visual design for the layout, specifically:
   * selector overlay on hover;
-  * className tidy up throughout, clean up main.css;
-* Complete list of properties in Inspector
-* Better README
 * Launch ... on github.io?
 
 ## TODO, v1.1

@@ -7,7 +7,9 @@ class Visualiser extends React.Component {
     let node = this.props.layout;
     return <div>
       <h2 className="fb-subheader">Visualiser</h2>
-      <VisualiserNode node={node} />
+      <div className="visualiser">
+        <VisualiserNode node={node} />
+      </div>
     </div>
   }
 };
