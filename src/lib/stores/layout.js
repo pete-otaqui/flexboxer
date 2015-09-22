@@ -79,7 +79,7 @@ function addChild(id, _source) {
 }
 
 function moveUp(id) {
-  if (isRoot(id)) {
+  if ( isRoot(id) ) {
     return;
   }
   let child = findNodeById(id);
@@ -93,7 +93,7 @@ function moveUp(id) {
 }
 
 function moveDown(id) {
-  if (isRoot(id)) {
+  if ( isRoot(id) ) {
     return;
   }
   let child = findNodeById(id);
