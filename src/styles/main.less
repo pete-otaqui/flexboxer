@@ -19,12 +19,16 @@ body {
   box-sizing: border-box;
 }
 
+#fb-root {
+  min-width: 800px;
+}
 
 .fb-app {
   display: flex;
 }
 .fb-tools {
   width: 300px;
+  min-width: 300px;
   margin: 12px;
 }
 .fb-output {
@@ -70,9 +74,6 @@ body {
   margin-bottom: 20px;
 }
 
-.fb-tools {
-
-}
 .fb-tools > div {
   flex-grow: 1;
 }
@@ -111,7 +112,7 @@ body {
   border: 1px solid @col_dark;
 }
 .visualiser-child {
-
+  background-color: rgba(65, 60, 50, 0.5);
 }
 
 
