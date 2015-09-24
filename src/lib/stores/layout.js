@@ -79,6 +79,9 @@ function addChild(id, _source) {
 }
 
 function moveUp(id) {
+  if ( isRoot(id) ) {
+    return;
+  }
   let child = findNodeById(id);
   let parent = findParentById(id);
   if ( !parent ) return;
@@ -90,6 +93,9 @@ function moveUp(id) {
 }
 
 function moveDown(id) {
+  if ( isRoot(id) ) {
+    return;
+  }
   let child = findNodeById(id);
   let parent = findParentById(id);
   if ( !parent ) return;
@@ -138,6 +144,12 @@ function getSelected(node) {
 
 function loadSample(sample) {
   _root = layoutSampler(sample);
+}
+
+function isRoot(id) {
+  let child = findNodeById(id);
+  let parent = findParentById(id);
+  return child === parent;
 }
 
 
