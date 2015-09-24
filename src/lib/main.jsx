@@ -5,7 +5,7 @@ import FlexBoxerApp from 'lib/components/flexboxer-app.jsx!';
 
 // var myLayout = layoutModel.createNewLayout();
 
-var root = document.querySelector('#root');
+var root = document.querySelector('#fb-root');
 
 let rules = [
   {selector: '.one', properties: []},

@@ -44,6 +44,13 @@ let Inspector = React.createClass({
 
   render: function() {
     let node = this.state.node;
+    if ( !node ) {
+      return (
+        <div className="inspector fb-panel">
+          <h2 className="fb-subheader">Inspector []</h2>
+        </div>
+      );
+    }
     return (
       <div className="inspector fb-panel">
         <h2 className="fb-subheader">Inspector [{node.selector}]</h2>

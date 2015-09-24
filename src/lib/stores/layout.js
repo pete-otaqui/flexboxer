@@ -5,7 +5,7 @@ import assign from 'object-assign';
 import * as FlexboxerConstants from 'lib/constants/flexboxer-constants';
 import layoutSampler from './layout-sampler';
 
-let _root = layoutSampler('default');
+let _root = layoutSampler('holy grail');
 
 let _idIndex = 5;
 
@@ -104,7 +104,12 @@ function moveDown(id) {
 function select(id, node) {
   if ( !node ) node = _root;
   if ( !node.children ) node.children = [];
-  node.selected = (node.id === id);
+  if ( id === node.id ) {
+    node.selected = !node.selected;
+  } else {
+    node.selected = false;
+  }
+  // node.selected = (node.id === id);
   node.children.forEach(function(child) {
     select(id, child);
   });
@@ -164,6 +169,9 @@ var LayoutStore = assign({}, EventEmitter.prototype, {
 
   getSelectedValueFor: function(name) {
     var selected = this.getSelected();
+    if ( !selected ) {
+      return '';
+    }
     var property = selected.properties[name];
     var value;
     if ( selected[name] !== undefined ) {

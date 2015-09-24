@@ -1,22 +1,8 @@
 import _ from 'lodash';
 
 let samples = {
-  "default": {
-    id: 1,
-    selected: true,
-    contents: '',
-    properties: {display: 'flex'},
-    selector: '.root',
-    children: [
-      {id: 2, contents: 'one', selector: '.one', properties: {height: '200px'}, children: []},
-      {id: 3, contents: 'two', selector: '.two', properties: {'flex-grow': '2'}, children: []},
-      {id: 4, contents: 'three', selector: '.three', properties: {'order': '2'}, children: []},
-      {id: 5, contents: 'four', selector: '.four', properties: {'order': '1'}, children: []}
-    ]
-  },
   "holy grail": {
     id: 1,
-    selected: true,
     contents: '',
     properties: {display: 'flex', 'min-height': '20vh', 'flex-direction': 'column'},
     selector: '.HolyGrail',
@@ -26,7 +12,7 @@ let samples = {
         contents: 'HEADER',
         selector: '.header',
         children: [],
-        properties: {}
+        properties: {margin: '1em'}
       },
       {
         id: 3,
@@ -34,29 +20,30 @@ let samples = {
         selector: '.HolyGrail-body',
         properties: {
           display: 'flex',
-          flex: 1
+          flex: 1,
+          margin: '1em'
         },
         children: [
           {
             id: 4,
-            contents: 'CONTENT',
+            contents: 'CONTENT - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
             selector: '.HolyGrail-content',
             children: [],
-            properties: {flex: 1}
+            properties: {flex: 1, margin: '1em'}
           },
           {
             id: 5,
             contents: 'NAV',
             selector: '.HolyGrail-nav',
             children: [],
-            properties: {flex: '0 0 12em', order: -1}
+            properties: {flex: '0 0 12em', order: -1, margin: '1em'}
           },
           {
             id: 6,
             contents: 'ADS',
             selector: '.HolyGrail-ads',
             children: [],
-            properties: {flex: '0 0 12em'}
+            properties: {flex: '0 0 12em', margin: '1em'}
           }
         ]
       },
@@ -65,7 +52,7 @@ let samples = {
         contents: 'FOOTER',
         selector: '.footer',
         children: [],
-        properties: {}
+        properties: {margin: '1em'}
       }
     ]
   },
