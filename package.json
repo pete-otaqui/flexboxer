@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm run bundle && npm run uglify && npm run html-dist && npm run styles",
+    "build": "npm run bundle && npm run uglify && npm run html-dist && npm run less && npm run styles",
     "bundle": "jspm bundle-sfx lib/main.jsx! dist/build.js",
     "uglify": "node_modules/.bin/uglify -s dist/build.js -o dist/build.min.js",
     "html-dist": "node_modules/.bin/html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
+    "less": "lessc --source-map-map-inline src/styles/main.less src/styles/main.css",
     "styles": "cp -R src/styles dist/",
     "serve": "node_modules/.bin/serve --no-less src/",
     "serve-dist": "node_modules/.bin/serve --compress dist/"
@@ -42,9 +43,9 @@
       "react-dom": "npm:react-dom@^0.14.0-beta3"
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^1.1.0"
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     }
   },
   "eslintConfig": {
@@ -67,9 +68,12 @@
     "babel-eslint": "^4.1.1",
     "babel-jest": "^5.3.0",
     "eslint": "^1.2.0",
+    "html-dist": "^0.1.0",
     "jest-cli": "^0.5.0",
     "jspm": "^0.16.0",
-    "react": "^0.13.3"
+    "less": "^2.5.2",
+    "react": "^0.13.3",
+    "uglify": "^0.1.5"
   },
   "jest": {
     "testPathIgnorePatterns": [
