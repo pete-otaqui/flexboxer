@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "npm run bundle && npm run uglify && npm run html-dist && npm run styles",
+    "build": "npm run bundle && npm run uglify && npm run html-dist && npm run ga && npm run favicon && npm run styles",
     "bundle": "jspm bundle-sfx lib/main.jsx! dist/build.js",
     "uglify": "node_modules/.bin/uglify -s dist/build.js -o dist/build.min.js",
-    "html-dist": "node_modules/.bin/html-dist src/index.html --remove-all --minify --insert build.min.js -o dist/index.html",
+    "ga": "cp src/ga.js dist/ga.js",
+    "favicon": "cp src/favicon.png dist/favicon.png",
+    "html-dist": "node_modules/.bin/html-dist src/index.html --remove-all --minify --insert build.min.js --insert ga.js -o dist/index.html",
     "styles": "cp -R src/styles dist/",
     "serve": "node_modules/.bin/serve --no-less src/",
     "serve-dist": "node_modules/.bin/serve --compress dist/"
