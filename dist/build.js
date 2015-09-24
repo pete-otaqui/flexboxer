@@ -17825,6 +17825,9 @@ $__System.register('ba', ['aa', 'ac', 'a7', 'a9', 'b9'], function (_export) {
   }
 
   function moveUp(id) {
+    if (isRoot(id)) {
+      return;
+    }
     var child = findNodeById(id);
     var parent = findParentById(id);
     if (!parent) return;
@@ -17836,6 +17839,9 @@ $__System.register('ba', ['aa', 'ac', 'a7', 'a9', 'b9'], function (_export) {
   }
 
   function moveDown(id) {
+    if (isRoot(id)) {
+      return;
+    }
     var child = findNodeById(id);
     var parent = findParentById(id);
     if (!parent) return;
@@ -17887,6 +17893,12 @@ $__System.register('ba', ['aa', 'ac', 'a7', 'a9', 'b9'], function (_export) {
 
   function loadSample(sample) {
     _root = layoutSampler(sample);
+  }
+
+  function isRoot(id) {
+    var child = findNodeById(id);
+    var parent = findParentById(id);
+    return child === parent;
   }
 
   return {
@@ -18096,14 +18108,9 @@ $__System.register('d2', ['c2', 'cd', 'd0', 'd1', 'a1'], function (_export) {
             var mapped = this.mapProperties(properties);
             var className = 'visualiser-child ' + selector;
             if (node.selected) className += ' selected';
-            return React.createElement(
-              'div',
-              { className: className, style: mapped, key: 'visualise-' + node.id },
-              contents,
-              children.map((function (child) {
-                return React.createElement(VisualiserNode, { key: child.id, node: child });
-              }).bind(this))
-            );
+            return React.createElement("div", { className: className, style: mapped, key: 'visualise-' + node.id }, contents, children.map((function (child) {
+              return React.createElement(VisualiserNode, { key: child.id, node: child });
+            }).bind(this)));
           }
         }]);
 
@@ -18147,20 +18154,7 @@ $__System.register('d3', ['c2', 'cd', 'd0', 'd1', 'a1', 'd2'], function (_export
           key: 'render',
           value: function render() {
             var node = this.props.layout;
-            return React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'h2',
-                { className: 'fb-subheader' },
-                'Visualiser'
-              ),
-              React.createElement(
-                'div',
-                { className: 'visualiser' },
-                React.createElement(VisualiserNode, { node: node })
-              )
-            );
+            return React.createElement("div", null, React.createElement("h2", { className: "fb-subheader" }, "Visualiser"), React.createElement("div", { className: "visualiser" }, React.createElement(VisualiserNode, { node: node })));
           }
         }]);
 
@@ -18208,40 +18202,9 @@ $__System.register("d4", ["c2", "cd", "d0", "d1", "a1"], function (_export) {
                 val = undefined;
             for (prop in this.props.properties) {
               val = this.props.properties[prop];
-              propNodes.push(React.createElement(
-                "div",
-                { className: "css-property", key: "prop-" + prop },
-                React.createElement(
-                  "div",
-                  { className: "css-property-property" },
-                  prop,
-                  ": "
-                ),
-                React.createElement(
-                  "div",
-                  { className: "css-property-value" },
-                  val,
-                  ";"
-                )
-              ));
+              propNodes.push(React.createElement("div", { className: "css-property", key: "prop-" + prop }, React.createElement("div", { className: "css-property-property" }, prop, ": "), React.createElement("div", { className: "css-property-value" }, val, ";")));
             }
-            return React.createElement(
-              "div",
-              { className: "css-rule" },
-              React.createElement(
-                "div",
-                { className: "css-selector" },
-                this.props.selector,
-                " ",
-                '{'
-              ),
-              React.createElement(
-                "div",
-                { className: "css-properties" },
-                propNodes
-              ),
-              '}'
-            );
+            return React.createElement("div", { className: "css-rule" }, React.createElement("div", { className: "css-selector" }, this.props.selector, " ", '{'), React.createElement("div", { className: "css-properties" }, propNodes), '}');
           }
         }]);
 
@@ -18252,8 +18215,8 @@ $__System.register("d4", ["c2", "cd", "d0", "d1", "a1"], function (_export) {
     }
   };
 });
-$__System.register('d5', ['c2', 'cd', 'd0', 'd1', 'babel-runtime/helpers/extends', 'a1', 'd4'], function (_export) {
-  var _get, _inherits, _createClass, _classCallCheck, _extends, React, CssRule, CssOutput;
+$__System.register('d5', ['c2', 'cd', 'd0', 'd1', 'a1', 'd4'], function (_export) {
+  var _get, _inherits, _createClass, _classCallCheck, React, CssRule, CssOutput;
 
   return {
     setters: [function (_c2) {
@@ -18264,8 +18227,6 @@ $__System.register('d5', ['c2', 'cd', 'd0', 'd1', 'babel-runtime/helpers/extends
       _createClass = _d0['default'];
     }, function (_d1) {
       _classCallCheck = _d1['default'];
-    }, function (_babelRuntimeHelpersExtends) {
-      _extends = _babelRuntimeHelpersExtends['default'];
     }, function (_a1) {
       React = _a1['default'];
     }, function (_d4) {
@@ -18286,22 +18247,9 @@ $__System.register('d5', ['c2', 'cd', 'd0', 'd1', 'babel-runtime/helpers/extends
         _createClass(CssOutput, [{
           key: 'render',
           value: function render() {
-            return React.createElement(
-              'div',
-              null,
-              React.createElement(
-                'h2',
-                { className: 'fb-subheader' },
-                'Css Output'
-              ),
-              React.createElement(
-                'div',
-                { className: 'css-rules' },
-                this.props.rules.map(function (rule) {
-                  return React.createElement(CssRule, _extends({}, rule, { key: 'rule-' + rule.id }));
-                })
-              )
-            );
+            return React.createElement("div", null, React.createElement("h2", { className: "fb-subheader" }, "Css Output"), React.createElement("div", { className: "css-rules" }, this.props.rules.map(function (rule) {
+              return React.createElement(CssRule, React.__spread({}, rule, { key: 'rule-' + rule.id }));
+            })));
           }
         }]);
 
@@ -18478,48 +18426,11 @@ $__System.register('d7', ['c2', 'cd', 'd0', 'd1', 'a1', 'd6'], function (_export
             var children = node.children || [];
             var childNodeContainer = '';
             if (children.length) {
-              childNodeContainer = React.createElement(
-                'div',
-                { className: 'node-children' },
-                children.map((function (child) {
-                  return React.createElement(TreeNode, { key: child.id, node: child });
-                }).bind(this))
-              );
+              childNodeContainer = React.createElement("div", { className: "node-children" }, children.map((function (child) {
+                return React.createElement(TreeNode, { key: child.id, node: child });
+              }).bind(this)));
             }
-            return React.createElement(
-              'div',
-              { ref: 'node', className: classes, onClick: this.clicked.bind(this) },
-              React.createElement(
-                'div',
-                { className: 'node-selector' },
-                node.selector
-              ),
-              React.createElement(
-                'div',
-                { className: 'node-actions' },
-                React.createElement(
-                  'button',
-                  { onClick: this.clickedAdd.bind(this) },
-                  '+'
-                ),
-                React.createElement(
-                  'button',
-                  { onClick: this.clickedDestroy.bind(this) },
-                  '-'
-                ),
-                React.createElement(
-                  'button',
-                  { onClick: this.clickedUp.bind(this) },
-                  '▴'
-                ),
-                React.createElement(
-                  'button',
-                  { onClick: this.clickedDown.bind(this) },
-                  '▾'
-                )
-              ),
-              childNodeContainer
-            );
+            return React.createElement("div", { ref: "node", className: classes, onClick: this.clicked.bind(this) }, React.createElement("div", { className: "node-selector" }, node.selector), React.createElement("div", { className: "node-actions" }, React.createElement("button", { onClick: this.clickedAdd.bind(this) }, "+"), React.createElement("button", { onClick: this.clickedDestroy.bind(this) }, "-"), React.createElement("button", { onClick: this.clickedUp.bind(this) }, "▴"), React.createElement("button", { onClick: this.clickedDown.bind(this) }, "▾")), childNodeContainer);
           }
         }]);
 
@@ -18564,20 +18475,7 @@ $__System.register('d8', ['c2', 'cd', 'd0', 'd1', 'a1', 'd7'], function (_export
           value: function render() {
             var classes = '';
             var node = this.props.layout;
-            return React.createElement(
-              'div',
-              { className: 'tree fb-panel' },
-              React.createElement(
-                'h2',
-                { className: 'fb-subheader' },
-                'Tree'
-              ),
-              React.createElement(
-                'div',
-                { className: 'tree-nodes' },
-                React.createElement(TreeNode, { node: node })
-              )
-            );
+            return React.createElement("div", { className: "tree fb-panel" }, React.createElement("h2", { className: "fb-subheader" }, "Tree"), React.createElement("div", { className: "tree-nodes" }, React.createElement(TreeNode, { node: node })));
           }
         }]);
 
@@ -18601,8 +18499,7 @@ $__System.register('d9', ['a1', 'ba', 'd6'], function (_export) {
       LayoutActions = _d6['default'];
     }],
     execute: function () {
-      InspectorValue = React.createClass({
-        displayName: 'InspectorValue',
+      InspectorValue = React.createClass({ displayName: "InspectorValue",
 
         componentDidMount: function componentDidMount() {
           LayoutStore.addChangeListener(this._onChange);
@@ -18628,7 +18525,7 @@ $__System.register('d9', ['a1', 'ba', 'd6'], function (_export) {
 
         render: function render() {
           var value = this.state.value;
-          return React.createElement('input', { className: 'fb-control', value: value, onChange: this.onControlChange });
+          return React.createElement("input", { className: "fb-control", value: value, onChange: this.onControlChange });
         },
 
         getInitialState: function getInitialState() {
@@ -18680,23 +18577,14 @@ $__System.register('da', ['c2', 'cd', 'd0', 'd1', 'a1', 'ba', 'd6', 'd9'], funct
           value: function render() {
             var value = this.props.value;
             var defaultValue = this.props.defaultValue;
-            return React.createElement(
-              'select',
-              {
-                value: value,
-                defaultValue: defaultValue,
-                onChange: this.onControlChange,
-                className: 'fb-control'
-              },
-              React.createElement('option', { value: '' }),
-              this.props.options.map(function (option) {
-                return React.createElement(
-                  'option',
-                  { value: option, key: 'option-' + option },
-                  option
-                );
-              })
-            );
+            return React.createElement("select", {
+              value: value,
+              defaultValue: defaultValue,
+              onChange: this.onControlChange,
+              className: "fb-control"
+            }, React.createElement("option", { value: "" }), this.props.options.map(function (option) {
+              return React.createElement("option", { value: option, key: 'option-' + option }, option);
+            }));
           }
         }]);
 
@@ -18755,24 +18643,7 @@ $__System.register('db', ['c2', 'cd', 'd0', 'd1', 'a1', 'da', 'd9'], function (_
                 valueNode = React.createElement(InspectorValueInput, { name: name, value: value });
                 break;
             }
-            return React.createElement(
-              'div',
-              { className: 'inspector-prop' },
-              React.createElement(
-                'div',
-                { className: 'inspector-prop-name' },
-                React.createElement(
-                  'label',
-                  null,
-                  this.props.name
-                )
-              ),
-              React.createElement(
-                'div',
-                { className: 'inspector-prop-val' },
-                valueNode
-              )
-            );
+            return React.createElement("div", { className: "inspector-prop" }, React.createElement("div", { className: "inspector-prop-name" }, React.createElement("label", null, this.props.name)), React.createElement("div", { className: "inspector-prop-val" }, valueNode));
           }
         }]);
 
@@ -18809,8 +18680,7 @@ $__System.register('de', ['a1', 'b8', 'ba', 'db', 'dd'], function (_export) {
     }],
     execute: function () {
       activePane = 'common';
-      Inspector = React.createClass({
-        displayName: 'Inspector',
+      Inspector = React.createClass({ displayName: "Inspector",
 
         getInitialState: function getInitialState() {
           return getState();
@@ -18841,191 +18711,111 @@ $__System.register('de', ['a1', 'b8', 'ba', 'db', 'dd'], function (_export) {
         render: function render() {
           var node = this.state.node;
           if (!node) {
-            return React.createElement(
-              'div',
-              { className: 'inspector fb-panel' },
-              React.createElement(
-                'h2',
-                { className: 'fb-subheader' },
-                'Inspector []'
-              )
-            );
+            return React.createElement("div", { className: "inspector fb-panel" }, React.createElement("h2", { className: "fb-subheader" }, "Inspector []"));
           }
-          return React.createElement(
-            'div',
-            { className: 'inspector fb-panel' },
-            React.createElement(
-              'h2',
-              { className: 'fb-subheader' },
-              'Inspector [',
-              node.selector,
-              ']'
-            ),
-            React.createElement(
-              'div',
-              { className: 'inspector-tabs' },
-              React.createElement(
-                'div',
-                { className: this.getTabClassNames('common') },
-                React.createElement(
-                  'h3',
-                  { className: 'inspector-tab-header', onClick: this.setActivePane, 'data-pane': 'common' },
-                  'Common'
-                ),
-                React.createElement(
-                  'div',
-                  { className: 'inspector-props' },
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-contents',
-                    node: node,
-                    name: 'contents',
-                    type: 'input',
-                    value: node.contents }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-selector',
-                    node: node,
-                    name: 'selector',
-                    type: 'input',
-                    value: node.selector }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-height',
-                    node: node,
-                    name: 'height',
-                    type: 'input',
-                    value: node.properties.height }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-width',
-                    node: node,
-                    name: 'width',
-                    type: 'input',
-                    value: node.properties.width }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-border',
-                    node: node,
-                    name: 'border',
-                    type: 'input',
-                    value: node.properties.border }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-padding',
-                    node: node,
-                    name: 'padding',
-                    type: 'input',
-                    value: node.properties.padding }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-margin',
-                    node: node,
-                    name: 'margin',
-                    type: 'input',
-                    value: node.properties.margin })
-                )
-              ),
-              React.createElement(
-                'div',
-                { className: this.getTabClassNames('container') },
-                React.createElement(
-                  'h3',
-                  { className: 'inspector-tab-header', onClick: this.setActivePane, 'data-pane': 'container' },
-                  'Flex Container'
-                ),
-                React.createElement(
-                  'div',
-                  { className: 'inspector-props' },
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-display',
-                    node: node,
-                    name: 'display',
-                    type: 'select',
-                    value: node.properties.display,
-                    options: ['flex', 'inline-flex'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex-direction',
-                    node: node,
-                    name: 'flex-direction',
-                    type: 'select',
-                    value: node.properties['flex-direction'],
-                    options: ['row', 'row-reverse', 'column', 'column-reverse'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex-wrap',
-                    node: node,
-                    name: 'flex-wrap',
-                    type: 'select',
-                    value: node.properties['flex-wrap'],
-                    options: ['nowrap', 'wrap', 'wrap-reverse'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-justify-content',
-                    node: node,
-                    name: 'justify-content',
-                    type: 'select',
-                    value: node.properties['justify-content'],
-                    options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-align-items',
-                    node: node,
-                    name: 'align-items',
-                    type: 'select',
-                    value: node.properties['align-items'],
-                    options: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-align-content',
-                    node: node,
-                    name: 'align-content',
-                    type: 'select',
-                    value: node.properties['align-content'],
-                    options: ['flex-start', 'flex-end', 'center', 'stretch', 'space-between', 'space-around'] })
-                )
-              ),
-              React.createElement(
-                'div',
-                { className: this.getTabClassNames('child') },
-                React.createElement(
-                  'h3',
-                  { className: 'inspector-tab-header', onClick: this.setActivePane, 'data-pane': 'child' },
-                  'Flex Child'
-                ),
-                React.createElement(
-                  'div',
-                  { className: 'inspector-props' },
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex-grow',
-                    node: node,
-                    name: 'flex-grow',
-                    type: 'input',
-                    value: node.properties['flex-grow'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex-shrink',
-                    node: node,
-                    name: 'flex-shrink',
-                    type: 'input',
-                    value: node.properties['flex-shrink'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex-basis',
-                    node: node,
-                    name: 'flex-basis',
-                    type: 'input',
-                    value: node.properties['flex-basis'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-flex',
-                    node: node,
-                    name: 'flex',
-                    type: 'input',
-                    value: node.properties['flex'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-order',
-                    node: node,
-                    name: 'order',
-                    type: 'input',
-                    value: node.properties['order'] }),
-                  React.createElement(InspectorProp, {
-                    key: node.id + '-align-self',
-                    node: node,
-                    name: 'align-self',
-                    type: 'select',
-                    value: node.properties['align-self'],
-                    options: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'] })
-                )
-              )
-            )
-          );
+          return React.createElement("div", { className: "inspector fb-panel" }, React.createElement("h2", { className: "fb-subheader" }, "Inspector [", node.selector, "]"), React.createElement("div", { className: "inspector-tabs" }, React.createElement("div", { className: this.getTabClassNames('common') }, React.createElement("h3", { className: "inspector-tab-header", onClick: this.setActivePane, "data-pane": "common" }, "Common"), React.createElement("div", { className: "inspector-props" }, React.createElement(InspectorProp, {
+            key: node.id + '-contents',
+            node: node,
+            name: "contents",
+            type: "input",
+            value: node.contents }), React.createElement(InspectorProp, {
+            key: node.id + '-selector',
+            node: node,
+            name: "selector",
+            type: "input",
+            value: node.selector }), React.createElement(InspectorProp, {
+            key: node.id + '-height',
+            node: node,
+            name: "height",
+            type: "input",
+            value: node.properties.height }), React.createElement(InspectorProp, {
+            key: node.id + '-width',
+            node: node,
+            name: "width",
+            type: "input",
+            value: node.properties.width }), React.createElement(InspectorProp, {
+            key: node.id + '-border',
+            node: node,
+            name: "border",
+            type: "input",
+            value: node.properties.border }), React.createElement(InspectorProp, {
+            key: node.id + '-padding',
+            node: node,
+            name: "padding",
+            type: "input",
+            value: node.properties.padding }), React.createElement(InspectorProp, {
+            key: node.id + '-margin',
+            node: node,
+            name: "margin",
+            type: "input",
+            value: node.properties.margin }))), React.createElement("div", { className: this.getTabClassNames('container') }, React.createElement("h3", { className: "inspector-tab-header", onClick: this.setActivePane, "data-pane": "container" }, "Flex Container"), React.createElement("div", { className: "inspector-props" }, React.createElement(InspectorProp, {
+            key: node.id + '-display',
+            node: node,
+            name: "display",
+            type: "select",
+            value: node.properties.display,
+            options: ['flex', 'inline-flex'] }), React.createElement(InspectorProp, {
+            key: node.id + '-flex-direction',
+            node: node,
+            name: "flex-direction",
+            type: "select",
+            value: node.properties['flex-direction'],
+            options: ['row', 'row-reverse', 'column', 'column-reverse'] }), React.createElement(InspectorProp, {
+            key: node.id + '-flex-wrap',
+            node: node,
+            name: "flex-wrap",
+            type: "select",
+            value: node.properties['flex-wrap'],
+            options: ['nowrap', 'wrap', 'wrap-reverse'] }), React.createElement(InspectorProp, {
+            key: node.id + '-justify-content',
+            node: node,
+            name: "justify-content",
+            type: "select",
+            value: node.properties['justify-content'],
+            options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'] }), React.createElement(InspectorProp, {
+            key: node.id + '-align-items',
+            node: node,
+            name: "align-items",
+            type: "select",
+            value: node.properties['align-items'],
+            options: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'] }), React.createElement(InspectorProp, {
+            key: node.id + '-align-content',
+            node: node,
+            name: "align-content",
+            type: "select",
+            value: node.properties['align-content'],
+            options: ['flex-start', 'flex-end', 'center', 'stretch', 'space-between', 'space-around'] }))), React.createElement("div", { className: this.getTabClassNames('child') }, React.createElement("h3", { className: "inspector-tab-header", onClick: this.setActivePane, "data-pane": "child" }, "Flex Child"), React.createElement("div", { className: "inspector-props" }, React.createElement(InspectorProp, {
+            key: node.id + '-flex-grow',
+            node: node,
+            name: "flex-grow",
+            type: "input",
+            value: node.properties['flex-grow'] }), React.createElement(InspectorProp, {
+            key: node.id + '-flex-shrink',
+            node: node,
+            name: "flex-shrink",
+            type: "input",
+            value: node.properties['flex-shrink'] }), React.createElement(InspectorProp, {
+            key: node.id + '-flex-basis',
+            node: node,
+            name: "flex-basis",
+            type: "input",
+            value: node.properties['flex-basis'] }), React.createElement(InspectorProp, {
+            key: node.id + '-flex',
+            node: node,
+            name: "flex",
+            type: "input",
+            value: node.properties['flex'] }), React.createElement(InspectorProp, {
+            key: node.id + '-order',
+            node: node,
+            name: "order",
+            type: "input",
+            value: node.properties['order'] }), React.createElement(InspectorProp, {
+            key: node.id + '-align-self',
+            node: node,
+            name: "align-self",
+            type: "select",
+            value: node.properties['align-self'],
+            options: ['flex-start', 'flex-end', 'center', 'stretch', 'baseline'] })))));
         }
 
       });
@@ -19079,27 +18869,12 @@ $__System.register('df', ['c2', 'cd', 'd0', 'd1', 'a1', 'ba', 'd6'], function (_
             var _this = this;
 
             var samples = this.props.samples;
-            return React.createElement(
-              'p',
-              { className: 'loader' },
-              'Load a sample layout:',
-              samples.map(function (sample) {
-                return React.createElement(
-                  'span',
-                  { key: 'sample-' + sample },
-                  ' ',
-                  React.createElement(
-                    'a',
-                    {
-                      href: '#',
-                      'data-sample': sample,
-                      onClick: _this.clicked.bind(_this) },
-                    sample
-                  ),
-                  ' '
-                );
-              })
-            );
+            return React.createElement("p", { className: "loader" }, "Load a sample layout:", samples.map(function (sample) {
+              return React.createElement("span", { key: 'sample-' + sample }, " ", React.createElement("a", {
+                href: "#",
+                "data-sample": sample,
+                onClick: _this.clicked.bind(_this) }, sample), " ");
+            }));
           }
         }]);
 
@@ -19139,8 +18914,7 @@ $__System.register('e0', ['a1', 'ba', 'd3', 'd5', 'd8', 'de', 'df'], function (_
       Loader = _df['default'];
     }],
     execute: function () {
-      FlexBoxerApp = React.createClass({
-        displayName: 'FlexBoxerApp',
+      FlexBoxerApp = React.createClass({ displayName: "FlexBoxerApp",
 
         getInitialState: function getInitialState() {
           return getFBState();
@@ -19161,31 +18935,7 @@ $__System.register('e0', ['a1', 'ba', 'd3', 'd5', 'd8', 'de', 'df'], function (_
         render: function render() {
           var rules = LayoutStore.getFlattenedRules();
           var samples = LayoutStore.getSamples();
-          return React.createElement(
-            'div',
-            null,
-            React.createElement(
-              'div',
-              { className: 'fb-loader' },
-              React.createElement(Loader, { samples: samples })
-            ),
-            React.createElement(
-              'div',
-              { className: 'fb-app' },
-              React.createElement(
-                'div',
-                { className: 'fb-tools' },
-                React.createElement(TreeLayout, { layout: this.state.layout }),
-                React.createElement(Inspector, null)
-              ),
-              React.createElement(
-                'div',
-                { className: 'fb-output' },
-                React.createElement(Visualiser, { layout: this.state.layout }),
-                React.createElement(CssOutput, { rules: rules })
-              )
-            )
-          );
+          return React.createElement("div", null, React.createElement("div", { className: "fb-loader" }, React.createElement(Loader, { samples: samples })), React.createElement("div", { className: "fb-app" }, React.createElement("div", { className: "fb-tools" }, React.createElement(TreeLayout, { layout: this.state.layout }), React.createElement(Inspector, null)), React.createElement("div", { className: "fb-output" }, React.createElement(Visualiser, { layout: this.state.layout }), React.createElement(CssOutput, { rules: rules }))));
         }
 
       });
