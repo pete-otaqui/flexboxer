@@ -13,8 +13,8 @@ System.config({
   },
 
   map: {
-    "babel": "npm:babel-core@5.8.24",
-    "babel-runtime": "npm:babel-runtime@5.8.20",
+    "babel": "npm:babel-core@5.8.25",
+    "babel-runtime": "npm:babel-runtime@5.8.24",
     "classnames": "npm:classnames@2.1.3",
     "core-js": "npm:core-js@1.1.4",
     "es6-promise": "npm:es6-promise@3.0.2",
@@ -102,7 +102,7 @@ System.config({
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:babel-runtime@5.8.20": {
+    "npm:babel-runtime@5.8.24": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:browserify-aes@1.0.3": {
