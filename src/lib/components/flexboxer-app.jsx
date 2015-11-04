@@ -45,8 +45,8 @@ let FlexBoxerApp = React.createClass({
             <Inspector />
           </div>
           <div className="fb-output">
-            <Visualiser layout={this.state.layout} />
-            <iframe id="visualiser-iframe" />
+            <Visualiser layout={this.state.layout} iframeContainer="#iframe-container" />
+            <div id="iframe-container" />
             <CssOutput rules={rules} />
           </div>
         </div>

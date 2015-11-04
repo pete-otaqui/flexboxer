@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import RW from 'rear-window';
 
 import VisualiserNode from 'lib/components/visualiser-node.jsx!';
 
@@ -14,6 +15,18 @@ class Visualiser extends React.Component {
     </div>;
   }
   componentDidMount() {
+    let iframeContainer = document.querySelector(this.props.iframeContainer);
+    let options = {
+      iframeAttributes: {
+        id: 'visualiser-iframe'
+      },
+      styleString: `
+        html, body { margin: 0; padding: 0; }
+        .visualiser-child {
+          background-color: rgba(65, 60, 50, 0.5);
+        }`
+    }
+    this.iframe = RW.create(iframeContainer, options);
     this.updateIFrameHTML();
   }
   componentDidUpdate() {
@@ -21,13 +34,12 @@ class Visualiser extends React.Component {
   }
   updateIFrameHTML() {
     let html = this.getVisualiserHTML();
-    let iframe = document.getElementById('visualiser-iframe');
-    iframe.contentDocument.body.innerHTML = '';
-    iframe.contentDocument.write(html);
+    RW.update(this.iframe, html);
   }
   getVisualiserHTML() {
     let domNode = ReactDom.findDOMNode(this.refs.visualiserNode);
-    return domNode.outerHTML;
+    let domNodeHTML = domNode.outerHTML;
+    return domNodeHTML;
   }
 };
 

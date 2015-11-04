@@ -24,6 +24,7 @@ System.config({
     "object-assign": "npm:object-assign@4.0.1",
     "react": "npm:react@0.14.1",
     "react-dom": "npm:react-dom@0.14.1",
+    "rear-window": "npm:rear-window@0.2.0",
     "github:floatdrop/plugin-jsx@1.1.0": {
       "react-tools": "npm:react-tools@0.13.3"
     },
