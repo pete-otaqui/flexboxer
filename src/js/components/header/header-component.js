@@ -5,7 +5,7 @@ export default class Header extends Component {
     const { } = this.props
 
     return (
-      <header>
+      <header className="header">
         <div className="container">
           <h1>FlexBoxer</h1>
         </div>

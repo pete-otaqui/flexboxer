@@ -5,7 +5,7 @@ export default class Css extends Component {
     const { } = this.props
 
     return (
-      <div className="css">
+      <div className="css output-panel">
         Css component
       </div>
     )

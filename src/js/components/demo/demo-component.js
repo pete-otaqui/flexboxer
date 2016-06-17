@@ -5,7 +5,7 @@ export default class Demo extends Component {
     const { } = this.props
 
     return (
-      <div>
+      <div className="demo">
         Demo component
       </div>
     )

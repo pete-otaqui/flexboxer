@@ -5,7 +5,7 @@ export default class Footer extends Component {
     const { } = this.props
 
     return (
-      <footer class="footer">
+      <footer className="demo">
         <div className="container">
           Footer component
         </div>

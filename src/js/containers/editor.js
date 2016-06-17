@@ -7,7 +7,7 @@ export default class Editor extends Component {
   render() {
     return (
       <div id="editor">
-        <Tree />
+        <Tree className="tree-container" />
         <Demo />
       </div>
     )

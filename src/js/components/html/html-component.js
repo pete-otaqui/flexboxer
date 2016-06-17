@@ -5,7 +5,7 @@ export default class Html extends Component {
     const { } = this.props
 
     return (
-      <div>
+      <div className="html output-panel">
         Html component
       </div>
     )
