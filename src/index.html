@@ -1,36 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>FlexBoxer - build Flexbox layouts online</title>
-    <meta name="keywords" content="html, html5, css, css3, flexbox, developer" />
-    <meta name="description" content="Build CSS 3 flexbox layouts online in your browser" />
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="styles/main.css" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-  </head>
-  <body>
-    <div class="fb-header">
-      <h1 class="fb-title"><span class="fb-title-flex">Flex</span><span class="fb-title-boxer">Boxer</span></h1>
-      <p class="fb-intro">
-        Build CSS3 flexbox layouts online in your browser.
-      </p>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlexBoxer</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    #app-loader {
+      min-height: 100vh;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: "Open Sans Light", "Open Sans", "Helvetica Neue", Arial, sans-serif;
+      font-size: 72px;
+      font-weight: 100;
+      color: rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    #app-title {
+      display: inline-block;
+      margin: auto;
+      animation: pulse 1s infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in;
+    }
+    @keyframes pulse {
+      from { transform: scale(1.00); opacity: 1.0; }
+      to   { transform: scale(0.97); opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="app-loader">
+      <div id="app-title">FlexBoxer</div>
     </div>
-
-    <div id="fb-root"></div>
-
-    <div class="fb-footer">
-      Built with HTML5, CSS3, ES6, <a href="https://facebook.github.io/react/">react.js</a>
-      and love by <a href="https://twitter.com/pete_otaqui">Pete Otaqui</a>.
-      The <a href="https://github.com/pete-otaqui/flexboxer">source is
-      on github</a>.
-    </div>
-
-    <script type="text/javascript" src="jspm_packages/system.js"></script>
-
-    <script type="text/javascript" src="config.js"></script>
-
-    <script type="text/javascript">
-      System.import("lib/main.jsx!");
-    </script>
-  </body>
+  </div>
+  <script src="bundle.js"></script>
+</body>
 </html>

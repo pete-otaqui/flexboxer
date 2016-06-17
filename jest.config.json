@@ -1,7 +1,0 @@
-{
-	"testPathIgnorePatterns": ["/node_modules/", "jspm_packages"],
-    "scriptPreprocessor": "src/preprocessor.js",
-    "unmockedModulePathPatterns": [
-      "./node_modules/react"
-    ]
-}
