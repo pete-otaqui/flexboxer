@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react'
 
-export default class Tree extends Component {
+export default class Css extends Component {
   render() {
     const { } = this.props
 
     return (
-      <div>
-        Tree component
+      <div className="css">
+        Css component
       </div>
     )
   }
 }
 
-Tree.propTypes = {}
+Css.propTypes = {}

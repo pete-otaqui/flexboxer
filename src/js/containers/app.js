@@ -2,10 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { updateTreeIfNeeded, updateTree } from '../actions'
 import Header from '../components/header'
-import Tree from '../components/tree'
-import Demo from '../components/demo'
-import Html from '../components/html'
-import Css from '../components/css'
+import Editor from './editor'
+import Output from './output'
 import Footer from '../components/footer'
 
 class App extends Component {
@@ -36,10 +34,8 @@ class App extends Component {
       <div id="app-root">
         <Header />
         <main id="main" className="container">
-          <Tree />
-          <Demo />
-          <Html />
-          <Css />
+          <Editor />
+          <Output />
         </main>
         <Footer />
       </div>
