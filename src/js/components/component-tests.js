@@ -1,5 +1,2 @@
 import Header from './header/header-component.test.js';
-
-export default [
-  Header
-];
+import Footer from './footer/footer-component.test.js';

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "ENV=dev webpack-dev-server --devtool sourcemap --inline --hot --content-base src/",
-    "test": "babel-node test-harness.js | faucet"
+    "test": "babel-node tests.js | faucet"
   },
   "repository": {
     "type": "git",
@@ -44,27 +44,27 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
-    "css-loader": "^0.23.1",
+    "enzyme": "^2.3.0",
     "extend-tape": "^1.2.0",
     "faucet": "0.0.1",
     "glob": "^7.0.3",
     "less": "^2.7.1",
-    "less-loader": "^2.2.3",
     "react-addons-test-utils": "^15.1.0",
-    "style-loader": "^0.13.1",
     "tape": "^4.5.1",
-    "tape-jsx-equals": "^1.0.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "css-loader": "^0.23.1",
     "deep-freeze": "0.0.1",
     "immutable": "^3.8.1",
+    "less-loader": "^2.2.3",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "style-loader": "^0.13.1"
   }
 }

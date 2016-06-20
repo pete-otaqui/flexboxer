@@ -1,24 +1,14 @@
 import React from 'react';
+import tape from 'tape';
+import { shallow } from 'enzyme';
 
 import Header from './header-component';
 
-export default function(test, renderer) {
-  test('Is a header', (assert) => {
-    assert.plan(1);
 
-    renderer.render(<Header />);
+tape('Is a header', (assert) => {
+  assert.plan(1);
 
-    const message = 'Should be a header';
-    const expected =
-      <header className="header">
-        <div className="container">
-          <h1>
-            FlexBoxer
-          </h1>
-        </div>
-      </header>;
-    const output = renderer.getRenderOutput();
+  const wrapper = shallow(<Header />);
 
-    assert.jsxEquals(output, expected, message);
-  });
-}
+  assert.ok(wrapper.contains('FlexBoxer'), 'Has a title');
+});
