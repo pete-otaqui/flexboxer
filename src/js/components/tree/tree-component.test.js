@@ -30,10 +30,54 @@ tape('Renders recursively', (assert) => {
     ]
   }
 
-  const wrapper = mount(<Tree tree={tree} />);
+  const wrapper = mount(<Tree
+    baseKey="tree"
+    tree={tree}
+    onSelectNode={function() {}}
+  />);
+  const trees = wrapper.find('.tree');
 
-  const divs = wrapper.find('div');
-  console.log(wrapper.find('.tree').length);
+  assert.equals(trees.length, 6, 'Recursively creates trees');
+});
 
-  assert.equals(wrapper.find('.tree').length, 6, 'Recursively creates trees');
+
+tape('Applies the same selection callback', (assert) => {
+  assert.plan(1);
+
+  const tree = {
+    node: {},
+    children: [{}, {}]
+  };
+  const onSelectNode = function() {};
+
+  const wrapper = mount(<Tree
+    baseKey="tree"
+    tree={tree}
+    onSelectNode={onSelectNode}
+  />);
+  const lastTree = wrapper.find('Tree').last();
+  const lastSelect = lastTree.props().onSelectNode;
+  assert.equals(lastSelect, onSelectNode, 'Same onSelect callback');
+});
+
+
+tape('Handles an empty tree', (assert) => {
+  assert.plan(1);
+
+  const fn = function() {};
+  const wrapper = mount(<Tree baseKey="tree" onSelectNode={fn} />);
+  assert.ok(true, 'Did not throw an error');
+});
+
+
+tape('Handles an empty baseKey', (assert) => {
+  assert.plan(1);
+
+  const tree = {
+    node: {},
+    children: [{}, {}]
+  };
+  const fn = function() {};
+  const wrapper = mount(<Tree tree={tree} onSelectNode={fn} />);
+  assert.ok(true, 'Did not throw an error');
 });

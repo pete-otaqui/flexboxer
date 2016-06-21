@@ -1,3 +1,7 @@
+/*
+ * Setup JSDOM to allow node.js based react dom rendering
+ */
+
 import JSDOM from 'jsdom';
 
 const jsdom = JSDOM.jsdom;
@@ -16,5 +20,10 @@ Object.keys(document.defaultView).forEach((property) => {
 global.navigator = {
   userAgent: 'node.js'
 };
+
+/*
+ * Manually require test index files,
+ * since ES6 imports cannot be dynamic
+ */
 
 import ComponentTests from './src/js/components/component-tests';
