@@ -1,0 +1,22 @@
+@import (reference) '../../../styles/variables.less';
+
+.nav {
+  background-color: @bg-secondary;
+}
+
+.nav-item {
+  display: inline-block;
+  margin: 0 @margin;
+  padding: @margin 0;
+  text-decoration: none;
+}
+.nav-item:hover,
+.nav-item:active {
+  text-decoration: underline;
+}
+.nav-item:first-child {
+  margin-left: 0;
+}
+.nav-item:last-child {
+  margin-right: 0;
+}

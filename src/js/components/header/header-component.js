@@ -10,6 +10,15 @@ export default class Header extends Component {
     const {
       navItems = [
         {
+          title: "Default",
+          tree: {
+            textContent: 'Root',
+            selector: '.root',
+            style: {},
+            children: []
+          }
+        },
+        {
           title: "One True Layout",
           tree: {
             textContent: 'Root',
@@ -65,7 +74,7 @@ export default class Header extends Component {
     return (
       <header className="header">
         <div className="container">
-          <h1>FlexBoxer</h1>
+          <h1 className="title"><span className="title-heavy">Flex</span>Boxer</h1>
         </div>
         <Nav items={navItems} onSelectItem={onNavigate} />
       </header>
