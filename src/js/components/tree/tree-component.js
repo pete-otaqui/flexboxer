@@ -2,20 +2,30 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Tree extends Component {
   render() {
-    const { tree = {}, onSelectNode, baseKey = 'tree' } = this.props;
-    const childNodes = tree.children ? tree.children.map((child, index) => {
+    const {
+      textContent = '',
+      selector = '',
+      style = {},
+      children = [],
+      onSelectNode,
+      baseKey = 'tree'
+    } = this.props;
+    const childNodes = children.map((child, index) => {
       let childId = `id-${index}`;
       return <Tree
-        tree={child}
+        textContent={child.textContent}
+        selector={child.selector}
+        style={child.style}
+        children={child.children}
         onSelectNode={onSelectNode}
         key={childId}
         baseKey={childId}
       />
-    }) : [];
+    });
 
     return (
       <div className="tree">
-        Tree component
+        {selector}
         <div className="tree-children">{childNodes}</div>
       </div>
     )
@@ -24,6 +34,9 @@ export default class Tree extends Component {
 
 Tree.propTypes = {
   baseKey: PropTypes.string,
-  tree: PropTypes.object,
+  textContent: PropTypes.string,
+  selector: PropTypes.string,
+  style: PropTypes.object,
+  children: PropTypes.arrayOf(PropTypes.object),
   onSelectNode: PropTypes.func.isRequired
 }

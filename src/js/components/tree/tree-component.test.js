@@ -9,7 +9,9 @@ tape('Renders recursively', (assert) => {
   assert.plan(1);
 
   const tree = {
-    node: {className: '.root', textContent: 'Some text'},
+    textContent: '',
+    selector: '',
+    style: {},
     children: [
       {
         className: '.header',
@@ -32,7 +34,10 @@ tape('Renders recursively', (assert) => {
 
   const wrapper = mount(<Tree
     baseKey="tree"
-    tree={tree}
+    textContent={tree.textContent}
+    selector={tree.selector}
+    style={tree.style}
+    children={tree.children}
     onSelectNode={function() {}}
   />);
   const trees = wrapper.find('.tree');

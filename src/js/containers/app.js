@@ -9,7 +9,8 @@ import Footer from '../components/footer'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.updateTreeCb = this.updateTreeCb.bind(this);
   }
 
   componentDidMount() {
@@ -20,7 +21,7 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.tree !== this.props.tree) {
       const { dispatch, tree } = nextProps
-      dispatch(updateTree(tree))
+      // dispatch(updateTree(tree))
     }
   }
 
@@ -28,35 +29,38 @@ class App extends Component {
     // this.props.dispatch(updateTree(nextItem))
   }
 
+  updateTreeCb(tree) {
+    this.props.dispatch(updateTree(tree));
+  }
+
   render() {
-    const { tree } = this.props
+    const { tree } = this.props;
     return (
       <div id="app-root">
-        <Header />
+        <Header onNavigate={this.updateTreeCb} />
         <main id="main" className="container">
-          <Editor />
+          <Editor onSelectNode={function(){}} tree={tree} />
           <Output />
         </main>
         <Footer />
       </div>
-    )
+    );
   }
 }
 
 App.propTypes = {
-  tree: PropTypes.array.isRequired,
+  tree: PropTypes.object.isRequired,
   activeIndex: PropTypes.number,
   dispatch: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   const { tree, activeIndex } = state;
-  console.log(state);
   const selectedNode = (activeIndex) ? tree[activeIndex] : null;
   return {
     tree,
     selectedNode
-  }
+  };
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(App);
