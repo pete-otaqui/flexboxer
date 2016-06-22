@@ -12,59 +12,68 @@ export default class Header extends Component {
         {
           title: "Default",
           tree: {
-            textContent: 'Root',
-            selector: '.root',
-            style: {},
-            children: []
+            1: {
+              id: 1,
+              textContent: 'Root',
+              selector: '.root',
+              style: {},
+              childIds: []
+            }
           }
         },
         {
           title: "One True Layout",
           tree: {
-            textContent: 'Root',
-            selector: '.root',
-            style: {
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '300px'
+            1: {
+              id: 1,
+              textContent: 'Root',
+              selector: '.root',
+              style: {
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '300px'
+              },
+              childIds: [2, 3, 4]
             },
-            children: [
-              {
-                textContent: 'header',
-                selector: '.header',
-                style: {},
-                children: []
+            2: {
+              id: 2,
+              textContent: 'header',
+              selector: '.header',
+              style: {},
+              childIds: []
+            },
+            3: {
+              id: 3,
+              textContent: '',
+              selector: '.main',
+              style: {
+                flexGrow: '1'
               },
-              {
-                textContent: '',
-                selector: '.main',
-                style: {
-                  flexGrow: '1'
-                },
-                children: [
-                  {
-                    textContent: 'aside',
-                    selector: '.aside',
-                    style: {
-                      width: '200px'
-                    },
-                    children: []
-                  },
-                  {
-                    textContent: 'article',
-                    selector: '.article',
-                    style: {},
-                    children: []
-                  }
-                ]
+              childIds: [5, 6]
+            },
+            4: {
+              id: 4,
+              textContent: 'footer',
+              selector: '.footer',
+              style: {},
+              childIds: []
+            },
+            5: {
+              id: 5,
+              textContent: 'aside',
+              selector: '.aside',
+              style: {
+                width: '200px'
               },
-              {
-                textContent: 'footer',
-                selector: '.footer',
-                style: {},
-                children: []
-              }
-            ]
+              childIds: []
+            },
+            6: {
+              id: 6,
+              textContent: 'article',
+              selector: '.article',
+              style: {},
+              childIds: []
+            }
           }
         }
       ],

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
-export default class Tree extends Component {
+export class Tree extends Component {
   constructor() {
     super();
     this.onClickNode = this.onClickNode.bind(this);
@@ -10,33 +11,38 @@ export default class Tree extends Component {
     e.stopPropagation();
     e.preventDefault();
     // @TODO - work out how to identify "this" in the state tree
-    this.props.onSelectNode(this.props);
+    // @TODO - probably means refactoring to `normalizer` style
+    this.props.onSelectNode(this.props.node);
   }
 
   render() {
     const {
+      node = {},
+      onSelectNode = function() {},
+      baseKey = 'tree',
+      children = []
+    } = this.props;
+    const {
       textContent = '',
       selector = '',
-      style = {},
-      children = [],
-      onSelectNode,
-      baseKey = 'tree'
-    } = this.props;
+      style = {}
+    } = node;
     const childNodes = children.map((child, index) => {
       let childId = `id-${index}`;
-      return <Tree
-        textContent={child.textContent}
-        selector={child.selector}
-        style={child.style}
-        children={child.children}
+      const childNode = <WrappedTree
+        node={child}
         onSelectNode={onSelectNode}
         key={childId}
         baseKey={childId}
-      />
+      />;
+      return childNode;
     });
 
+    let className = 'tree';
+    if ( this.props.isSelected ) className += ' tree-selected';
+
     return (
-      <div className="tree" onClick={this.onClickNode}>
+      <div className={className} onClick={this.onClickNode}>
         {selector}
         <div className="tree-children">{childNodes}</div>
       </div>
@@ -44,11 +50,23 @@ export default class Tree extends Component {
   }
 }
 
+function mapStateToProps(state, ownProps) {
+  if ( !ownProps.node ) return { isSelected: false };
+  const node = ownProps.node;
+  const childIds = node.childIds;
+  const props = {
+    children: childIds.map(id => state.tree[id]),
+    isSelected: (state.selectedNode && state.selectedNode === node.id)
+  };
+  return props;
+}
+
+const WrappedTree = connect(mapStateToProps)(Tree);
+export default WrappedTree;
+
 Tree.propTypes = {
   baseKey: PropTypes.string,
-  textContent: PropTypes.string,
-  selector: PropTypes.string,
-  style: PropTypes.object,
+  node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
   onSelectNode: PropTypes.func.isRequired
 }

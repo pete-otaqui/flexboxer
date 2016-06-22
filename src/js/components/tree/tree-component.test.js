@@ -9,23 +9,27 @@ tape('Renders recursively', (assert) => {
   assert.plan(1);
 
   const tree = {
+    id: 1,
     textContent: '',
     selector: '',
     style: {},
     children: [
       {
+        id: 2,
         className: '.header',
         textContent: 'Header'
       },
       {
+        id: 3,
         className: '.main',
         textContent: 'Main',
         children: [
-          {className: '.body', textContent: 'Main body'},
-          {className: '.aside', textContent: 'Aside'}
+          {id: 4, className: '.body', textContent: 'Main body'},
+          {id: 5, className: '.aside', textContent: 'Aside'}
         ]
       },
       {
+        id: 6,
         className: '.footer',
         textContent: 'Footer'
       }

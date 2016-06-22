@@ -2,7 +2,16 @@
 
 .tree {
   width: 300px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 .tree .tree {
-  margin-left: @margin;
+  padding-left: @margin;
+  width: auto;
+}
+
+.tree-selected {
+  background-color: red;
+}
+.tree-selected .tree {
 }

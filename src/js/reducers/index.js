@@ -25,7 +25,8 @@ function treeReducer(state = defaultState, action) {
     case UPDATE_TREE:
       return Object.assign({}, state, { tree: action.tree });
     case SELECT_NODE:
-      return Object.assign({}, state, { selectedNode: action.node });
+      console.log('select', action.node, action.node.id);
+      return Object.assign({}, state, { selectedNode: action.node.id });
     case 'INCREMENT':
       newValue = state.value + 1;
       return Object.assign({}, state, { value: newValue });
