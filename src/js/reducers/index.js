@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 
 import {
   UPDATE_TREE, 
+  SELECT_NODE,
   ADD_NODE, 
   REMOVE_NODE, 
   ADD_PROPERTY, 
@@ -11,7 +12,7 @@ import {
 
 const defaultState = { tree: {}, activeIndex: null }
 
-export function udpateTree(tree) {
+export function updateTree(tree) {
   return {
     type: UPDATE_TREE,
     tree: tree
@@ -23,6 +24,8 @@ function treeReducer(state = defaultState, action) {
   switch (action.type) {
     case UPDATE_TREE:
       return Object.assign({}, state, { tree: action.tree });
+    case SELECT_NODE:
+      return Object.assign({}, state, { selectedNode: action.node });
     case 'INCREMENT':
       newValue = state.value + 1;
       return Object.assign({}, state, { value: newValue });

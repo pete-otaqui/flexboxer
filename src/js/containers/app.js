@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { updateTreeIfNeeded, updateTree } from '../actions'
+import { updateTreeIfNeeded, updateTree, selectNode } from '../actions'
 import Header from '../components/header'
 import Editor from './editor'
 import Output from './output'
@@ -11,6 +11,7 @@ class App extends Component {
     super(props)
     this.handleChange = this.handleChange.bind(this);
     this.updateTreeCb = this.updateTreeCb.bind(this);
+    this.selectNodeCb = this.selectNodeCb.bind(this);
   }
 
   componentDidMount() {
@@ -33,13 +34,17 @@ class App extends Component {
     this.props.dispatch(updateTree(tree));
   }
 
+  selectNodeCb(node) {
+    this.props.dispatch(selectNode(node))
+  }
+
   render() {
     const { tree } = this.props;
     return (
       <div id="app-root">
         <Header onNavigate={this.updateTreeCb} />
         <main id="main" className="container">
-          <Editor onSelectNode={function(){}} tree={tree} />
+          <Editor onSelectNode={this.selectNodeCb} tree={tree} />
           <Output />
         </main>
         <Footer />

@@ -1,4 +1,5 @@
 export const UPDATE_TREE = 'UPDATE_TREE_NODE';
+export const SELECT_NODE = 'SELECT_NODE';
 export const ADD_NODE = 'ADD_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
 export const ADD_PROPERTY = 'ADD_PROPERTY';
@@ -9,6 +10,13 @@ export function updateTree(tree) {
   return {
     type: UPDATE_TREE,
     tree: tree
+  }
+}
+
+export function selectNode(node) {
+  return {
+    type: SELECT_NODE,
+    node: node
   }
 }
 
