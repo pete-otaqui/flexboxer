@@ -9,6 +9,5 @@ tape('Is a header', (assert) => {
   assert.plan(1);
 
   const wrapper = shallow(<Header />);
-
-  assert.ok(wrapper.contains('FlexBoxer'), 'Has a title');
+  assert.ok(wrapper.text().match(/FlexBoxer/), 'Has a title');
 });

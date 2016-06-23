@@ -17,19 +17,19 @@ export class Tree extends Component {
 
   render() {
     const {
-      node = {},
-      onSelectNode = function() {},
       baseKey = 'tree',
-      children = []
+      node = {},
+      onSelectNode = function() {}
     } = this.props;
     const {
       textContent = '',
       selector = '',
-      style = {}
+      style = {},
+      children = []
     } = node;
     const childNodes = children.map((child, index) => {
-      let childId = `id-${index}`;
-      const childNode = <WrappedTree
+      let childId = `${baseKey}-${index}`;
+      const childNode = <Tree
         node={child}
         onSelectNode={onSelectNode}
         key={childId}
@@ -44,6 +44,7 @@ export class Tree extends Component {
     return (
       <div className={className} onClick={this.onClickNode}>
         {selector}
+        {textContent}
         <div className="tree-children">{childNodes}</div>
       </div>
     )
@@ -55,7 +56,7 @@ function mapStateToProps(state, ownProps) {
   const node = ownProps.node;
   const childIds = node.childIds;
   const props = {
-    children: childIds.map(id => state.tree[id]),
+    node: Object.assign({}, node, {children: childIds.map(id => state.tree[id])}),
     isSelected: (state.selectedNode && state.selectedNode === node.id)
   };
   return props;

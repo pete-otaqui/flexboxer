@@ -2,7 +2,7 @@ import React from 'react';
 import tape from 'tape';
 import { mount } from 'enzyme';
 
-import Tree from './tree-component';
+import { Tree } from './tree-component';
 
 
 tape('Renders recursively', (assert) => {
@@ -10,7 +10,7 @@ tape('Renders recursively', (assert) => {
 
   const tree = {
     id: 1,
-    textContent: '',
+    textContent: 'ROOOOOOOOOOT',
     selector: '',
     style: {},
     children: [
@@ -38,10 +38,7 @@ tape('Renders recursively', (assert) => {
 
   const wrapper = mount(<Tree
     baseKey="tree"
-    textContent={tree.textContent}
-    selector={tree.selector}
-    style={tree.style}
-    children={tree.children}
+    node={tree}
     onSelectNode={function() {}}
   />);
   const trees = wrapper.find('.tree');

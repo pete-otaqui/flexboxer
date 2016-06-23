@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 export default class Nav extends Component {
 
   render() {
-    const { items, onSelectItem } = this.props;
+    const { items, onSelectItem = function() {} } = this.props;
     const baseKey = 'nav';
     const children = items.map((child, index) => {
       let key = `${baseKey}-${index}`;
@@ -30,5 +30,5 @@ export default class Nav extends Component {
 
 Nav.propTypes = {
   items: PropTypes.arrayOf(PropTypes.object.isRequired),
-  onSelectItem: PropTypes.func.isRequired
+  onSelectItem: PropTypes.func
 };
