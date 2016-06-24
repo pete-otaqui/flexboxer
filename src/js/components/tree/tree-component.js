@@ -29,7 +29,7 @@ export class Tree extends Component {
     } = node;
     const childNodes = children.map((child, index) => {
       let childId = `${baseKey}-${index}`;
-      const childNode = <Tree
+      const childNode = <WrappedTree
         node={child}
         onSelectNode={onSelectNode}
         key={childId}
@@ -54,7 +54,7 @@ export class Tree extends Component {
 function mapStateToProps(state, ownProps) {
   if ( !ownProps.node ) return { isSelected: false };
   const node = ownProps.node;
-  const childIds = node.childIds;
+  const childIds = node.childIds || [];
   const props = {
     node: Object.assign({}, node, {children: childIds.map(id => state.tree[id])}),
     isSelected: (state.selectedNode && state.selectedNode === node.id)
