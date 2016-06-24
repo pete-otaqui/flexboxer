@@ -29,4 +29,4 @@ global.navigator = {
  * since ES6 imports cannot be dynamic
  */
 
-import ComponentTests from './src/js/components/component-tests';
+import './src/js/components/component-tests';
