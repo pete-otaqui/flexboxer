@@ -25,49 +25,55 @@ function createMockStore(state) {
 tape('Renders recursively', (assert) => {
   assert.plan(1);
 
-  const state = {tree: {
-    1: {
-      id: 1,
-      textContent: 'ROOOOOOOOOOT',
-      selector: '',
-      style: {},
-      childIds: [2, 3, 6]
-    },
-    2: {
-      id: 2,
-      className: '.header',
-      textContent: 'Header'
-    },
-    3: {
-      id: 3,
-      className: '.main',
-      textContent: 'Main',
-      childIds: [4, 5]
-    },
-    4: {
-      id: 4,
-      className: '.aside',
-      textContent: 'Aside'
-    },
-    5: {
-      id: 5,
-      className: '.body',
-      textContent: 'Body'
-    },
-    6: {
-      id: 6,
-      className: '.footer',
-      textContent: 'Footer'
+  const state = {
+    tree: {
+      1: {
+        id: 1,
+        textContent: 'ROOOOOOOOOOT',
+        selector: '',
+        style: {},
+        childIds: [2, 3, 6]
+      },
+      2: {
+        id: 2,
+        className: '.header',
+        textContent: 'Header'
+      },
+      3: {
+        id: 3,
+        className: '.main',
+        textContent: 'Main',
+        childIds: [4, 5]
+      },
+      4: {
+        id: 4,
+        className: '.aside',
+        textContent: 'Aside'
+      },
+      5: {
+        id: 5,
+        className: '.body',
+        textContent: 'Body'
+      },
+      6: {
+        id: 6,
+        className: '.footer',
+        textContent: 'Footer'
+      }
     }
-  }};
+  };
 
   const store = createMockStore(state);
 
-  const wrapper = mount(<Provider store={store}><Tree
-    baseKey="tree"
-    node={state.tree[1]}
-    onSelectNode={function() {}}
-  /></Provider>);
+  const wrapper = mount(
+    <Provider store={store}>
+      <Tree
+        baseKey="tree"
+        node={state.tree[1]}
+        onSelectNode={function() {}}
+      />
+    </Provider>
+  );
 
   const trees = wrapper.find('.tree');
 
@@ -78,12 +84,15 @@ tape('Renders recursively', (assert) => {
 tape('Applies the same selection callback', (assert) => {
   assert.plan(1);
 
-  const state = {tree: {
+  const state = {
+    tree: {
     1: {
       childIds: [2, 3]
     },
-    2: {}, 3: {}
-  }};
+    2: {},
+    3: {}
+    }
+  };
   const onSelectNode = function() {};
 
   const store = createMockStore(state);
