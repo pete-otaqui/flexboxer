@@ -37,15 +37,17 @@ export class Tree extends Component {
       />;
       return childNode;
     });
+    let childrenClassname = 'tree-children';
 
     let className = 'tree';
     if ( this.props.isSelected ) className += ' tree-selected';
+    if ( children.length ) className += ' tree-populated';
 
     return (
       <div className={className} onClick={this.onClickNode}>
         {selector}
         {textContent}
-        <div className="tree-children">{childNodes}</div>
+        <div className={childrenClassname}>{childNodes}</div>
       </div>
     )
   }

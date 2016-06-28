@@ -27,7 +27,6 @@ export class Header extends Component {
 
 function mapStateToProps(state, ownProps) {
   const navigation = state.navigation || ownProps.navigation || [];
-  console.log('state', state, ownProps, navigation);
   const props = Object.assign({}, ownProps, {navigation: navigation});
   return props;
 }

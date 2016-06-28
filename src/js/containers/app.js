@@ -40,7 +40,6 @@ class App extends Component {
 
   render() {
     const { tree, navigation } = this.props;
-    console.log('navigation', navigation, this.props);
     return (
       <div id="app-root">
         <Header onNavigate={this.updateTreeCb} navigation={navigation} />

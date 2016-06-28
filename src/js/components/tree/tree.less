@@ -3,10 +3,13 @@
 .tree {
   width: 300px;
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1);
+}
+.tree-children {
+  border-left: 1px dotted rgba(0, 0, 0, 0.5);
+  margin-left: @margin / 2;
+  padding-left: @margin / 2;
 }
 .tree .tree {
-  padding-left: @margin;
   width: auto;
 }
 
@@ -14,4 +17,9 @@
   background-color: red;
 }
 .tree-selected .tree {
+
+}
+.tree-populated::before {
+  font-size: @margin * 1.1;
+  content: '▼';
 }

@@ -4,7 +4,6 @@ export default class Nav extends Component {
 
   render() {
     const { navigation, onSelectItem = function() {} } = this.props;
-    console.log('nav-component', this.props);
     const baseKey = 'nav';
     const children = navigation.map((child, index) => {
       let key = `${baseKey}-${index}`;
