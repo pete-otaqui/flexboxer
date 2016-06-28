@@ -3,9 +3,10 @@ import React, { Component, PropTypes } from 'react';
 export default class Nav extends Component {
 
   render() {
-    const { items, onSelectItem = function() {} } = this.props;
+    const { navigation, onSelectItem = function() {} } = this.props;
+    console.log('nav-component', this.props);
     const baseKey = 'nav';
-    const children = items.map((child, index) => {
+    const children = navigation.map((child, index) => {
       let key = `${baseKey}-${index}`;
       const { title, tree } = child;
       return <a
@@ -29,6 +30,6 @@ export default class Nav extends Component {
 }
 
 Nav.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.object.isRequired),
+  navigation: PropTypes.arrayOf(PropTypes.object.isRequired),
   onSelectItem: PropTypes.func
 };

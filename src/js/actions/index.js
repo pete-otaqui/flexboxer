@@ -1,3 +1,4 @@
+export const SET_NAVIGATION = 'SET_NAVIGATION';
 export const UPDATE_TREE = 'UPDATE_TREE_NODE';
 export const SELECT_NODE = 'SELECT_NODE';
 export const ADD_NODE = 'ADD_NODE';
@@ -5,6 +6,14 @@ export const REMOVE_NODE = 'REMOVE_NODE';
 export const ADD_PROPERTY = 'ADD_PROPERTY';
 export const REMOVE_PROPERTY = 'REMOVE_PROPERTY';
 export const UPDATE_PROPERTY = 'UPDATE_PROPERTY';
+
+
+export function setNavigation(navigation) {
+  return {
+    type: SET_NAVIGATION,
+    navigation: navigation
+  };
+}
 
 export function updateTree(tree) {
   return {

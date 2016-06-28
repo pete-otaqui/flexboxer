@@ -39,10 +39,11 @@ class App extends Component {
   }
 
   render() {
-    const { tree } = this.props;
+    const { tree, navigation } = this.props;
+    console.log('navigation', navigation, this.props);
     return (
       <div id="app-root">
-        <Header onNavigate={this.updateTreeCb} />
+        <Header onNavigate={this.updateTreeCb} navigation={navigation} />
         <main id="main" className="container">
           <Editor onSelectNode={this.selectNodeCb} tree={tree} />
           <Output />

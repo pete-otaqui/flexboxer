@@ -1,16 +1,19 @@
 import { combineReducers } from 'redux';
+import defaultNavigation from '../../data/defaults.json';
 
 import {
-  UPDATE_TREE, 
+  SET_NAVIGATION,
+  UPDATE_TREE,
   SELECT_NODE,
-  ADD_NODE, 
-  REMOVE_NODE, 
-  ADD_PROPERTY, 
-  REMOVE_PROPERTY, 
+  ADD_NODE,
+  REMOVE_NODE,
+  ADD_PROPERTY,
+  REMOVE_PROPERTY,
   UPDATE_PROPERTY
 } from '../actions';
 
-const defaultState = { tree: {}, activeIndex: null }
+const defaultTreeState = {};
+const defaultNavigationState = defaultNavigation;
 
 export function updateTree(tree) {
   return {
@@ -19,27 +22,26 @@ export function updateTree(tree) {
   };
 }
 
-function treeReducer(state = defaultState, action) {
-  let newValue;
+function tree(state = defaultTreeState, action) {
   switch (action.type) {
     case UPDATE_TREE:
-      return Object.assign({}, state, { tree: action.tree });
+      return Object.assign({}, state, action.tree);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
-    case 'INCREMENT':
-      newValue = state.value + 1;
-      return Object.assign({}, state, { value: newValue });
-    case 'DECREMENT':
-      newValue = state.value - 1;
-      return Object.assign({}, state, { value: newValue });
     default:
       return state;
   }
 }
 
-// const rootReducer = combineReducers({treeReducer});
-const rootReducer = treeReducer;
+function navigation(state = defaultNavigationState, action) {
+  switch(action.type) {
+    case SET_NAVIGATION:
+      return Object.assign({}, state, action.navigation)
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({tree, navigation});
 
 export default rootReducer;
-
-

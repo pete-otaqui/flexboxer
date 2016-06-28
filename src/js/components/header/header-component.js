@@ -1,15 +1,16 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 
 import Nav from './nav-component';
-import navData from 'json!../../../data/defaults.json';
+import navData from '../../../data/defaults.json';
 
-export default class Header extends Component {
+export class Header extends Component {
   // @TODO Load navItems by fetch()
   // @TODO Plug callback into actions
   // @TODO Add tests
   render() {
     const {
-      navItems = navData,
+      navigation = navigation,
       onNavigate
     } = this.props;
 
@@ -18,12 +19,24 @@ export default class Header extends Component {
         <div className="container">
           <h1 className="title"><span className="title-heavy">Flex</span>Boxer</h1>
         </div>
-        <Nav items={navItems} onSelectItem={onNavigate} />
+        <Nav navigation={navigation} onSelectItem={onNavigate} />
       </header>
     )
   }
 }
 
+function mapStateToProps(state, ownProps) {
+  const navigation = state.navigation || ownProps.navigation || [];
+  console.log('state', state, ownProps, navigation);
+  const props = Object.assign({}, ownProps, {navigation: navigation});
+  return props;
+}
+
+const WrappedHeader = connect(mapStateToProps)(Header);
+export default WrappedHeader;
+
+
+
 Header.propTypes = {
-  navItems: PropTypes.arrayOf(PropTypes.object.isRequired)
+  navigation: PropTypes.arrayOf(PropTypes.object.isRequired)
 };
