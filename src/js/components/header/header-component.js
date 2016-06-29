@@ -21,7 +21,7 @@ export class Header extends Component {
         </div>
         <Nav navigation={navigation} onSelectItem={onNavigate} />
       </header>
-    )
+    );
   }
 }
 

@@ -1,5 +1,5 @@
-import Component from './footer-component'
+import Component from './footer-component';
 
-import './footer.less'
+import './footer.less';
 
-export default Component
+export default Component;

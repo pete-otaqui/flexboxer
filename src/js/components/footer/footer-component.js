@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 
 export default class Footer extends Component {
   render() {
-    const { } = this.props
+    const { } = this.props;
 
     return (
       <footer className="demo">
@@ -10,8 +10,8 @@ export default class Footer extends Component {
           Footer component
         </div>
       </footer>
-    )
+    );
   }
 }
 
-Footer.propTypes = {}
+Footer.propTypes = {};

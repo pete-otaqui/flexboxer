@@ -1,5 +1,5 @@
-import Component from './html-component'
+import Component from './html-component';
 
-import './html.less'
+import './html.less';
 
-export default Component
+export default Component;

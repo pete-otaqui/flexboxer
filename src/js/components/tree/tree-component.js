@@ -49,7 +49,7 @@ export class Tree extends Component {
         {textContent}
         <div className={childrenClassname}>{childNodes}</div>
       </div>
-    )
+    );
   }
 }
 
@@ -72,4 +72,4 @@ Tree.propTypes = {
   node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
   onSelectNode: PropTypes.func.isRequired
-}
+};

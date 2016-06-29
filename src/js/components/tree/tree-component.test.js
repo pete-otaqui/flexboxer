@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import Tree from './tree-component';
 
 /**
- * Mock out the top level Redux store with all the required 
+ * Mock out the top level Redux store with all the required
  * methods and have it return the provided state by default.
  * @param {Object} state State to populate in store
  * @return {Object} Mock store

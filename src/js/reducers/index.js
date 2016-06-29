@@ -36,7 +36,7 @@ function tree(state = defaultTreeState, action) {
 function navigation(state = defaultNavigationState, action) {
   switch(action.type) {
     case SET_NAVIGATION:
-      return Object.assign({}, state, action.navigation)
+      return Object.assign({}, state, action.navigation);
     default:
       return state;
   }

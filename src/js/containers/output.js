@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Html from '../components/html'
-import Css from '../components/css'
+import Html from '../components/html';
+import Css from '../components/css';
 
 export default class Output extends Component {
   render() {
@@ -10,6 +10,6 @@ export default class Output extends Component {
         <Html />
         <Css />
       </div>
-    )
+    );
   }
 }

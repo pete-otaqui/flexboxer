@@ -1,5 +1,5 @@
-import Component from './css-component'
+import Component from './css-component';
 
-import './css.less'
+import './css.less';
 
-export default Component
+export default Component;

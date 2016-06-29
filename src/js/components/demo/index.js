@@ -1,5 +1,5 @@
-import Component from './demo-component'
+import Component from './demo-component';
 
-import './demo.less'
+import './demo.less';
 
-export default Component
+export default Component;

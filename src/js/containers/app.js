@@ -1,27 +1,27 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { updateTreeIfNeeded, updateTree, selectNode } from '../actions'
-import Header from '../components/header'
-import Editor from './editor'
-import Output from './output'
-import Footer from '../components/footer'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { updateTreeIfNeeded, updateTree, selectNode } from '../actions';
+import Header from '../components/header';
+import Editor from './editor';
+import Output from './output';
+import Footer from '../components/footer';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.handleChange = this.handleChange.bind(this);
     this.updateTreeCb = this.updateTreeCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
   }
 
   componentDidMount() {
-    const { dispatch, tree } = this.props
-    dispatch(updateTree(tree))
+    const { dispatch, tree } = this.props;
+    dispatch(updateTree(tree));
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tree !== this.props.tree) {
-      const { dispatch, tree } = nextProps
+      const { dispatch, tree } = nextProps;
       // dispatch(updateTree(tree))
     }
   }
@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   selectNodeCb(node) {
-    this.props.dispatch(selectNode(node))
+    this.props.dispatch(selectNode(node));
   }
 
   render() {
@@ -57,7 +57,7 @@ App.propTypes = {
   tree: PropTypes.object.isRequired,
   activeIndex: PropTypes.number,
   dispatch: PropTypes.func.isRequired
-}
+};
 
 function mapStateToProps(state) {
   const { tree, activeIndex } = state;

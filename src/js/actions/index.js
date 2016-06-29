@@ -19,28 +19,28 @@ export function updateTree(tree) {
   return {
     type: UPDATE_TREE,
     tree: tree
-  }
+  };
 }
 
 export function selectNode(node) {
   return {
     type: SELECT_NODE,
     node: node
-  }
+  };
 }
 
 export function addNode(node) {
   return {
     type: ADD_NODE,
     node: node
-  }
+  };
 }
 
 export function removeNode(node) {
   return {
     type: REMOVE_NODE,
     node: node
-  }
+  };
 }
 
 export function addProperty(node, property, value) {
@@ -49,7 +49,7 @@ export function addProperty(node, property, value) {
     node: node,
     property: property,
     value: value
-  }
+  };
 }
 
 export function removeProperty(node, property) {
@@ -57,7 +57,7 @@ export function removeProperty(node, property) {
     type: ADD_PROPERTY,
     node: node,
     property: property
-  }
+  };
 }
 
 export function updateProperty(node, property, value) {
@@ -66,5 +66,5 @@ export function updateProperty(node, property, value) {
     node: node,
     property: property,
     value: value
-  }
+  };
 }

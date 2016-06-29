@@ -1,13 +1,13 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import '../styles/main.less'
+import '../styles/main.less';
 
-import App from './containers/app'
-import configureStore from './store/configureStore'
+import App from './containers/app';
+import configureStore from './store/configureStore';
 
-const store = configureStore()
+const store = configureStore();
 
 
 

@@ -1,5 +1,5 @@
-import Component from './tree-component'
+import Component from './tree-component';
 
-import './tree.less'
+import './tree.less';
 
-export default Component
+export default Component;

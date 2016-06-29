@@ -1,7 +1,7 @@
 /*
  * Setup store?
  */
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 
 const store = createStore( function(state = {}) { return state; }, {});
 
