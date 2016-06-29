@@ -4,12 +4,7 @@ import defaultNavigation from '../../data/defaults.json';
 import {
   SET_NAVIGATION,
   UPDATE_TREE,
-  SELECT_NODE,
-  ADD_NODE,
-  REMOVE_NODE,
-  ADD_PROPERTY,
-  REMOVE_PROPERTY,
-  UPDATE_PROPERTY
+  SELECT_NODE
 } from '../actions';
 
 const defaultTreeState = {};

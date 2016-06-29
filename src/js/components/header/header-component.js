@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Nav from './nav-component';
-import navData from '../../../data/defaults.json';
 
 export class Header extends Component {
   // @TODO Load navItems by fetch()
@@ -37,5 +36,6 @@ export default WrappedHeader;
 
 
 Header.propTypes = {
-  navigation: PropTypes.arrayOf(PropTypes.object.isRequired)
+  navigation: PropTypes.arrayOf(PropTypes.object.isRequired),
+  onNavigate: PropTypes.func
 };

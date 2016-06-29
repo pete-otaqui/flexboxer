@@ -18,7 +18,7 @@ render(
   document.getElementById('app')
 );
 
-
+/* global module */
 if (module.hot) {
   module.hot.accept();
 }

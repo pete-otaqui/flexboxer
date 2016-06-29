@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateTreeIfNeeded, updateTree, selectNode } from '../actions';
+import { updateTree, selectNode } from '../actions';
 import Header from '../components/header';
 import Editor from './editor';
 import Output from './output';
@@ -21,12 +21,12 @@ class App extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.tree !== this.props.tree) {
-      const { dispatch, tree } = nextProps;
+      // const { dispatch, tree } = nextProps;
       // dispatch(updateTree(tree))
     }
   }
 
-  handleChange(nextItem) {
+  handleChange(/*nextItem*/) {
     // this.props.dispatch(updateTree(nextItem))
   }
 
@@ -56,7 +56,8 @@ class App extends Component {
 App.propTypes = {
   tree: PropTypes.object.isRequired,
   activeIndex: PropTypes.number,
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  navigation: PropTypes.array
 };
 
 function mapStateToProps(state) {

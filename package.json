@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/pete-otaqui/flexboxer#readme",
   "eslintConfig": {
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parser": "babel-eslint",
+    "plugins": ["react"],
     "ecmaFeatures": {
       "arrowFunctions": true,
       "blockBindings": true,
@@ -38,7 +40,9 @@
       "es6": true
     },
     "rules": {
-      "semi": ["error", "always"]
+      "semi": ["error", "always"],
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error"
     }
   },
   "devDependencies": {
@@ -50,6 +54,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "enzyme": "^2.3.0",
     "eslint": "^2.13.1",
+    "eslint-plugin-react": "^5.2.2",
     "extend-tape": "^1.2.0",
     "faucet": "0.0.1",
     "glob": "^7.0.3",

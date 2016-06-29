@@ -118,7 +118,7 @@ tape('Handles an empty tree', (assert) => {
   const store = createMockStore({});
 
   const fn = function() {};
-  const wrapper = mount(
+  mount(
     <Provider store={store}>
       <Tree baseKey="tree" onSelectNode={fn} />
     </Provider>
@@ -133,7 +133,7 @@ tape('Handles an empty baseKey', (assert) => {
   const store = createMockStore({});
 
   const fn = function() {};
-  const wrapper = mount(
+  mount(
     <Provider store={store}>
       <Tree tree={{}} onSelectNode={fn} />
     </Provider>

@@ -16,6 +16,7 @@ export default function configureStore(preloadedState) {
     )
   );
 
+  /* global module, require */
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers', () => {

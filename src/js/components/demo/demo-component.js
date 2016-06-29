@@ -1,8 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 export default class Demo extends Component {
   render() {
-    const { } = this.props;
 
     return (
       <div className="demo">
