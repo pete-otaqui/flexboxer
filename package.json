@@ -4,9 +4,9 @@
   "description": "Flexbox Layout Builder",
   "main": "index.js",
   "scripts": {
-    "build": "eslint src && webpack",
+    "build": "webpack",
     "start": "ENV=dev webpack-dev-server --devtool sourcemap --inline --hot --content-base src/",
-    "test": "babel-node tests.js | faucet"
+    "test": "eslint src && babel-node tests.js | faucet"
   },
   "repository": {
     "type": "git",

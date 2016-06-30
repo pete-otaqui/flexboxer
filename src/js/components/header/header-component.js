@@ -9,7 +9,7 @@ export class Header extends Component {
     const {
       navigation = navigation,
       onNavigate
-    } = this.props
+    } = this.props;
 
     return (
       <header className="header">
