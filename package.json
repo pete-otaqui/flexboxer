@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "ENV=dev webpack-dev-server --devtool sourcemap --inline --hot --content-base src/",
-    "test": "babel-node tests.js | faucet"
+    "test": "babel-node tests.js | faucet",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",

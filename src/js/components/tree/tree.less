@@ -3,23 +3,38 @@
 .tree {
   width: 300px;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
 }
+
 .tree-children {
   border-left: 1px dotted rgba(0, 0, 0, 0.5);
   margin-left: @margin / 2;
-  padding-left: @margin / 2;
+  padding-left: @margin;
 }
+
+.tree-self {
+  display: inline-block;
+  padding: @margin / 2 @margin / 4;
+}
+
+.tree-selector {
+  font-family: monospace;
+}
+
 .tree .tree {
   width: auto;
 }
 
-.tree-selected {
-  background-color: red;
+.tree--selected {
+  background-color: rgba(0, 120, 255, 0.2);
+  color: rgb(0, 0, 0);
 }
-.tree-selected .tree {
 
+.tree--selected > .tree-self {
+  font-weight: bold;
 }
-.tree-populated::before {
+
+.tree--populated::before {
   font-size: @margin * 1.1;
   content: '▼';
 }

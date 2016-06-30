@@ -22,7 +22,6 @@ export class Tree extends Component {
       onSelectNode = function() {}
     } = this.props;
     const {
-      textContent = '',
       selector = '',
       // style = {},
       children = []
@@ -40,13 +39,14 @@ export class Tree extends Component {
     let childrenClassname = 'tree-children';
 
     let className = 'tree';
-    if ( this.props.isSelected ) className += ' tree-selected';
-    if ( children.length ) className += ' tree-populated';
+    if ( this.props.isSelected ) className += ' tree--selected';
+    if ( children.length ) className += ' tree--populated';
 
     return (
       <div className={className} onClick={this.onClickNode}>
-        {selector}
-        {textContent}
+        <div className="tree-self">
+          <span className="tree-selector">{selector}</span>
+        </div>
         <div className={childrenClassname}>{childNodes}</div>
       </div>
     );
