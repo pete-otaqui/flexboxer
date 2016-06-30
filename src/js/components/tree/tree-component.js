@@ -9,7 +9,7 @@ export class Tree extends Component {
 
   onClickNode(e) {
     e.stopPropagation();
-    e.preventDefault()
+    e.preventDefault();
     this.props.onSelectNode(this.props.node);
   }
 

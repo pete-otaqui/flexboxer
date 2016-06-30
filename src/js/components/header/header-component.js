@@ -4,14 +4,12 @@ import { connect } from 'react-redux';
 import Nav from './nav-component';
 
 export class Header extends Component {
-  // @TODO Load navItems by fetch()
-  // @TODO Plug callback into actions
   // @TODO Add tests
   render() {
     const {
       navigation = navigation,
       onNavigate
-    } = this.props;
+    } = this.props
 
     return (
       <header className="header">
