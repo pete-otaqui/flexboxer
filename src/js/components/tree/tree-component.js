@@ -9,9 +9,7 @@ export class Tree extends Component {
 
   onClickNode(e) {
     e.stopPropagation();
-    e.preventDefault();
-    // @TODO - work out how to identify "this" in the state tree
-    // @TODO - probably means refactoring to `normalizer` style
+    e.preventDefault()
     this.props.onSelectNode(this.props.node);
   }
 
@@ -23,7 +21,6 @@ export class Tree extends Component {
     } = this.props;
     const {
       selector = '',
-      // style = {},
       children = []
     } = node;
     const childNodes = children.map((child, index) => {
