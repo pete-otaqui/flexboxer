@@ -1,5 +1,5 @@
 export const SET_NAVIGATION = 'SET_NAVIGATION';
-export const UPDATE_TREE = 'UPDATE_TREE_NODE';
+export const UPDATE_NODES = 'UPDATE_NODES';
 export const SELECT_NODE = 'SELECT_NODE';
 export const ADD_NODE = 'ADD_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
@@ -15,10 +15,10 @@ export function setNavigation(navigation) {
   };
 }
 
-export function updateTree(tree) {
+export function updateNodes(nodes) {
   return {
-    type: UPDATE_TREE,
-    tree: tree
+    type: UPDATE_NODES,
+    nodes: nodes
   };
 }
 

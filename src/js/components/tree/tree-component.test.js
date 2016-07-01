@@ -26,7 +26,7 @@ tape('Renders recursively', (assert) => {
   assert.plan(1);
 
   const state = {
-    tree: {
+    nodes: {
       1: {
         id: 1,
         textContent: 'ROOOOOOOOOOT',
@@ -69,7 +69,7 @@ tape('Renders recursively', (assert) => {
     <Provider store={store}>
       <Tree
         baseKey="tree"
-        node={state.tree[1]}
+        node={state.nodes[1]}
         onSelectNode={function() {}}
       />
     </Provider>
@@ -85,12 +85,12 @@ tape('Applies the same selection callback', (assert) => {
   assert.plan(1);
 
   const state = {
-    tree: {
-    1: {
-      childIds: [2, 3]
-    },
-    2: {},
-    3: {}
+    nodes: {
+      1: {
+        childIds: [2, 3]
+      },
+      2: {},
+      3: {}
     }
   };
   const onSelectNode = function() {};
@@ -101,7 +101,7 @@ tape('Applies the same selection callback', (assert) => {
     <Provider store={store}>
       <Tree
         baseKey="tree"
-        tree={state.tree[1]}
+        tree={state.nodes[1]}
         onSelectNode={onSelectNode}
       />
     </Provider>

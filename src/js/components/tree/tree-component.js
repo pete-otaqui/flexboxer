@@ -59,8 +59,8 @@ function mapStateToProps(state, ownProps) {
   const node = ownProps.node;
   const childIds = node.childIds || [];
   const props = {
-    node: Object.assign({}, node, {children: childIds.map(id => state.tree[id])}),
-    isSelected: (state.tree.selectedNode && state.tree.selectedNode === node.id)
+    node: Object.assign({}, node, {children: childIds.map(id => state.nodes[id])}),
+    isSelected: (state.nodes.selectedNode && state.nodes.selectedNode === node.id)
   };
   return props;
 }

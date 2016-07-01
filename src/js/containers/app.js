@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateTree, selectNode } from '../actions';
+import { updateNodes, selectNode } from '../actions';
 import Header from '../components/header';
 import Editor from './editor';
 import Output from './output';
@@ -9,17 +9,17 @@ import Footer from '../components/footer';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.updateTreeCb = this.updateTreeCb.bind(this);
+    this.updateNodesCb = this.updateNodesCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
   }
 
   componentDidMount() {
-    const { dispatch, tree } = this.props;
-    dispatch(updateTree(tree));
+    const { dispatch, nodes } = this.props;
+    dispatch(updateNodes(nodes));
   }
 
-  updateTreeCb(tree) {
-    this.props.dispatch(updateTree(tree));
+  updateNodesCb(nodes) {
+    this.props.dispatch(updateNodes(nodes));
   }
 
   selectNodeCb(node) {
@@ -27,12 +27,12 @@ class App extends Component {
   }
 
   render() {
-    const { tree, navigation = [] } = this.props;
+    const { nodes, navigation = [] } = this.props;
     return (
       <div id="app-root">
-        <Header onNavigate={this.updateTreeCb} navigation={navigation} />
+        <Header onNavigate={this.updateNodesCb} navigation={navigation} />
         <main id="main" className="container">
-          <Editor onSelectNode={this.selectNodeCb} tree={tree} />
+          <Editor onSelectNode={this.selectNodeCb} nodes={nodes} />
           <Output />
         </main>
         <Footer />
@@ -42,17 +42,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-  tree: PropTypes.object.isRequired,
+  nodes: PropTypes.object.isRequired,
   activeIndex: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
   navigation: PropTypes.array
 };
 
 function mapStateToProps(state) {
-  const { tree, activeIndex, navigation } = state;
-  const selectedNode = (activeIndex) ? tree[activeIndex] : null;
+  const { nodes, activeIndex, navigation } = state;
+  const selectedNode = (activeIndex) ? nodes[activeIndex] : null;
   return {
-    tree,
+    nodes,
     selectedNode,
     navigation
   };

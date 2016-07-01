@@ -1,7 +1,7 @@
 [
   {
     "title": "Default",
-    "tree": {
+    "nodes": {
       "1": {
         "id": "1",
         "textContent": "Root",
@@ -13,7 +13,7 @@
   },
   {
     "title": "One True Layout",
-    "tree": {
+    "nodes": {
       "1": {
         "id": "1",
         "textContent": "Root",

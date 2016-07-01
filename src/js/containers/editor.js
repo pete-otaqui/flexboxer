@@ -5,9 +5,9 @@ import Demo from '../components/demo';
 
 export default class Editor extends Component {
   render() {
-    const {onSelectNode, tree} = this.props;
+    const {onSelectNode, nodes} = this.props;
     // @TODO: handle root node properly ... somehow?
-    const rootNode = tree[1] || { childIds: [] };
+    const rootNode = nodes[1] || { childIds: [] };
     return (
       <div id="editor">
         <Tree
@@ -23,5 +23,5 @@ export default class Editor extends Component {
 
 Editor.propTypes = {
   onSelectNode: PropTypes.func,
-  tree: PropTypes.object
+  nodes: PropTypes.object
 };

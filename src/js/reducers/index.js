@@ -3,24 +3,24 @@ import defaultNavigation from '../../data/defaults.json';
 
 import {
   SET_NAVIGATION,
-  UPDATE_TREE,
+  UPDATE_NODES,
   SELECT_NODE
 } from '../actions';
 
-const defaultTreeState = {};
 const defaultNavigationState = defaultNavigation;
+const defaultNodesState = defaultNavigationState[0].nodes;
 
-export function updateTree(tree) {
+export function updateNodes(tree) {
   return {
-    type: UPDATE_TREE,
+    type: UPDATE_NODES,
     tree: tree
   };
 }
 
-function tree(state = defaultTreeState, action) {
+function nodes(state = defaultNodesState, action) {
   switch (action.type) {
-    case UPDATE_TREE:
-      return Object.assign({}, state, action.tree);
+    case UPDATE_NODES:
+      return Object.assign({}, state, action.nodes);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
     default:
@@ -37,6 +37,6 @@ function navigation(state = defaultNavigationState, action) {
   }
 }
 
-const rootReducer = combineReducers({tree, navigation});
+const rootReducer = combineReducers({nodes, navigation});
 
 export default rootReducer;

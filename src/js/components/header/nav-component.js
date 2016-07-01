@@ -7,12 +7,12 @@ export default class Nav extends Component {
     const baseKey = 'nav';
     const children = navigation.map((child, index) => {
       let key = `${baseKey}-${index}`;
-      const { title, tree } = child;
+      const { title, nodes } = child;
       return <a
         href="#"
         key={key}
-        onClick={(e) => {e.preventDefault(); onSelectItem(tree); }}
-        tree={tree}
+        onClick={(e) => {e.preventDefault(); onSelectItem(nodes); }}
+        nodes={nodes}
         className="nav-item"
       >
         {title}
