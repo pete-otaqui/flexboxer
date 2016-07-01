@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 
 import Nav from './nav-component';
 
-export class Header extends Component {
+export default class Header extends Component {
+  // @TODO Load navItems by fetch()
+  // @TODO Plug callback into actions
   // @TODO Add tests
   render() {
     const {
@@ -21,17 +22,6 @@ export class Header extends Component {
     );
   }
 }
-
-function mapStateToProps(state, ownProps) {
-  const navigation = state.navigation || ownProps.navigation || [];
-  const props = Object.assign({}, ownProps, {navigation: navigation});
-  return props;
-}
-
-const WrappedHeader = connect(mapStateToProps)(Header);
-export default WrappedHeader;
-
-
 
 Header.propTypes = {
   navigation: PropTypes.arrayOf(PropTypes.object.isRequired),

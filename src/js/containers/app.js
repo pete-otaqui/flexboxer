@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    const { tree, navigation } = this.props;
+    const { tree, navigation = [] } = this.props;
     return (
       <div id="app-root">
         <Header onNavigate={this.updateTreeCb} navigation={navigation} />
@@ -49,11 +49,12 @@ App.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const { tree, activeIndex } = state;
+  const { tree, activeIndex, navigation } = state;
   const selectedNode = (activeIndex) ? tree[activeIndex] : null;
   return {
     tree,
-    selectedNode
+    selectedNode,
+    navigation
   };
 }
 
