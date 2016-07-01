@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+const CLASS_CHILDREN = 'tree-children';
+const CLASS_SELECTED = 'tree--selected';
+const CLASS_POPULATED = 'tree--populated';
+
 export class Tree extends Component {
   constructor() {
     super();
@@ -33,11 +37,11 @@ export class Tree extends Component {
       />;
       return childNode;
     });
-    let childrenClassname = 'tree-children';
+    let childrenClassname = CLASS_CHILDREN;
 
     let className = 'tree';
-    if ( this.props.isSelected ) className += ' tree--selected';
-    if ( children.length ) className += ' tree--populated';
+    if ( this.props.isSelected ) className += ` ${CLASS_SELECTED}`;
+    if ( children.length ) className += ` ${CLASS_POPULATED}`;
 
     return (
       <div className={className} onClick={this.onClickNode}>
