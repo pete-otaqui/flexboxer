@@ -27,12 +27,12 @@ class App extends Component {
   }
 
   render() {
-    const { nodes, navigation = [] } = this.props;
+    const { tree, navigation = [] } = this.props;
     return (
       <div id="app-root">
         <Header onNavigate={this.updateNodesCb} navigation={navigation} />
         <main id="main" className="container">
-          <Editor onSelectNode={this.selectNodeCb} nodes={nodes} />
+          <Editor onSelectNode={this.selectNodeCb} tree={tree} />
           <Output />
         </main>
         <Footer />
@@ -43,15 +43,30 @@ class App extends Component {
 
 App.propTypes = {
   nodes: PropTypes.object.isRequired,
+  tree: PropTypes.object.isRequired,
   activeIndex: PropTypes.number,
   dispatch: PropTypes.func.isRequired,
   navigation: PropTypes.array
 };
 
+function mapNodesToTree(state, nodes = {}, nodeItem = null) {
+  if ( !nodeItem ) {
+    nodeItem = nodes[1] || { childIds: [] };
+  }
+  let node = Object.assign({}, nodeItem);
+  node.isSelected = (nodes.selectedNode === node.id);
+  node.children = node.childIds.map((id) => {
+    return mapNodesToTree(state, nodes, nodes[id]);
+  });
+  return node;
+}
+
 function mapStateToProps(state) {
   const { nodes, activeIndex, navigation } = state;
   const selectedNode = (activeIndex) ? nodes[activeIndex] : null;
+  const tree = mapNodesToTree(state, nodes, null);
   return {
+    tree,
     nodes,
     selectedNode,
     navigation

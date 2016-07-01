@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 
 const CLASS_CHILDREN = 'tree-children';
 const CLASS_SELECTED = 'tree--selected';
 const CLASS_POPULATED = 'tree--populated';
 
-export class Tree extends Component {
+export default class Tree extends Component {
   constructor() {
     super();
     this.onClickNode = this.onClickNode.bind(this);
@@ -29,7 +28,7 @@ export class Tree extends Component {
     } = node;
     const childNodes = children.map((child, index) => {
       let childId = `${baseKey}-${index}`;
-      const childNode = <WrappedTree
+      const childNode = <Tree
         node={child}
         onSelectNode={onSelectNode}
         key={childId}
@@ -40,9 +39,8 @@ export class Tree extends Component {
     let childrenClassname = CLASS_CHILDREN;
 
     let className = 'tree';
-    if ( this.props.isSelected ) className += ` ${CLASS_SELECTED}`;
+    if ( node.isSelected ) className += ` ${CLASS_SELECTED}`;
     if ( children.length ) className += ` ${CLASS_POPULATED}`;
-
     return (
       <div className={className} onClick={this.onClickNode}>
         <div className="tree-self">
@@ -54,24 +52,9 @@ export class Tree extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  if ( !ownProps.node ) return { isSelected: false };
-  const node = ownProps.node;
-  const childIds = node.childIds || [];
-  const props = {
-    node: Object.assign({}, node, {children: childIds.map(id => state.nodes[id])}),
-    isSelected: (state.nodes.selectedNode && state.nodes.selectedNode === node.id)
-  };
-  return props;
-}
-
-const WrappedTree = connect(mapStateToProps)(Tree);
-export default WrappedTree;
-
 Tree.propTypes = {
   baseKey: PropTypes.string,
   node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
-  onSelectNode: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool
+  onSelectNode: PropTypes.func.isRequired
 };

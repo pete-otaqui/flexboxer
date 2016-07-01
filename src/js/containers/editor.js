@@ -5,15 +5,13 @@ import Demo from '../components/demo';
 
 export default class Editor extends Component {
   render() {
-    const {onSelectNode, nodes} = this.props;
-    // @TODO: handle root node properly ... somehow?
-    const rootNode = nodes[1] || { childIds: [] };
+    const {onSelectNode, tree} = this.props;
     return (
       <div id="editor">
         <Tree
           className="tree-container"
           onSelectNode={onSelectNode}
-          node={rootNode}
+          node={tree}
         />
         <Demo />
       </div>
@@ -23,5 +21,5 @@ export default class Editor extends Component {
 
 Editor.propTypes = {
   onSelectNode: PropTypes.func,
-  nodes: PropTypes.object
+  tree: PropTypes.object
 };

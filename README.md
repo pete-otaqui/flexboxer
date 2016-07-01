@@ -1,6 +1,13 @@
 FlexBoxer
 =========
 
+## TODO
+
+* Rename "tree" in root to "nodes"
+* Move "nodes" -> "tree" mapping into app container
+
+## Introduction
+
 A flexbox layout builder.  Flexboxer is a visual tool for creating flexbox css rules.
 
 ## Installing

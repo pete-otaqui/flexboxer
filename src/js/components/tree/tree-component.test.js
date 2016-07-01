@@ -24,60 +24,20 @@ function createMockStore(state) {
 
 tape('Renders recursively', (assert) => {
   assert.plan(1);
-
-  const state = {
-    nodes: {
-      1: {
-        id: 1,
-        textContent: 'ROOOOOOOOOOT',
-        selector: '',
-        style: {},
-        childIds: [2, 3, 6]
-      },
-      2: {
-        id: 2,
-        className: '.header',
-        textContent: 'Header'
-      },
-      3: {
-        id: 3,
-        className: '.main',
-        textContent: 'Main',
-        childIds: [4, 5]
-      },
-      4: {
-        id: 4,
-        className: '.aside',
-        textContent: 'Aside'
-      },
-      5: {
-        id: 5,
-        className: '.body',
-        textContent: 'Body'
-      },
-      6: {
-        id: 6,
-        className: '.footer',
-        textContent: 'Footer'
-      }
-    }
+  const node = {
+    selector: '.root',
+    children: [{}, {}, {}]
   };
-
-  const store = createMockStore(state);
-
   const wrapper = mount(
-    <Provider store={store}>
-      <Tree
-        baseKey="tree"
-        node={state.nodes[1]}
-        onSelectNode={function() {}}
-      />
-    </Provider>
+    <Tree
+      baseKey="tree"
+      node={node}
+      onSelectNode={function() {}}
+    />
   );
-
   const trees = wrapper.find('.tree');
 
-  assert.equals(trees.length, 6, 'Recursively creates trees');
+  assert.equals(trees.length, 4, 'Recursively creates trees');
 });
 
 
@@ -101,7 +61,7 @@ tape('Applies the same selection callback', (assert) => {
     <Provider store={store}>
       <Tree
         baseKey="tree"
-        tree={state.nodes[1]}
+        node={state.nodes[1]}
         onSelectNode={onSelectNode}
       />
     </Provider>
