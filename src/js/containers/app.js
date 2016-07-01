@@ -9,7 +9,6 @@ import Footer from '../components/footer';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
     this.updateTreeCb = this.updateTreeCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
   }
@@ -17,17 +16,6 @@ class App extends Component {
   componentDidMount() {
     const { dispatch, tree } = this.props;
     dispatch(updateTree(tree));
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.tree !== this.props.tree) {
-      // const { dispatch, tree } = nextProps;
-      // dispatch(updateTree(tree))
-    }
-  }
-
-  handleChange(/*nextItem*/) {
-    // this.props.dispatch(updateTree(nextItem))
   }
 
   updateTreeCb(tree) {
