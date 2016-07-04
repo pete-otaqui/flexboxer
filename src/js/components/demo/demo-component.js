@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import Frame from 'react-frame-component';
+
+import Node from './node-component';
 
 export default class Demo extends Component {
   render() {
-
+    const { node = {} } = this.props;
+    const head = <style>{'html, body { margin: 0; padding: 0; }'}</style>;
     return (
-      <div className="demo">
-        Demo component
-      </div>
+      <Frame head={head}>
+        <Node node={node} />
+      </Frame>
     );
   }
 }
 
-Demo.propTypes = {};
+Demo.propTypes = {
+  node: PropTypes.object
+};

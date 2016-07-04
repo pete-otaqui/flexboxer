@@ -13,7 +13,9 @@ export default class Editor extends Component {
           onSelectNode={onSelectNode}
           node={tree}
         />
-        <Demo />
+        <Demo
+          node={tree}
+        />
       </div>
     );
   }

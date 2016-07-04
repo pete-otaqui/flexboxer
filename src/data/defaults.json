@@ -16,12 +16,12 @@
     "nodes": {
       "1": {
         "id": "1",
-        "textContent": "Root",
+        "textContent": "",
         "selector": ".root",
         "style": {
           "display": "flex",
           "flexDirection": "column",
-          "minHeight": "300px"
+          "minHeight": "100vh"
         },
         "childIds": [
           "2",
@@ -41,7 +41,8 @@
         "textContent": "",
         "selector": ".main",
         "style": {
-          "flexGrow": "1"
+          "flexGrow": "1",
+          "display": "flex"
         },
         "childIds": [
           "5",
