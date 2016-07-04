@@ -3,12 +3,12 @@ FlexBoxer
 
 ## TODO
 
-* Proper `key` handling for both `Tree` and `Demo`
 * Tests for `Demo`
 * Tests for `Node`
 * Make `Tree` a child of `Inspector`
 * Add props editor to `Inspector`
   * Typeahead for both prop and value
+* Proper `key` handling for both `Tree` and `Demo`
 * Write converter for `selector` => `id / className`
 * Add "export to jsbin" (etc) feature
 * Make sure a clean install of `redux` works well
