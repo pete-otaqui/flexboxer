@@ -4,3 +4,4 @@ import './footer/footer-component.test.js';
 import './tree/tree-component.test.js';
 
 import './demo/demo-component.test.js';
+import './demo/node-component.test.js';

@@ -3,8 +3,19 @@ FlexBoxer
 
 ## TODO
 
-* Rename "tree" in root to "nodes"
-* Move "nodes" -> "tree" mapping into app container
+* Proper `key` handling for both `Tree` and `Demo`
+* Tests for `Demo`
+* Tests for `Node`
+* Make `Tree` a child of `Inspector`
+* Add props editor to `Inspector`
+  * Typeahead for both prop and value
+* Write converter for `selector` => `id / className`
+* Add "export to jsbin" (etc) feature
+* Make sure a clean install of `redux` works well
+* Make sure dependencies are correct across dev / prod
+* Create a `dist` package for deployment
+* Update rest of README to `redux`
+* Write up
 
 ## Introduction
 

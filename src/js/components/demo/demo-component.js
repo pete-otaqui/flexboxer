@@ -6,9 +6,15 @@ import Node from './node-component';
 export default class Demo extends Component {
   render() {
     const { node = {} } = this.props;
-    const head = <style>{'html, body { margin: 0; padding: 0; }'}</style>;
+    const head = <style>{`
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: "Courier New", Courier, typewriter;
+      }
+    `}</style>;
     return (
-      <Frame head={head}>
+      <Frame head={head} className="demo">
         <Node node={node} />
       </Frame>
     );
