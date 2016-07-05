@@ -1,9 +1,3 @@
-/*
- * Setup store?
- */
-import { createStore } from 'redux';
-
-const store = createStore( function(state = {}) { return state; }, {});
 
 /*
  * Setup JSDOM to allow node.js based react dom rendering
@@ -12,6 +6,7 @@ const store = createStore( function(state = {}) { return state; }, {});
 import JSDOM from 'jsdom';
 const jsdom = JSDOM.jsdom;
 var exposedProperties = ['window', 'navigator', 'document'];
+/* global global */
 global.document = jsdom('');
 global.window = document.defaultView;
 Object.keys(document.defaultView).forEach((property) => {
