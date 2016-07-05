@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   render() {
-    const { tree, navigation = [], selectedNode = null } = this.props;
+    const { tree, navigation = [], selectedNode } = this.props;
     return (
       <div id="app-root">
         <Header onNavigate={this.updateNodesCb} navigation={navigation} />
