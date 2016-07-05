@@ -3,7 +3,6 @@ FlexBoxer
 
 ## TODO
 
-* Tests for `Demo`
 * Tests for `Node`
 * Make `Tree` a child of `Inspector`
 * Add props editor to `Inspector`
