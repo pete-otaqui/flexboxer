@@ -1,4 +1,4 @@
-import Component from './tree-component';
+import Component from './inspector-component';
 
 import './tree.less';
 

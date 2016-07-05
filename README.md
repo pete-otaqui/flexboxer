@@ -3,7 +3,6 @@ FlexBoxer
 
 ## TODO
 
-* Tests for `Node`
 * Make `Tree` a child of `Inspector`
 * Add props editor to `Inspector`
   * Typeahead for both prop and value
