@@ -30,7 +30,7 @@ export default class Properties extends Component {
         const field = styleProp[0];
         const value = styleProp[1];
         return (
-          <li key={`style-${i}`}>
+          <li className="property" key={`style-${i}`}>
             <Property field={field} value={value} />
           </li>
         );
@@ -38,7 +38,7 @@ export default class Properties extends Component {
     return (
       <div>
         {selector}
-        <ul>
+        <ul className="properties">
           {styleProps}
         </ul>
         <p>{textContent}</p>
