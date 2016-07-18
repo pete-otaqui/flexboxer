@@ -5,12 +5,18 @@ import Demo from '../components/demo';
 
 export default class Editor extends Component {
   render() {
-    const {onSelectNode, tree, selectedNode} = this.props;
+    const {
+      onSelectNode,
+      onUpdateProperty,
+      tree,
+      selectedNode
+    } = this.props;
     return (
       <div id="editor">
         <Inspector
           className="tree-container"
           onSelectNode={onSelectNode}
+          onUpdateProperty={onUpdateProperty}
           selectedNode={selectedNode}
           node={tree}
         />
@@ -24,6 +30,7 @@ export default class Editor extends Component {
 
 Editor.propTypes = {
   onSelectNode: PropTypes.func,
+  onUpdateProperty: PropTypes.func,
   selectedNode: PropTypes.object,
   tree: PropTypes.object
 };

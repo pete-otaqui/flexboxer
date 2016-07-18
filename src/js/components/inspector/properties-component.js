@@ -4,6 +4,21 @@ import Property from './property-component';
 
 export default class Properties extends Component {
 
+  constructor() {
+    super();
+    this.onUpdatePropertyField = this.onUpdatePropertyField.bind(this);
+    this.onUpdatePropertyValue = this.onUpdatePropertyValue.bind(this);
+  }
+
+  onUpdatePropertyField(node, newField, oldField) {
+    let oldValue = node.style[oldField];
+    this.props.onUpdateProperty(node, oldField, null);
+    this.props.onUpdateProperty(node, newField, oldValue);
+  }
+  onUpdatePropertyValue(node, field, value) {
+    this.props.onUpdateProperty(node, field, value);
+  }
+
   getStyleArray(styleObject) {
     return styleObject ? Object.keys(styleObject)
       .sort()
@@ -31,7 +46,13 @@ export default class Properties extends Component {
         const value = styleProp[1];
         return (
           <li className="property" key={`style-${i}`}>
-            <Property field={field} value={value} />
+            <Property
+              node={node}
+              field={field}
+              value={value}
+              onUpdateValue={this.onUpdatePropertyValue}
+              onUpdateField={this.onUpdatePropertyField}
+            />
           </li>
         );
       });
@@ -48,5 +69,6 @@ export default class Properties extends Component {
 }
 
 Properties.propTypes = {
-  node: PropTypes.object
+  node: PropTypes.object,
+  onUpdateProperty: PropTypes.func
 };

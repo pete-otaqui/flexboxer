@@ -4,7 +4,8 @@ import defaultNavigation from '../../data/defaults.json';
 import {
   SET_NAVIGATION,
   UPDATE_NODES,
-  SELECT_NODE
+  SELECT_NODE,
+  UPDATE_PROPERTY
 } from '../actions';
 
 const defaultNavigationState = defaultNavigation;
@@ -18,11 +19,22 @@ export function updateNodes(tree) {
 }
 
 function nodes(state = defaultNodesState, action) {
+  let propObject, nodeObject;
+  let nodes, node, styleObject;
   switch (action.type) {
     case UPDATE_NODES:
       return Object.assign({}, state, action.nodes);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
+    case UPDATE_PROPERTY:
+      propObject = {};
+      propObject[action.property] = action.value;
+      styleObject = Object.assign({}, action.node.style, propObject);
+      node = Object.assign({}, action.node, {style: styleObject});
+      nodeObject = {};
+      nodeObject[node.id] = node;
+      nodes = Object.assign({}, state, nodeObject);
+      return Object.assign({}, state, nodes);
     default:
       return state;
   }

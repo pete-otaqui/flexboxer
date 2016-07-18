@@ -6,7 +6,9 @@
         "id": "1",
         "textContent": "Root",
         "selector": ".root",
-        "style": {},
+        "style": {
+          "display": "flex"
+        },
         "childIds": []
       }
     }

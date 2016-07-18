@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateNodes, selectNode } from '../actions';
+import { updateNodes, selectNode, updateProperty } from '../actions';
 import Header from '../components/header';
 import Editor from './editor';
 import Output from './output';
@@ -11,6 +11,7 @@ class App extends Component {
     super(props);
     this.updateNodesCb = this.updateNodesCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
+    this.updatePropertyCb = this.updatePropertyCb.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,10 @@ class App extends Component {
     this.props.dispatch(selectNode(node));
   }
 
+  updatePropertyCb(node, property, value) {
+    this.props.dispatch(updateProperty(node, property, value));
+  }
+
   render() {
     const { tree, navigation = [], selectedNode } = this.props;
     return (
@@ -35,6 +40,7 @@ class App extends Component {
           <Editor
             selectedNode={selectedNode}
             onSelectNode={this.selectNodeCb}
+            onUpdateProperty={this.updatePropertyCb}
             tree={tree}
           />
           <Output />

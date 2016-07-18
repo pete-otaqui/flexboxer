@@ -1,7 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import objectHash from 'object-hash';
 
 export default class Node extends Component {
 
+  getKey(node, index) {
+    const obj = Object.assign({}, node, {index: index});
+    const hash = objectHash(obj);
+    return `node-${hash}`;
+  }
 
   render() {
     const {
@@ -9,10 +15,11 @@ export default class Node extends Component {
       style = {},
       textContent = ''
     } = this.props.node;
-    const childNodes = children.map((child, i) => {
+    const childNodes = children.map((child, index) => {
+      const key = this.getKey(child, index);
       return (
         <Node
-          key={`node-${i}`}
+          key={key}
           node={child}
         />
       );

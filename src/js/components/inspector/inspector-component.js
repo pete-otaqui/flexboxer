@@ -9,6 +9,7 @@ export default class Inspector extends Component {
       baseKey,
       node,
       onSelectNode,
+      onUpdateProperty,
       selectedNode
     } = this.props;
     return (
@@ -18,7 +19,7 @@ export default class Inspector extends Component {
           onSelectNode={onSelectNode}
           baseKey={baseKey}
         />
-        <Properties node={selectedNode} />
+        <Properties node={selectedNode} onUpdateProperty={onUpdateProperty} />
       </div>
     );
   }
@@ -29,5 +30,6 @@ Inspector.propTypes = {
   node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
   onSelectNode: PropTypes.func.isRequired,
+  onUpdateProperty: PropTypes.func,
   selectedNode: PropTypes.object
 };

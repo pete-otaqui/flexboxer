@@ -6,11 +6,13 @@ export default class Property extends Component {
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
   }
-  onChangeField() {
-
+  onChangeField(e) {
+    const { node, field, onUpdateField } = this.props;
+    onUpdateField(node, e.target.value, field);
   }
-  onChangeValue() {
-
+  onChangeValue(e) {
+    const { node, field, onUpdateValue } = this.props;
+    onUpdateValue(node, field, e.target.value);
   }
   render() {
     const { field, value } = this.props;
@@ -34,6 +36,9 @@ export default class Property extends Component {
 }
 
 Property.propTypes = {
+  node: PropTypes.object,
   field: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
+  onUpdateField: PropTypes.func,
+  onUpdateValue: PropTypes.func
 };
