@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Nav from './nav-component';
 
-tape('prints navigation names', (assert) => {
+tape('Nav: Prints navigation names', (assert) => {
   assert.plan(1);
   const props = {
     navigation: [{title: 'Foo'}]
@@ -13,7 +13,7 @@ tape('prints navigation names', (assert) => {
   assert.ok(wrapper.html().match(/Foo/), 'Text matches');
 });
 
-tape('calls onSelectItem with nodes', (assert) => {
+tape('Nav: Calls onSelectItem with nodes', (assert) => {
   assert.plan(1);
   const props = {
     navigation: [{title: 'Foo', nodes:{}}],

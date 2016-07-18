@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Properties from './properties-component';
 import Property from './property-component';
 
-tape('Displays selector', (assert) => {
+tape('Properties: Displays selector', (assert) => {
   assert.plan(1);
   const node = { selector: '.foo' };
   const wrapper = shallow( <Properties node={node} /> );
@@ -13,7 +13,7 @@ tape('Displays selector', (assert) => {
   assert.ok(html.match(/.foo/), 'Finds selector');
 });
 
-tape('Displays textContent', (assert) => {
+tape('Properties: Displays textContent', (assert) => {
   assert.plan(1);
   const node = { textContent: 'Foo' };
   const wrapper = shallow( <Properties node={node} /> );
@@ -21,7 +21,7 @@ tape('Displays textContent', (assert) => {
   assert.ok(html.match(/Foo/), 'Finds textContent');
 });
 
-tape('Displays properties, adds an empty property', (assert) => {
+tape('Properties: Displays properties, adds an empty property', (assert) => {
   assert.plan(1);
   const node = { style: { width: '100px', height: '200px'} };
   const wrapper = shallow( <Properties node={node} /> );

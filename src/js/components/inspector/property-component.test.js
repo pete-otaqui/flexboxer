@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Property from './property-component';
 
-tape('Adds field input', (assert) => {
+tape('Property: Adds field input', (assert) => {
   assert.plan(2);
   const field = 'width';
   const value = '';
@@ -15,7 +15,7 @@ tape('Adds field input', (assert) => {
   assert.equals(valueProp, 'width', 'Has correct field');
 });
 
-tape('Adds value input', (assert) => {
+tape('Property: Adds value input', (assert) => {
   assert.plan(2);
   const field = '';
   const value = '100px';

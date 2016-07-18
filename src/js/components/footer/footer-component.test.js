@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 
 import Footer from './footer-component';
 
-tape('Is a footer', (assert) => {
+tape('Footer: Is a footer', (assert) => {
   assert.plan(1);
 
   const wrapper = shallow(<Footer />);
