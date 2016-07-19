@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-const KEYS = {
+export const KEYS = {
   UP: 38,
   DOWN: 40
 };
@@ -25,11 +25,11 @@ export const NUMERIC_UNITS = [
 ];
 
 export default class Property extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onChangeField = this.onChangeField.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyUpCb = this.onKeyUpCb.bind(this);
   }
 
   onChangeField(e) {
@@ -42,28 +42,44 @@ export default class Property extends Component {
     onUpdateValue(node, field, e.target.value);
   }
 
-  isNumeric(value) {
+  onKeyUpCb(e) {
+    const which = e.which;
+    let value = e.target.value;
+    if ( !UPDOWN.includes(which) ) return;
+    switch(which) {
+      case KEYS.UP:
+        value = this.increment(value);
+        break;
+      case KEYS.DOWN:
+        value = this.decrement(value);
+        break;
+    }
+    const { node, field, onUpdateValue } = this.props;
+    onUpdateValue(node, field, value);
+  }
+
+  isNumeric(value = '') {
     const nus = NUMERIC_UNITS.join('|');
-    if ( value.trim().match(/^[\d.]+$/) ) {
+    if ( value.trim().match(/^-?[\d.]+$/) ) {
       return true;
     }
-    if ( value.trim().match(new RegExp(`^[\\d.]+(${nus})$`)) ) {
+    if ( value.trim().match(new RegExp(`^-?[\\d.]+(${nus})$`)) ) {
       return true;
     }
     return false;
   }
 
-  getUnit(value) {
-    return value.trim().replace(/^[\d.]+/, '');
+  getUnit(value = '') {
+    return value.trim().replace(/^-?[\d.]+/, '');
   }
 
-  getNumber(value) {
-    const str = value.trim().replace(/^([\d.]+).*$/, '$1');
+  getNumber(value = '') {
+    const str = value.trim().replace(/^(-?[\d.]+).*$/, '$1');
     const num = parseFloat(str, 10);
     return num;
   }
 
-  parse(value) {
+  parse(value = '') {
     const raw = value;
     const isNumeric = this.isNumeric(value);
     const unit = isNumeric ? this.getUnit(value) : null;
@@ -71,7 +87,7 @@ export default class Property extends Component {
     return { raw, isNumeric, unit, number };
   }
 
-  stringify(parsed) {
+  stringify(parsed = {}) {
     if ( parsed.isNumeric ) {
       return `${parsed.value}${parsed.unit}`;
     } else {
@@ -79,7 +95,7 @@ export default class Property extends Component {
     }
   }
 
-  increment(value) {
+  increment(value = '') {
     const parsed = this.parse(value);
     let updated;
     if ( parsed.isNumeric ) {
@@ -90,7 +106,7 @@ export default class Property extends Component {
     }
   }
 
-  decrement(value) {
+  decrement(value = '') {
     const parsed = this.parse(value);
     let updated;
     if ( parsed.isNumeric ) {
@@ -98,13 +114,6 @@ export default class Property extends Component {
       return this.stringify(updated);
     } else {
       return parsed.raw;
-    }
-  }
-
-  onKeyUp(e) {
-    const which = e.which;
-    if ( UPDOWN.contains(which) ) {
-      this.onChangeValue();
     }
   }
 
@@ -123,6 +132,7 @@ export default class Property extends Component {
           className="property-input property-value"
           name="value"
           onChange={this.onChangeValue}
+          onKeyUp={this.onKeyUpCb}
         />
       </form>
     );

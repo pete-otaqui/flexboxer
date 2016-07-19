@@ -2,7 +2,7 @@ import React from 'react';
 import tape from 'tape';
 import { shallow } from 'enzyme';
 
-import Property, { NUMERIC_UNITS } from './property-component';
+import Property, { NUMERIC_UNITS, KEYS } from './property-component';
 
 
 tape('Property: Adds field input', (assert) => {
@@ -27,13 +27,15 @@ tape('Property: Adds value input', (assert) => {
   assert.equals(valueProp, '100px', 'Has correct value');
 });
 
-tape('Property: Detects numeric properties with units', (assert) => {
-  assert.plan(NUMERIC_UNITS.length);
+tape('Property: Detects +ve and -ve numeric properties with units', (assert) => {
+  assert.plan(NUMERIC_UNITS.length * 2);
   const prop = new Property();
   NUMERIC_UNITS.forEach((u) => {
     const n = Math.round( Math.random()*100 );
     const r = prop.isNumeric(`${n}${u}`);
+    const m = prop.isNumeric(`-${n}${u}`);
     assert.ok(r);
+    assert.ok(m);
   });
 });
 
@@ -46,12 +48,14 @@ tape('Property: Detects non-numeric properties with unit-like value', (assert) =
   });
 });
 
-tape('Property: Detects numeric properties without units', (assert) => {
-  assert.plan(1);
+tape('Property: Detects +ve and -ve numeric properties without units', (assert) => {
+  assert.plan(2);
   const prop = new Property();
   const n = Math.round( Math.random()*100 );
   const r = prop.isNumeric(`${n}`);
+  const m = prop.isNumeric(`-${n}`);
   assert.ok(r);
+  assert.ok(m);
 });
 
 tape('Property: Detects non-numeric properties without units', (assert) => {
@@ -130,4 +134,26 @@ tape('Property: Decrements numeric values', (assert) => {
   const prop = new Property();
   const result = prop.decrement('100');
   assert.equal(result, '99');
+});
+
+tape('Increments numeric values on UP keyUp', (assert) => {
+  assert.plan(1);
+  const props = {
+    onUpdateValue: (node, field, value) => {
+      assert.equal(value, '2em');
+    }
+  };
+  const prop = new Property(props);
+  prop.onKeyUpCb({ which: KEYS.UP, target: { value: '1em' }});
+});
+
+tape('Decrements numeric values on DOWN keyUp', (assert) => {
+  assert.plan(1);
+  const props = {
+    onUpdateValue: (node, field, value) => {
+      assert.equal(value, '0em');
+    }
+  };
+  const prop = new Property(props);
+  prop.onKeyUpCb({ which: KEYS.DOWN, target: { value: '1em' }});
 });
