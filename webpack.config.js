@@ -16,8 +16,6 @@ const BUNDLE_HASH = 'bundle.[hash].js';
 
 const ENV = process.env.ENV || ENV_PROD;
 
-
-
 function copyIndexAndUpdateHashBundleInProd() {
   this.plugin('done', function(stats) {
     if ( !stats.compilation.errors.length ) {
