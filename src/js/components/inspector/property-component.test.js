@@ -119,8 +119,28 @@ tape('Property: Parses non-numeric values', (assert) => {
   assert.equal(parsed.number, null);
 });
 
-tape('Property: Stringifies numeric values');
-tape('Property: Stringifies non-numeric values');
+tape('Property: Stringifies numeric values', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const parsed = {
+    isNumeric: true,
+    value: -123,
+    unit: 'vh'
+  };
+  const stringified = prop.stringify(parsed);
+  assert.equal(stringified, '-123vh');
+});
+
+tape('Property: Stringifies non-numeric values', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const parsed = {
+    isNumeric: false,
+    raw: 'auto'
+  };
+  const stringified = prop.stringify(parsed);
+  assert.equal(stringified, 'auto');
+});
 
 tape('Property: Increments numeric values', (assert) => {
   assert.plan(1);
