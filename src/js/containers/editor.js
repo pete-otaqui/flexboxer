@@ -7,7 +7,8 @@ export default class Editor extends Component {
   render() {
     const {
       onSelectNode,
-      onUpdateProperty,
+      onUpdateStyleProperty,
+      onUpdateStyleValue,
       tree,
       selectedNode
     } = this.props;
@@ -16,7 +17,8 @@ export default class Editor extends Component {
         <Inspector
           className="tree-container"
           onSelectNode={onSelectNode}
-          onUpdateProperty={onUpdateProperty}
+          onUpdateStyleProperty={onUpdateStyleProperty}
+          onUpdateStyleValue={onUpdateStyleValue}
           selectedNode={selectedNode}
           node={tree}
         />
@@ -30,7 +32,8 @@ export default class Editor extends Component {
 
 Editor.propTypes = {
   onSelectNode: PropTypes.func,
-  onUpdateProperty: PropTypes.func,
+  onUpdateStyleProperty: PropTypes.func,
+  onUpdateStyleValue: PropTypes.func,
   selectedNode: PropTypes.object,
   tree: PropTypes.object
 };

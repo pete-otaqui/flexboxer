@@ -6,9 +6,9 @@
         "id": "1",
         "textContent": "Root",
         "selector": ".root",
-        "style": {
-          "display": "flex"
-        },
+        "style": [
+          {"property": "display", "value": "flex"}
+        ],
         "childIds": []
       }
     }
@@ -20,11 +20,11 @@
         "id": "1",
         "textContent": "",
         "selector": ".root",
-        "style": {
-          "display": "flex",
-          "flexDirection": "column",
-          "minHeight": "100vh"
-        },
+        "style": [
+          {"property": "display", "value": "flex"},
+          {"property": "flexDirection", "value": "column"},
+          {"property": "minHeight", "value": "100vh"}
+        ],
         "childIds": [
           "2",
           "3",
@@ -35,17 +35,17 @@
         "id": "2",
         "textContent": "header",
         "selector": ".header",
-        "style": {},
+        "style": [],
         "childIds": []
       },
       "3": {
         "id": "3",
         "textContent": "",
         "selector": ".main",
-        "style": {
-          "flexGrow": "1",
-          "display": "flex"
-        },
+        "style": [
+          {"property": "flexGrow", "value": "1"},
+          {"property": "display", "value": "flex"}
+        ],
         "childIds": [
           "5",
           "6"
@@ -55,23 +55,23 @@
         "id": "4",
         "textContent": "footer",
         "selector": ".footer",
-        "style": {},
+        "style": [],
         "childIds": []
       },
       "5": {
         "id": "5",
         "textContent": "aside",
         "selector": ".aside",
-        "style": {
-          "width": "200px"
-        },
+        "style": [
+          {"property": "width", "value": "200px"}
+        ],
         "childIds": []
       },
       "6": {
         "id": "6",
         "textContent": "article",
         "selector": ".article",
-        "style": {},
+        "style": [],
         "childIds": []
       }
     }

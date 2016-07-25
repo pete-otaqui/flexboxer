@@ -5,7 +5,8 @@ export const ADD_NODE = 'ADD_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
 export const ADD_PROPERTY = 'ADD_PROPERTY';
 export const REMOVE_PROPERTY = 'REMOVE_PROPERTY';
-export const UPDATE_PROPERTY = 'UPDATE_PROPERTY';
+export const UPDATE_STYLE_PROPERTY = 'UPDATE_STYLE_PROPERTY';
+export const UPDATE_STYLE_VALUE = 'UPDATE_STYLE_VALUE';
 
 
 export function setNavigation(navigation) {
@@ -60,11 +61,20 @@ export function removeProperty(node, property) {
   };
 }
 
-export function updateProperty(node, property, value) {
+export function updateStyleProperty(node, index, property) {
   return {
-    type: UPDATE_PROPERTY,
+    type: UPDATE_STYLE_PROPERTY,
     node: node,
-    property: property,
+    index: index,
+    property: property
+  };
+}
+
+export function updateStyleValue(node, index, value) {
+  return {
+    type: UPDATE_STYLE_VALUE,
+    node: node,
+    index: index,
     value: value
   };
 }

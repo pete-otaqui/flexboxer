@@ -1,6 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateNodes, selectNode, updateProperty } from '../actions';
+import {
+  updateNodes,
+  selectNode,
+  updateStyleProperty,
+  updateStyleValue
+} from '../actions';
 import Header from '../components/header';
 import Editor from './editor';
 import Output from './output';
@@ -11,7 +16,8 @@ class App extends Component {
     super(props);
     this.updateNodesCb = this.updateNodesCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
-    this.updatePropertyCb = this.updatePropertyCb.bind(this);
+    this.onUpdateStylePropertyCb = this.onUpdateStylePropertyCb.bind(this);
+    this.onUpdateStyleValueCb = this.onUpdateStyleValueCb.bind(this);
   }
 
   componentDidMount() {
@@ -27,8 +33,12 @@ class App extends Component {
     this.props.dispatch(selectNode(node));
   }
 
-  updatePropertyCb(node, property, value) {
-    this.props.dispatch(updateProperty(node, property, value));
+  onUpdateStylePropertyCb(node, index, value) {
+    this.props.dispatch(updateStyleProperty(node, index, value));
+  }
+
+  onUpdateStyleValueCb(node, index, value) {
+    this.props.dispatch(updateStyleValue(node, index, value));
   }
 
   render() {
@@ -40,7 +50,8 @@ class App extends Component {
           <Editor
             selectedNode={selectedNode}
             onSelectNode={this.selectNodeCb}
-            onUpdateProperty={this.updatePropertyCb}
+            onUpdateStyleProperty={this.onUpdateStylePropertyCb}
+            onUpdateStyleValue={this.onUpdateStyleValueCb}
             tree={tree}
           />
           <Output />

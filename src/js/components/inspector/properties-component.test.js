@@ -23,7 +23,12 @@ tape('Properties: Displays textContent', (assert) => {
 
 tape('Properties: Displays properties, adds an empty property', (assert) => {
   assert.plan(1);
-  const node = { style: { width: '100px', height: '200px'} };
+  const node = {
+    style: [
+      {property: 'width', value: '100px'},
+      {property: 'height', value: '200px'}
+    ]
+  };
   const wrapper = shallow( <Properties node={node} /> );
   const propertyNodes = wrapper.find(Property);
   assert.equal(propertyNodes.length, 3, 'Has two nodes');

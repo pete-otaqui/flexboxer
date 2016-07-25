@@ -7,9 +7,9 @@ import Property, { NUMERIC_UNITS, KEYS } from './property-component';
 
 tape('Property: Adds field input', (assert) => {
   assert.plan(2);
-  const field = 'width';
+  const property = 'width';
   const value = '';
-  const wrapper = shallow( <Property field={field} value={value} /> );
+  const wrapper = shallow( <Property property={property} value={value} /> );
   const input = wrapper.find('input[name="field"]');
   assert.equals(input.length, 1, 'Has a field input');
   const valueProp = input.node.props.value;
@@ -18,9 +18,9 @@ tape('Property: Adds field input', (assert) => {
 
 tape('Property: Adds value input', (assert) => {
   assert.plan(2);
-  const field = '';
+  const property = '';
   const value = '100px';
-  const wrapper = shallow( <Property field={field} value={value} /> );
+  const wrapper = shallow( <Property property={property} value={value} /> );
   const input = wrapper.find('input[name="value"]');
   assert.equals(input.length, 1, 'Has a value input');
   const valueProp = input.node.props.value;

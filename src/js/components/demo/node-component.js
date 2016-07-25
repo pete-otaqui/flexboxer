@@ -9,12 +9,21 @@ export default class Node extends Component {
     return `node-${hash}`;
   }
 
+  getStyleObject(styles) {
+    return styles.reduce((memo, obj) => {
+      let prop = {};
+      prop[obj.property] = obj.value;
+      return Object.assign({}, memo, prop);
+    }, {});
+  }
+
   render() {
     const {
       children = [],
-      style = {},
+      style = [],
       textContent = ''
     } = this.props.node;
+    const styleObject = this.getStyleObject(style);
     const childNodes = children.map((child, index) => {
       const key = this.getKey(child, index);
       return (
@@ -25,7 +34,7 @@ export default class Node extends Component {
       );
     });
     return (
-      <div style={style} className="node">
+      <div style={styleObject} className="node">
         {textContent}
         {childNodes}
       </div>

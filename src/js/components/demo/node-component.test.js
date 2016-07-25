@@ -14,7 +14,11 @@ tape('Node: Parent', (assert) => {
 
 tape('Node: Adds a style attribute', (assert) => {
   assert.plan(1);
-  const node = { style: { display: 'block' } };
+  const node = {
+    style: [
+      {property: 'display', value: 'block'}
+    ]
+  };
   const wrapper = shallow( <Node node={node} /> );
   const html = wrapper.html();
   assert.ok(html.match(/style/).length, 'Adds a style attribute');
@@ -54,4 +58,15 @@ tape('Node: Adds child hashes based on node index', (assert) => {
   const hash1 = myNode.getKey({p: 1}, 1);
   const hash2 = myNode.getKey({p: 1}, 2);
   assert.notEqual(hash1, hash2);
+});
+
+tape('Node: Gets a style object from an array', (assert) => {
+  assert.plan(1);
+  const myNode = new Node();
+  const styles = [
+    {property: 'display', value: 'flex'},
+    {property: 'flexGrow', value: '2'}
+  ];
+  const styleObject = myNode.getStyleObject(styles);
+  assert.deepEqual(styleObject, {display: 'flex', flexGrow: '2'});
 });

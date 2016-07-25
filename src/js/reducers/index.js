@@ -5,7 +5,8 @@ import {
   SET_NAVIGATION,
   UPDATE_NODES,
   SELECT_NODE,
-  UPDATE_PROPERTY
+  UPDATE_STYLE_PROPERTY,
+  UPDATE_STYLE_VALUE
 } from '../actions';
 
 const defaultNavigationState = defaultNavigation;
@@ -19,18 +20,33 @@ export function updateNodes(tree) {
 }
 
 function nodes(state = defaultNodesState, action) {
-  let propObject, nodeObject;
-  let nodes, node, styleObject;
+  let propMap, nodeObject;
+  let nodes, node, styleArray;
   switch (action.type) {
     case UPDATE_NODES:
       return Object.assign({}, state, action.nodes);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
-    case UPDATE_PROPERTY:
-      propObject = {};
-      propObject[action.property] = action.value;
-      styleObject = Object.assign({}, action.node.style, propObject);
-      node = Object.assign({}, action.node, {style: styleObject});
+    case UPDATE_STYLE_PROPERTY:
+      propMap = {
+        property: action.property,
+        value: action.node.style[action.index].value
+      };
+      styleArray = action.node.style.slice();
+      styleArray.splice(action.index, 1, propMap);
+      node = Object.assign({}, action.node, {style: styleArray});
+      nodeObject = {};
+      nodeObject[node.id] = node;
+      nodes = Object.assign({}, state, nodeObject);
+      return Object.assign({}, state, nodes);
+    case UPDATE_STYLE_VALUE:
+      propMap = {
+        property: action.node.style[action.index].property,
+        value: action.value
+      };
+      styleArray = action.node.style.slice();
+      styleArray.splice(action.index, 1, propMap);
+      node = Object.assign({}, action.node, {style: styleArray});
       nodeObject = {};
       nodeObject[node.id] = node;
       nodes = Object.assign({}, state, nodeObject);

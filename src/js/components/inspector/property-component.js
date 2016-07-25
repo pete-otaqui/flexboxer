@@ -27,19 +27,19 @@ export const NUMERIC_UNITS = [
 export default class Property extends Component {
   constructor(props) {
     super(props);
-    this.onChangeField = this.onChangeField.bind(this);
+    this.onChangeProperty = this.onChangeProperty.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
     this.onKeyUpCb = this.onKeyUpCb.bind(this);
   }
 
-  onChangeField(e) {
-    const { node, field, onUpdateField } = this.props;
-    onUpdateField(node, e.target.value, field);
+  onChangeProperty(e) {
+    const { index, onUpdateProperty } = this.props;
+    onUpdateProperty(index, e.target.value);
   }
 
   onChangeValue(e) {
-    const { node, field, onUpdateValue } = this.props;
-    onUpdateValue(node, field, e.target.value);
+    const { index, onUpdateValue } = this.props;
+    onUpdateValue(index, e.target.value);
   }
 
   onKeyUpCb(e) {
@@ -54,8 +54,8 @@ export default class Property extends Component {
         value = this.decrement(value);
         break;
     }
-    const { node, field, onUpdateValue } = this.props;
-    onUpdateValue(node, field, value);
+    const { node, index, onUpdateValue } = this.props;
+    onUpdateValue(node, index, value);
   }
 
   isNumeric(value = '') {
@@ -118,14 +118,14 @@ export default class Property extends Component {
   }
 
   render() {
-    const { field, value } = this.props;
+    const { property, value } = this.props;
     return (
       <form className="property-form">
         <input
-          value={field}
+          value={property}
           className="property-input property-field"
           name="field"
-          onChange={this.onChangeField}
+          onChange={this.onChangeProperty}
         />
         <input
           value={value}
@@ -141,8 +141,9 @@ export default class Property extends Component {
 
 Property.propTypes = {
   node: PropTypes.object,
-  field: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  onUpdateField: PropTypes.func,
+  property: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  index: PropTypes.number,
+  onUpdateProperty: PropTypes.func,
   onUpdateValue: PropTypes.func
 };

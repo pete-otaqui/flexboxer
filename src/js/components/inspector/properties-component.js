@@ -6,52 +6,42 @@ export default class Properties extends Component {
 
   constructor() {
     super();
-    this.onUpdatePropertyField = this.onUpdatePropertyField.bind(this);
-    this.onUpdatePropertyValue = this.onUpdatePropertyValue.bind(this);
+    this.onUpdateStyleProperty = this.onUpdateStyleProperty.bind(this);
+    this.onUpdateStyleValue = this.onUpdateStyleValue.bind(this);
   }
 
-  onUpdatePropertyField(node, newField, oldField) {
-    let oldValue = node.style[oldField];
-    this.props.onUpdateProperty(node, oldField, null);
-    this.props.onUpdateProperty(node, newField, oldValue);
+  onUpdateStyleProperty(index, property) {
+    this.props.onUpdateStyleProperty(this.props.node, index, property);
   }
-  onUpdatePropertyValue(node, field, value) {
-    this.props.onUpdateProperty(node, field, value);
-  }
-
-  getStyleArray(styleObject) {
-    return styleObject ? Object.keys(styleObject)
-      .sort()
-      .map((key) => {
-        return [key, styleObject[key]];
-      }) : [];
+  onUpdateStyleValue(index, value) {
+    this.props.onUpdateStyleValue(this.props.node, index, value);
   }
 
   render() {
-    const { node = {} } = this.props;
-    let selector, style, textContent;
+    const node = this.props.node || {};
+    const style = node.style || [];
+    let selector, textContent;
     if ( node ) {
       selector = node.selector;
-      style = node.style;
       textContent = node.textContent;
     } else {
       selector = null;
-      style = null;
       textContent = null;
     }
-    const styleProps = this.getStyleArray(style)
-      .concat([['', '']])
-      .map((styleProp, i) => {
-        const field = styleProp[0];
-        const value = styleProp[1];
+    const styleProps = style
+      .concat([{property:'', value:''}])
+      .map((styleProp, index) => {
+        const property = styleProp.property;
+        const value = styleProp.value;
         return (
-          <li className="property" key={`style-${i}`}>
+          <li className="property" key={`style-${index}`}>
             <Property
               node={node}
-              field={field}
+              property={property}
               value={value}
-              onUpdateValue={this.onUpdatePropertyValue}
-              onUpdateField={this.onUpdatePropertyField}
+              index={index}
+              onUpdateProperty={this.onUpdateStyleProperty}
+              onUpdateValue={this.onUpdateStyleValue}
             />
           </li>
         );
@@ -70,5 +60,6 @@ export default class Properties extends Component {
 
 Properties.propTypes = {
   node: PropTypes.object,
-  onUpdateProperty: PropTypes.func
+  onUpdateStyleProperty: PropTypes.func,
+  onUpdateStyleValue: PropTypes.func
 };
