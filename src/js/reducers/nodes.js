@@ -9,36 +9,31 @@ import {
 const defaultNavigationState = defaultNavigation;
 const defaultNodesState = defaultNavigationState[0].nodes;
 
+function updateNodeStyleAtIndex(state, action, propObject) {
+  const oldNode = action.node;
+  const index = action.index;
+  const styles = oldNode.style.slice();
+  const baseProps = styles[index] ? styles[index] : {value: '', property: ''};
+  const propMap = Object.assign({}, baseProps, propObject);
+  styles[index] = propMap;
+  const node = Object.assign({}, oldNode, {style: styles});
+  const nodeObject = {};
+  nodeObject[node.id] = node;
+  return Object.assign({}, state, nodeObject);
+}
+
 export default function nodes(state = defaultNodesState, action) {
-  let baseProps, propMap, nodeObject;
-  let nodes, node, styles, index;
+  // let baseProps, propMap, nodeObject;
+  // let nodes, node, styles, index;
   switch (action.type) {
     case UPDATE_NODES:
       return Object.assign({}, state, action.nodes);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
     case UPDATE_STYLE_PROPERTY:
-      styles = action.node.style.slice();
-      index = action.index;
-      baseProps = styles[index] ? styles[index] : {value: ''};
-      propMap = Object.assign({}, baseProps, {property: action.property});
-      styles[action.index] = propMap;
-      node = Object.assign({}, action.node, {style: styles});
-      nodeObject = {};
-      nodeObject[node.id] = node;
-      nodes = Object.assign({}, state, nodeObject);
-      return Object.assign({}, state, nodes);
+      return updateNodeStyleAtIndex(state, action, {property: action.property});
     case UPDATE_STYLE_VALUE:
-      styles = action.node.style.slice();
-      index = action.index;
-      baseProps = styles[index] ? styles[index] : {property: ''};
-      propMap = Object.assign({}, baseProps, {value: action.value});
-      styles[action.index] = propMap;
-      node = Object.assign({}, action.node, {style: styles});
-      nodeObject = {};
-      nodeObject[node.id] = node;
-      nodes = Object.assign({}, state, nodeObject);
-      return Object.assign({}, state, nodes);
+      return updateNodeStyleAtIndex(state, action, {value: action.value});
     default:
       return state;
   }
