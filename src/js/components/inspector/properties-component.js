@@ -8,6 +8,9 @@ export default class Properties extends Component {
     super();
     this.onUpdateStyleProperty = this.onUpdateStyleProperty.bind(this);
     this.onUpdateStyleValue = this.onUpdateStyleValue.bind(this);
+    this.onAddStyleProperty = this.onAddStyleProperty.bind(this);
+    this.onAddStyleValue = this.onAddStyleValue.bind(this);
+    this.createExistingPropItem = this.createExistingPropItem.bind(this);
   }
 
   onUpdateStyleProperty(index, property) {
@@ -15,6 +18,45 @@ export default class Properties extends Component {
   }
   onUpdateStyleValue(index, value) {
     this.props.onUpdateStyleValue(this.props.node, index, value);
+  }
+
+  onAddStyleProperty(index, property) {
+    this.props.onUpdateStyleProperty(this.props.node, index, property);
+  }
+  onAddStyleValue(index, value) {
+    this.props.onUpdateStyleValue(this.props.node, index, value);
+  }
+
+  createPropItem(node, key, index, styleProp, onUpdateProp, onUpdateVal) {
+    const property = styleProp.property;
+    const value = styleProp.value; 
+    return <li className="property" key={key}>
+      <Property
+        node={node}
+        property={property}
+        value={value}
+        index={index}
+        onUpdateProperty={onUpdateProp}
+        onUpdateValue={onUpdateVal}
+      />
+    </li>;
+  }
+
+  createExistingPropItem(styleProp, index) {
+    const node = this.props.node;
+    const key = `style-${index}`;
+    const propFn = this.onUpdateStyleProperty;
+    const valFn = this.onUpdateStyleValue; 
+    return this.createPropItem(node, key, index, styleProp, propFn, valFn);
+  }
+
+  createNewPropItem(index) {
+    const node = this.props.node;
+    const key = `style-N`;
+    const styleProp = {property: '', value: ''};
+    const propFn = this.onAddStyleProperty;
+    const valFn = this.onAddStyleValue;
+    return this.createPropItem(node, key, index, styleProp, propFn, valFn);
   }
 
   render() {
@@ -29,23 +71,8 @@ export default class Properties extends Component {
       textContent = null;
     }
     const styleProps = style
-      .concat([{property:'', value:''}])
-      .map((styleProp, index) => {
-        const property = styleProp.property;
-        const value = styleProp.value;
-        return (
-          <li className="property" key={`style-${index}`}>
-            <Property
-              node={node}
-              property={property}
-              value={value}
-              index={index}
-              onUpdateProperty={this.onUpdateStyleProperty}
-              onUpdateValue={this.onUpdateStyleValue}
-            />
-          </li>
-        );
-      });
+      .concat([{property: '', value: ''}])
+      .map(this.createExistingPropItem);
     return (
       <div>
         {selector}
