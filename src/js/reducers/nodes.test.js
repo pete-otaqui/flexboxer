@@ -59,3 +59,26 @@ tape('reducers/nodes: Updates a style value', (assert) => {
   const newValue = newState[1].style[0].value;
   assert.equal(newValue, 2);
 });
+
+tape('reducers/nodes: Winnows empty styles', (assert) => {
+  assert.plan(1);
+  const state = {
+    1: {
+      id: 1,
+      style: [
+        {property: 'width', value: 1},
+        {property: '', value: ''},
+        {property: '', value: ''}
+      ]
+    }
+  };
+  const action = {
+    type: UPDATE_STYLE_VALUE,
+    node: state[1],
+    index: 0,
+    value: 2
+  };
+  const newState = nodes(state, action);
+  const newStyle = newState[1].style;
+  assert.equal(newStyle.length, 1);
+});
