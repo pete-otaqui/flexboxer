@@ -4,14 +4,6 @@ import { shallow } from 'enzyme';
 
 import Node from './node-component';
 
-tape('Node: Parent', (assert) => {
-  tape('Node: Child', (assert) => {
-    assert.plan(1);
-    assert.ok(true);
-  });
-  assert.end();
-});
-
 tape('Node: Adds a style attribute', (assert) => {
   assert.plan(1);
   const node = {
