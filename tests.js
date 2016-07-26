@@ -25,3 +25,4 @@ global.navigator = {
  */
 
 import './src/js/components/component-tests';
+import './src/js/reducers/reducer-tests';
