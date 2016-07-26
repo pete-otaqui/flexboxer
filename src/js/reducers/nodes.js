@@ -16,15 +16,16 @@ function updateNodeStyleAtIndex(state, action, propObject) {
   const baseProps = styles[index] ? styles[index] : {value: '', property: ''};
   const propMap = Object.assign({}, baseProps, propObject);
   styles[index] = propMap;
-  const node = Object.assign({}, oldNode, {style: styles});
+  const strippedStyles = styles.filter((s) => {
+    return s.property || s.value;
+  }); 
+  const node = Object.assign({}, oldNode, {style: strippedStyles});
   const nodeObject = {};
   nodeObject[node.id] = node;
   return Object.assign({}, state, nodeObject);
 }
 
 export default function nodes(state = defaultNodesState, action) {
-  // let baseProps, propMap, nodeObject;
-  // let nodes, node, styles, index;
   switch (action.type) {
     case UPDATE_NODES:
       return Object.assign({}, state, action.nodes);
