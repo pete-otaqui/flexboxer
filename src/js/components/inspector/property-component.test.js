@@ -159,7 +159,7 @@ tape('Property: Decrements numeric values', (assert) => {
 tape('Increments numeric values on UP keyUp', (assert) => {
   assert.plan(1);
   const props = {
-    onUpdateValue: (node, field, value) => {
+    onUpdateValue: (field, value) => {
       assert.equal(value, '2em');
     }
   };
@@ -170,7 +170,7 @@ tape('Increments numeric values on UP keyUp', (assert) => {
 tape('Decrements numeric values on DOWN keyUp', (assert) => {
   assert.plan(1);
   const props = {
-    onUpdateValue: (node, field, value) => {
+    onUpdateValue: (field, value) => {
       assert.equal(value, '0em');
     }
   };

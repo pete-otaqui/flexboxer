@@ -54,8 +54,8 @@ export default class Property extends Component {
         value = this.decrement(value);
         break;
     }
-    const { node, index, onUpdateValue } = this.props;
-    onUpdateValue(node, index, value);
+    const { index, onUpdateValue } = this.props;
+    onUpdateValue(index, value);
   }
 
   isNumeric(value = '') {
