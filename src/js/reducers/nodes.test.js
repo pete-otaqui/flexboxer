@@ -82,3 +82,11 @@ tape('reducers/nodes: Winnows empty styles', (assert) => {
   const newStyle = newState[1].style;
   assert.equal(newStyle.length, 1);
 });
+
+tape('reducers/nodes: Returns default state by default', (assert) => {
+  assert.plan(1);
+  const state = {};
+  const action = {type: 'UNRECOGNIZED'};
+  const newState = nodes(state, action);
+  assert.equal(newState, state);
+});
