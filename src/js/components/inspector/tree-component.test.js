@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 import Tree from './tree-component';
 
-tape('Tree: Renders recursively', (assert) => {
+tape('components/Tree: Renders recursively', (assert) => {
   assert.plan(1);
   const node = {
     selector: '.root',
@@ -23,7 +23,7 @@ tape('Tree: Renders recursively', (assert) => {
 });
 
 
-tape('Tree: Applies the same selection callback', (assert) => {
+tape('components/Tree: Applies the same selection callback', (assert) => {
   assert.plan(1);
 
   const state = {
@@ -50,7 +50,7 @@ tape('Tree: Applies the same selection callback', (assert) => {
 });
 
 
-tape('Tree: Handles an empty tree', (assert) => {
+tape('components/Tree: Handles an empty tree', (assert) => {
   assert.plan(1);
 
   const fn = function() {};
@@ -61,7 +61,7 @@ tape('Tree: Handles an empty tree', (assert) => {
 });
 
 
-tape('Tree: Handles an empty baseKey', (assert) => {
+tape('components/Tree: Handles an empty baseKey', (assert) => {
   assert.plan(1);
 
   const fn = function() {};
@@ -69,4 +69,40 @@ tape('Tree: Handles an empty baseKey', (assert) => {
     <Tree tree={{}} onSelectNode={fn} />
   );
   assert.ok(true, 'Did not throw an error');
+});
+
+tape('components/Tree: Adds a className for a populated item', (assert) => {
+  assert.plan(1);
+  const node = {children: [{}]};
+  const fn = function() {};
+  const wrapper = mount(<Tree node={node} onSelectNode={fn} />);
+  const tree = wrapper.find('.tree').first();
+  assert.equal(tree.hasClass('tree--populated'), true);
+});
+
+tape('components/Tree: Avoids className for unpopulated items', (assert) => {
+  assert.plan(1);
+  const node = {children: []};
+  const fn = function() {};
+  const wrapper = mount(<Tree node={node} onSelectNode={fn} />);
+  const tree = wrapper.find('.tree').first();
+  assert.equal(tree.hasClass('tree--populated'), false);
+});
+
+tape('components/Tree: Adds a className for a selected item', (assert) => {
+  assert.plan(1);
+  const node = {isSelected: true};
+  const fn = function() {};
+  const wrapper = mount(<Tree node={node} onSelectNode={fn} />);
+  const tree = wrapper.find('.tree').first();
+  assert.equal(tree.hasClass('tree--selected'), true);
+});
+
+tape('components/Tree: Avoids a className for unselected items', (assert) => {
+  assert.plan(1);
+  const node = {};
+  const fn = function() {};
+  const wrapper = mount(<Tree node={node} onSelectNode={fn} />);
+  const tree = wrapper.find('.tree').first();
+  assert.equal(tree.hasClass('tree--selected'), false);
 });
