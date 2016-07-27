@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Demo from './demo-component';
 import Node from './node-component';
 
-tape('Demo: Outputs an iframe', (assert) => {
+tape('components/Demo: Outputs an iframe', (assert) => {
   assert.plan(1);
   const node = {};
   const wrapper = shallow(
@@ -15,7 +15,7 @@ tape('Demo: Outputs an iframe', (assert) => {
   assert.ok(html.match(/iframe/).length, 'Has an iframe');
 });
 
-tape('Demo: Attaches a head', (assert) => {
+tape('components/Demo: Attaches a head', (assert) => {
   assert.plan(1);
   const node = {};
   const wrapper = shallow(
@@ -25,7 +25,7 @@ tape('Demo: Attaches a head', (assert) => {
   assert.ok(props.head, 'Has a head prop');
 });
 
-tape('Demo: Has a Node child', (assert) => {
+tape('components/Demo: Has a Node child', (assert) => {
   assert.plan(1);
   const node = {};
   const wrapper = shallow(

@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 import Property, { NUMERIC_UNITS, KEYS } from './property-component';
 
 
-tape('Property: Adds field input', (assert) => {
+tape('components/Property: Adds field input', (assert) => {
   assert.plan(2);
   const property = 'width';
   const value = '';
@@ -16,7 +16,7 @@ tape('Property: Adds field input', (assert) => {
   assert.equals(valueProp, 'width', 'Has correct field');
 });
 
-tape('Property: Adds value input', (assert) => {
+tape('components/Property: Adds value input', (assert) => {
   assert.plan(2);
   const property = '';
   const value = '100px';
@@ -27,7 +27,7 @@ tape('Property: Adds value input', (assert) => {
   assert.equals(valueProp, '100px', 'Has correct value');
 });
 
-tape('Property: Detects +ve and -ve numeric properties with units', (assert) => {
+tape('components/Property: Detects +ve and -ve numeric properties with units', (assert) => {
   assert.plan(NUMERIC_UNITS.length * 2);
   const prop = new Property();
   NUMERIC_UNITS.forEach((u) => {
@@ -39,7 +39,7 @@ tape('Property: Detects +ve and -ve numeric properties with units', (assert) => 
   });
 });
 
-tape('Property: Detects non-numeric properties with unit-like value', (assert) => {
+tape('components/Property: Detects non-numeric properties with unit-like value', (assert) => {
   assert.plan(NUMERIC_UNITS.length);
   const prop = new Property();
   NUMERIC_UNITS.forEach((u) => {
@@ -48,7 +48,7 @@ tape('Property: Detects non-numeric properties with unit-like value', (assert) =
   });
 });
 
-tape('Property: Detects +ve and -ve numeric properties without units', (assert) => {
+tape('components/Property: Detects +ve and -ve numeric properties without units', (assert) => {
   assert.plan(2);
   const prop = new Property();
   const n = Math.round( Math.random()*100 );
@@ -58,7 +58,7 @@ tape('Property: Detects +ve and -ve numeric properties without units', (assert) 
   assert.ok(m);
 });
 
-tape('Property: Detects non-numeric properties without units', (assert) => {
+tape('components/Property: Detects non-numeric properties without units', (assert) => {
   assert.plan(4);
   const prop = new Property();
   const r1 = prop.isNumeric('auto');
@@ -71,7 +71,7 @@ tape('Property: Detects non-numeric properties without units', (assert) => {
   assert.notOk(r4);
 });
 
-tape('Property: Gets the number part of a value', (assert) => {
+tape('components/Property: Gets the number part of a value', (assert) => {
   assert.plan(2);
   const prop = new Property();
   const floatNum = prop.getNumber('123.45px');
@@ -80,7 +80,7 @@ tape('Property: Gets the number part of a value', (assert) => {
   assert.equal(intNum, 123);
 });
 
-tape('Property: Gets the unit part of a numeric value', (assert) => {
+tape('components/Property: Gets the unit part of a numeric value', (assert) => {
   assert.plan(2);
   const prop = new Property();
   const floatUnit = prop.getUnit('123.45px');
@@ -89,7 +89,7 @@ tape('Property: Gets the unit part of a numeric value', (assert) => {
   assert.equal(intUnit, '%');
 });
 
-tape('Property: Parses numeric values with units', (assert) => {
+tape('components/Property: Parses numeric values with units', (assert) => {
   assert.plan(4);
   const prop = new Property();
   const parsed = prop.parse('100%');
@@ -99,7 +99,7 @@ tape('Property: Parses numeric values with units', (assert) => {
   assert.equal(parsed.number, 100);
 });
 
-tape('Property: Parses numeric values without units', (assert) => {
+tape('components/Property: Parses numeric values without units', (assert) => {
   assert.plan(4);
   const prop = new Property();
   const parsed = prop.parse('100');
@@ -109,7 +109,7 @@ tape('Property: Parses numeric values without units', (assert) => {
   assert.equal(parsed.number, 100);
 });
 
-tape('Property: Parses non-numeric values', (assert) => {
+tape('components/Property: Parses non-numeric values', (assert) => {
   assert.plan(4);
   const prop = new Property();
   const parsed = prop.parse('100foo');
@@ -119,7 +119,7 @@ tape('Property: Parses non-numeric values', (assert) => {
   assert.equal(parsed.number, null);
 });
 
-tape('Property: Stringifies numeric values', (assert) => {
+tape('components/Property: Stringifies numeric values', (assert) => {
   assert.plan(1);
   const prop = new Property();
   const parsed = {
@@ -131,7 +131,7 @@ tape('Property: Stringifies numeric values', (assert) => {
   assert.equal(stringified, '-123vh');
 });
 
-tape('Property: Stringifies non-numeric values', (assert) => {
+tape('components/Property: Stringifies non-numeric values', (assert) => {
   assert.plan(1);
   const prop = new Property();
   const parsed = {
@@ -142,21 +142,21 @@ tape('Property: Stringifies non-numeric values', (assert) => {
   assert.equal(stringified, 'auto');
 });
 
-tape('Property: Increments numeric values', (assert) => {
+tape('components/Property: Increments numeric values', (assert) => {
   assert.plan(1);
   const prop = new Property();
   const result = prop.increment('100px');
   assert.equal(result, '101px');
 });
 
-tape('Property: Decrements numeric values', (assert) => {
+tape('components/Property: Decrements numeric values', (assert) => {
   assert.plan(1);
   const prop = new Property();
   const result = prop.decrement('100');
   assert.equal(result, '99');
 });
 
-tape('Increments numeric values on UP keyUp', (assert) => {
+tape('components/Property: Increments numeric values on UP keyUp', (assert) => {
   assert.plan(1);
   const props = {
     onUpdateValue: (field, value) => {
@@ -167,7 +167,7 @@ tape('Increments numeric values on UP keyUp', (assert) => {
   prop.onKeyUpCb({ which: KEYS.UP, target: { value: '1em' }});
 });
 
-tape('Decrements numeric values on DOWN keyUp', (assert) => {
+tape('components/Property: Decrements numeric values on DOWN keyUp', (assert) => {
   assert.plan(1);
   const props = {
     onUpdateValue: (field, value) => {
