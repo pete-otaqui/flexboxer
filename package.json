@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "ENV=dev webpack-dev-server --devtool sourcemap --inline --hot --content-base src/",
-    "test": "eslint src *.js && babel-node tests.js | faucet"
+    "test": "eslint src *.js && BABEL_ENV=test nyc --reporter=lcov babel-node tests.js | faucet && nyc report",
+    "lint": "eslint src *.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,11 @@
     "presets": [
       "babel-preset-es2015",
       "babel-preset-react"
+    ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
     ]
   },
   "eslintConfig": {
@@ -64,6 +70,7 @@
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.1.0",
     "babel-loader": "^6.2.4",
+    "babel-plugin-istanbul": "^1.0.3",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.1",
@@ -74,6 +81,7 @@
     "faucet": "0.0.1",
     "glob": "^7.0.3",
     "less": "^2.7.1",
+    "nyc": "^7.1.0",
     "react-addons-test-utils": "^15.1.0",
     "tape": "^4.5.1",
     "webpack": "^1.13.1",
