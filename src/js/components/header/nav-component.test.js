@@ -6,9 +6,7 @@ import Nav from './nav-component';
 
 tape('components/Nav: Prints navigation names', (assert) => {
   assert.plan(1);
-  const props = {
-    navigation: [{title: 'Foo'}]
-  };
+  const props = {navigation: [{title: 'Foo'}]};
   const wrapper = shallow(<Nav navigation={props.navigation} />);
   assert.ok(wrapper.html().match(/Foo/), 'Text matches');
 });

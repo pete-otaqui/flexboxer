@@ -35,3 +35,11 @@ tape('components/Demo: Has a Node child', (assert) => {
   const child = props.children;
   assert.equals(child.type, Node, 'Has a Node child');
 });
+
+tape('components/Demo: Uses an empty default node', (assert) => {
+  assert.plan(1);
+  const wrapper = shallow(<Demo />);
+  const demo = wrapper.find('Demo').first();
+  const node = demo.props('node');
+  assert.deepEqual(node, {});
+});

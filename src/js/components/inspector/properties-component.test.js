@@ -21,7 +21,7 @@ tape('components/Properties: Displays textContent', (assert) => {
   assert.ok(html.match(/Foo/), 'Finds textContent');
 });
 
-tape('components/Properties: Displays properties, adds an empty property', (assert) => {
+tape('components/Properties: Displays styles with empty extra', (assert) => {
   assert.plan(1);
   const node = {
     style: [
@@ -32,4 +32,48 @@ tape('components/Properties: Displays properties, adds an empty property', (asse
   const wrapper = shallow( <Properties node={node} /> );
   const propertyNodes = wrapper.find(Property);
   assert.equal(propertyNodes.length, 3, 'Has two nodes');
+});
+
+tape('components/Properties: Calls updateStyleProperty with node', (assert) => {
+  assert.plan(3);
+  const props = {
+    node: {
+      style: [
+        {property: 'width', value: '100px'}
+      ]
+    },
+    onUpdateStyleProperty: function(node, index, property) {
+      assert.equal(node, props.node);
+      assert.equal(0, index);
+      assert.equal(property, 'height');
+    }
+  };
+  const element = new Properties(props);
+  element.onUpdateStyleProperty(0, 'height');
+});
+
+tape('components/Properties: Calls updateStyleValue with node', (assert) => {
+  assert.plan(3);
+  const props = {
+    node: {
+      style: [
+        {property: 'width', value: '100px'}
+      ]
+    },
+    onUpdateStyleValue: function(node, index, value) {
+      assert.equal(node, props.node);
+      assert.equal(0, index);
+      assert.equal(value, '101px');
+    }
+  };
+  const element = new Properties(props);
+  element.onUpdateStyleValue(0, '101px');
+});
+
+tape('components/Properties: Creates an empty node by default', (assert) => {
+  assert.plan(1);
+  const wrapper = shallow( <Properties /> );
+  const properties = wrapper.find('Properties').first();
+  const node = properties.props('node');
+  assert.deepEqual(node, {});
 });
