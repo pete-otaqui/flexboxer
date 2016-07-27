@@ -6,8 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "ENV=dev webpack-dev-server --devtool sourcemap --inline --hot --content-base src/",
-    "test": "eslint src *.js && BABEL_ENV=test nyc --reporter=lcov babel-node tests.js | faucet && nyc report",
-    "lint": "eslint src *.js"
+    "test": "eslint src *.js && BABEL_ENV=test nyc --reporter=lcov babel-node tests.js | faucet && nyc report"
   },
   "repository": {
     "type": "git",
