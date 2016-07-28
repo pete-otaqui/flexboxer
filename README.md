@@ -3,15 +3,19 @@ FlexBoxer
 
 ## TODO
 
-* Make `Tree` a child of `Inspector`
-* Add props editor to `Inspector`
-  * Typeahead for both prop and value
-* Proper `key` handling for both `Tree` and `Demo`
+* Editable selector in `Inspector`
+* Editable textContent in `Inspector`
+* Add and remove child nodes
+* Move child nodes up/down amongst siblings
+* Typeahead for both prop and value and `Inspector`
+* Tidy up layout
+* Look at implementing local state in `Property` while "invalid" 
+* Prettify html and css output
+* Allow `id` as well as `className` in `selector`
 * Write converter for `selector` => `id / className`
 * Add "export to jsbin" (etc) feature
 * Make sure a clean install of `redux` works well
 * Make sure dependencies are correct across dev / prod
-* Create a `dist` package for deployment
 * Update rest of README to `redux`
 * Write up
 
