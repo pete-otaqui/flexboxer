@@ -72,3 +72,10 @@ tape('components/Css: Adds child styles', (assert) => {
   const text = wrapper.text();
   assert.equal(text, css);
 });
+
+tape('components/Css: Ignores undefined style', (assert) => {
+  assert.plan(1);
+  const css = new Css();
+  const text = css.getCss({selector:'.root'});
+  assert.equal(text, '.root {\n}\n');
+});
