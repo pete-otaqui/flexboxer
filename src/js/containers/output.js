@@ -12,7 +12,7 @@ export default class Output extends Component {
           <Html node={tree} />
         </div>
         <div className="output-panel">
-          <Css />
+          <Css node={tree} />
         </div>
       </div>
     );

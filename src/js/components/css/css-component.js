@@ -1,14 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export default class Css extends Component {
-  render() {
 
+  getCss(node) {
+    if ( !node.selector ) return '';
+    const selector = node.selector;
+    const styles = node.style || [];
+    const styleString = styles.reduce((memo, styleMap) => {
+      const prop = styleMap.property.replace(/([A-Z])/g, (m) => {
+        return '-' + m.toLowerCase();
+      });
+      const val = styleMap.value;
+      return memo + `\n  ${prop}: ${val};`;
+    }, '');
+    const children = node.children || [];
+    const childStyles = children.map((child) => {
+      return this.getCss(child);
+    }).join('');
+    return `${selector} {${styleString}
+}
+${childStyles}`;
+  }
+
+  render() {
+    const node = this.props.node || {};
+    const css = this.getCss(node);
     return (
       <div className="css">
-        Css component
+        {css}
       </div>
     );
   }
 }
 
-Css.propTypes = {};
+Css.propTypes = {
+  node: PropTypes.object
+};

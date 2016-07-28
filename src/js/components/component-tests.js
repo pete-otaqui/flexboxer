@@ -9,3 +9,4 @@ import './inspector/property-component.test.js';
 import './demo/demo-component.test.js';
 import './demo/node-component.test.js';
 import './html/html-component.test.js';
+import './css/css-component.test.js';
