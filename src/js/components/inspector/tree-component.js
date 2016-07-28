@@ -5,8 +5,8 @@ const CLASS_SELECTED = 'tree--selected';
 const CLASS_POPULATED = 'tree--populated';
 
 export default class Tree extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onClickNode = this.onClickNode.bind(this);
   }
 

@@ -86,3 +86,19 @@ tape('components/Tree: Avoids a className for unselected items', (assert) => {
   const tree = wrapper.find('.tree').first();
   assert.equal(tree.hasClass('tree--selected'), false);
 });
+
+tape('components/Tree: Clicking node stops event, selects node', (assert) => {
+  assert.plan(3);
+  let selected = false;
+  let stoppedPropagation = false;
+  let preventedDefault = false;
+  const event = {
+    stopPropagation() { stoppedPropagation = true; },
+    preventDefault() { preventedDefault = true; }
+  };
+  const tree = new Tree({onSelectNode() { selected = true; }});
+  tree.onClickNode(event);
+  assert.ok(selected);
+  assert.ok(stoppedPropagation);
+  assert.ok(preventedDefault);
+});

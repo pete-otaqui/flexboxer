@@ -177,3 +177,95 @@ tape('components/Property: Decrements numeric values on DOWN keyUp', (assert) =>
   const prop = new Property(props);
   prop.onKeyUpCb({ which: KEYS.DOWN, target: { value: '1em' }});
 });
+
+tape('components/Property: onChangeProperty calls update with target val', (assert) => {
+  assert.plan(2);
+  const props = {
+    index: 1,
+    onUpdateProperty: (index, value) => {
+      assert.equal(index, 1);
+      assert.equal(value, 'height');
+    }
+  };
+  const prop = new Property(props);
+  prop.onChangeProperty({ target: { value: 'height' }});
+});
+
+tape('components/Property: onChangeValue calls update with target val', (assert) => {
+  assert.plan(2);
+  const props = {
+    index: 1,
+    onUpdateValue: (index, value) => {
+      assert.equal(index, 1);
+      assert.equal(value, '1em');
+    }
+  };
+  const prop = new Property(props);
+  prop.onChangeValue({ target: { value: '1em' }});
+});
+
+tape('components/Property: isNumeric is false on undefined', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.isNumeric();
+  assert.equal(result, false);
+});
+
+tape('components/Property: getUnit is empty on undefined', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.getUnit();
+  assert.equal(result, '');
+});
+
+tape('components/Property: getNumber isNaN on undefined', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.getNumber();
+  assert.ok(isNaN(result));
+});
+
+tape('components/Property: parse is "" on undefined', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.parse();
+  assert.deepEqual(
+    result,
+    {raw: '', isNumeric: false, unit: null, number: null}
+  );
+});
+
+tape('components/Property: stringify is undefined on undefined input', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.stringify();
+  assert.equal(result, undefined);
+});
+
+tape('components/Property: increment is "" on undefined input', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.increment();
+  assert.equal(result, "");
+});
+
+tape('components/Property: decrement is "" on undefined input', (assert) => {
+  assert.plan(1);
+  const prop = new Property();
+  const result = prop.decrement();
+  assert.equal(result, "");
+});
+
+tape('components/Property: does not update onKeyUp of unrelated key', (assert) => {
+  assert.plan(2);
+  let called = false;
+  const prop = new Property({
+    onUpdateValue() {
+      called = true;
+    }
+  });
+  prop.onKeyUpCb({which: 9999, target: {}});
+  assert.equal(called, false);
+  prop.onKeyUpCb({which: KEYS.UP, target: {}});
+  assert.equal(called, true);
+});
