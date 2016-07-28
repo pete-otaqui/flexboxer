@@ -54,7 +54,7 @@ class App extends Component {
             onUpdateStyleValue={this.onUpdateStyleValueCb}
             tree={tree}
           />
-          <Output />
+          <Output tree={tree} />
         </main>
         <Footer />
       </div>

@@ -4,7 +4,7 @@ export default class Css extends Component {
   render() {
 
     return (
-      <div className="css output-panel">
+      <div className="css">
         Css component
       </div>
     );
