@@ -6,6 +6,10 @@ FlexBoxer
 * Editable textContent in `Inspector`
 * Editable selector in `Inspector`
 * Datalist support in `Inspector`
+* Resizeable `Demo`
+* Editable list of "layouts" / navigation
+* Save with LocalStorage
+* Fullscreen (full viewport) `Demo`
 * Add and remove child nodes
 * Move child nodes up/down amongst siblings
 * Typeahead for both prop and value and `Inspector`
