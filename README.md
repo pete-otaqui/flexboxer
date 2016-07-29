@@ -3,8 +3,9 @@ FlexBoxer
 
 ## TODO
 
-* Editable selector in `Inspector`
 * Editable textContent in `Inspector`
+* Editable selector in `Inspector`
+* Datalist support in `Inspector`
 * Add and remove child nodes
 * Move child nodes up/down amongst siblings
 * Typeahead for both prop and value and `Inspector`
