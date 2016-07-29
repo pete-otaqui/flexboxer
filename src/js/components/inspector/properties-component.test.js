@@ -70,10 +70,9 @@ tape('components/Properties: Calls updateStyleValue with node', (assert) => {
   element.onUpdateStyleValue(0, '101px');
 });
 
-tape('components/Properties: Creates an empty node by default', (assert) => {
+tape('components/Properties: Returns an empty div when no node prop', (assert) => {
   assert.plan(1);
   const wrapper = shallow( <Properties /> );
-  const properties = wrapper.find('Properties').first();
-  const node = properties.props('node');
-  assert.deepEqual(node, {});
+  const html = wrapper.html();
+  assert.equal(html, '<div></div>');
 });

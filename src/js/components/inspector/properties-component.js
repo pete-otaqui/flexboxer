@@ -38,7 +38,8 @@ export default class Properties extends Component {
   }
 
   render() {
-    const node = this.props.node || {};
+    const node = this.props.node;
+    if ( !node ) return <div />;
     const style = node.style || [];
     let selector, textContent;
     selector = node.selector;

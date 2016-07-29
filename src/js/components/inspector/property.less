@@ -3,16 +3,23 @@
 .property-form {
   display: flex;
   justify-content: space-between;
+  font-size: 10px;
 }
 .property-input {
   width: 50%;
   border: 1px solid transparent;
-  padding: @margin / 4 @margin / 2;
+  padding: @margin / 4 @margin / 4;
+  color: #666;
 }
 .property-input:focus {
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.3);
+  color: #000;
   outline: none;
 }
 .property-field {
   text-align: right;
+  max-width: 8em;
+}
+.property-value {
+  flex-grow: 1;
 }

@@ -126,6 +126,7 @@ export default class Property extends Component {
           className="property-input property-field"
           name="field"
           onChange={this.onChangeProperty}
+          placeholder="CSS Property"
         />
         <input
           value={value}
@@ -133,6 +134,7 @@ export default class Property extends Component {
           name="value"
           onChange={this.onChangeValue}
           onKeyUp={this.onKeyUpCb}
+          placeholder="CSS Value"
         />
       </form>
     );
