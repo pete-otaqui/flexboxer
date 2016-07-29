@@ -15,14 +15,14 @@ tape('components/Demo: Outputs an iframe', (assert) => {
   assert.ok(html.match(/iframe/).length, 'Has an iframe');
 });
 
-tape('components/Demo: Attaches a head', (assert) => {
+tape('components/Demo: Attaches an initial style', (assert) => {
   assert.plan(1);
   const node = {};
   const wrapper = shallow(
     <Demo node={node} />
   );
-  const props = wrapper.props();
-  assert.ok(props.head, 'Has a head prop');
+  const {initialContent} = wrapper.props();
+  assert.ok(initialContent.match(/<style>/), 'Has an initial style');
 });
 
 tape('components/Demo: Has a Node child', (assert) => {

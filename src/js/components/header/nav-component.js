@@ -12,7 +12,6 @@ export default class Nav extends Component {
         href="#"
         key={key}
         onClick={(e) => {e.preventDefault(); onSelectItem(nodes); }}
-        nodes={nodes}
         className="nav-item"
       >
         {title}

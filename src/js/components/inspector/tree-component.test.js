@@ -5,6 +5,8 @@ import { mount } from 'enzyme';
 import Tree from './tree-component';
 
 tape('components/Tree: Renders recursively', (assert) => {
+  // @TODO: Upgrade to react@0.15.3 which solves the problem
+  // of this test throwing a wobbly (intrernal react bug) 
   assert.plan(1);
   const node = {selector: '.root', children: [{}, {}, {}]};
   const wrapper = mount(
