@@ -28,6 +28,18 @@
       animation-direction: alternate;
       animation-timing-function: ease-in;
     }
+    #app-loader .title {
+      font-size: 72px;
+    }
+    .title {
+      text-align: center;
+      padding: @margin 0;
+      font-family: "Open Sans", "OpenSans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 100;
+    }
+    .title-heavy {
+      font-weight: 900;
+    }
     @keyframes pulse {
       from { transform: scale(1.00); opacity: 1.0; }
       to   { transform: scale(0.97); opacity: 0.2; }
@@ -37,7 +49,7 @@
 <body>
   <div id="app">
     <div id="app-loader">
-      <div id="app-title">FlexBoxer</div>
+      <h1 id="app-title" class="title"><span class="title-heavy">Flex</span>Boxer</h1>
     </div>
   </div>
   <script src="bundle.js"></script>
