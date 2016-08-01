@@ -48,9 +48,9 @@ export default class Properties extends Component {
       .concat([{property: '', value: ''}])
       .map(this.createExistingPropItem);
     return (
-      <div>
+      <div className="properties">
         {selector}
-        <ul className="properties">
+        <ul className="properties-list">
           {styleProps}
         </ul>
         <p>{textContent}</p>

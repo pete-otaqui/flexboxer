@@ -7,7 +7,7 @@ import {
 } from '../actions';
 
 const defaultNavigationState = defaultNavigation;
-const defaultNodesState = defaultNavigationState[0].nodes;
+const defaultNodesState = defaultNavigationState[1].nodes;
 
 function updateNodeStyleAtIndex(state, action, propObject) {
   const oldNode = action.node;

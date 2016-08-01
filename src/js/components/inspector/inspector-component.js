@@ -14,7 +14,7 @@ export default class Inspector extends Component {
       selectedNode
     } = this.props;
     return (
-      <div>
+      <div className="inspector">
         <Tree
           node={node}
           onSelectNode={onSelectNode}
