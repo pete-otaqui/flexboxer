@@ -90,3 +90,23 @@ tape('reducers/nodes: Returns default state by default', (assert) => {
   const newState = nodes(state, action);
   assert.equal(newState, state);
 });
+
+tape('reducers/nodes: Uses a default empty node style', (assert) => {
+  assert.plan(1);
+  const state = {1: {id: 1, style: []}};
+  const action = {
+    type: UPDATE_STYLE_VALUE,
+    node: state[1],
+    index: 0,
+    value: 2
+  };
+  const newState = nodes(state, action);
+  const newStyle = newState[1].style;
+  assert.equal(newStyle.length, 1);
+});
+
+tape('reducers/node: Uses default state', (assert) => {
+  assert.plan(1);
+  const newState = nodes(undefined, {type: 'UNRECOGNIZED'});
+  assert.equal(newState[1].id, '1');
+});

@@ -56,5 +56,5 @@ Tree.propTypes = {
   baseKey: PropTypes.string,
   node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
-  onSelectNode: PropTypes.func.isRequired
+  onSelectNode: PropTypes.func
 };
