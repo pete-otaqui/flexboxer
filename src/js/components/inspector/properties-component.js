@@ -91,6 +91,7 @@ export default class Properties extends Component {
     const textEditor = this.createTextContent(textContent);
     return (
       <div className="properties">
+        <hr />
         <ul className="properties-list">
           {selectorEditor}
           {textEditor}
