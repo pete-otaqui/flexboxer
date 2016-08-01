@@ -37,6 +37,46 @@ export default class Properties extends Component {
     );
   }
 
+  createTextContent(textContent) {
+    return (
+      <li className="property">
+        <form className="property-form">
+          <label
+            className="property-input property-field"
+            htmlFor="text-content"
+          >
+            Text content
+          </label>
+          <textarea
+            id="text-content"
+            className="property-input property-value"
+            value={textContent}
+          />
+        </form>
+      </li>
+    );
+  }
+
+  createSelectorEditor(selector) {
+    return (
+      <li className="property">
+        <form className="property-form">
+          <label
+            className="property-input property-field"
+            htmlFor="selector"
+          >
+            Selector
+          </label>
+          <input
+            id="selector"
+            className="property-input property-value"
+            value={selector}
+          />
+        </form>
+      </li>
+    );
+  }
+
   render() {
     const node = this.props.node;
     if ( !node ) return <div />;
@@ -47,13 +87,18 @@ export default class Properties extends Component {
     const styleProps = style
       .concat([{property: '', value: ''}])
       .map(this.createExistingPropItem);
+    const selectorEditor = this.createSelectorEditor(selector);
+    const textEditor = this.createTextContent(textContent);
     return (
       <div className="properties">
-        {selector}
+        <ul className="properties-list">
+          {selectorEditor}
+          {textEditor}
+        </ul>
+        <hr />
         <ul className="properties-list">
           {styleProps}
         </ul>
-        <p>{textContent}</p>
       </div>
     );
   }
