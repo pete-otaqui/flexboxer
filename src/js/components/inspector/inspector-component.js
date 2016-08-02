@@ -15,6 +15,7 @@ export default class Inspector extends Component {
     } = this.props;
     return (
       <div className="inspector">
+        <h2>DOM Editor</h2>
         <Tree
           node={node}
           onSelectNode={onSelectNode}

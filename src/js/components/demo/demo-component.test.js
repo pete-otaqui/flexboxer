@@ -21,7 +21,8 @@ tape('components/Demo: Attaches an initial style', (assert) => {
   const wrapper = shallow(
     <Demo node={node} />
   );
-  const {initialContent} = wrapper.props();
+  const frame = wrapper.find('.demo-iframe').first();
+  const {initialContent} = frame.props();
   assert.ok(initialContent.match(/<style>/), 'Has an initial style');
 });
 
@@ -31,7 +32,8 @@ tape('components/Demo: Has a Node child', (assert) => {
   const wrapper = shallow(
     <Demo node={node} />
   );
-  const props = wrapper.props();
+  const frame = wrapper.find('.demo-iframe').first();
+  const props = frame.props();
   const child = props.children;
   assert.equals(child.type, Node, 'Has a Node child');
 });

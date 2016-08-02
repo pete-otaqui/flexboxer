@@ -37,7 +37,7 @@ export default class Properties extends Component {
     );
   }
 
-  createTextContent(textContent) {
+  createTextContent(textContent, onChange = () => {}) {
     return (
       <li className="property">
         <form className="property-form">
@@ -50,6 +50,7 @@ export default class Properties extends Component {
           <textarea
             id="text-content"
             className="property-input property-value"
+            onChange={onChange}
             value={textContent}
           />
         </form>
@@ -57,7 +58,7 @@ export default class Properties extends Component {
     );
   }
 
-  createSelectorEditor(selector) {
+  createSelectorEditor(selector, onChange = () => {} ) {
     return (
       <li className="property">
         <form className="property-form">
@@ -71,6 +72,7 @@ export default class Properties extends Component {
             id="selector"
             className="property-input property-value"
             value={selector}
+            onChange={onChange}
           />
         </form>
       </li>
@@ -91,12 +93,12 @@ export default class Properties extends Component {
     const textEditor = this.createTextContent(textContent);
     return (
       <div className="properties">
-        <hr />
+        <h3>Properties</h3>
         <ul className="properties-list">
           {selectorEditor}
           {textEditor}
         </ul>
-        <hr />
+        <h3>Styles</h3>
         <ul className="properties-list">
           {styleProps}
         </ul>

@@ -29,9 +29,12 @@ export default class Demo extends Component {
     const { node = {} } = this.props;
     const initialContent = this.getInitialContent();
     return (
-      <Frame initialContent={initialContent} className="demo">
-        <Node node={node} />
-      </Frame>
+      <div className="demo">
+        <h2>HTML Demo</h2>
+        <Frame initialContent={initialContent} className="demo-iframe">
+          <Node node={node} />
+        </Frame>
+      </div>
     );
   }
 }
