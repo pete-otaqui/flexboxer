@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
-export default class Html extends Component {
+export default class Html extends PureComponent {
 
   getClassName(selector = '') {
     return selector.replace(/^\./, '');

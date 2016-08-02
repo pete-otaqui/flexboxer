@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import Property from './property-component';
 
-export default class Properties extends Component {
+export default class Properties extends PureComponent {
 
   constructor(props) {
     super(props);

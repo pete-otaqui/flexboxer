@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {
   updateNodes,
@@ -12,7 +12,7 @@ import Editor from './editor';
 import Output from './output';
 import Footer from '../components/footer';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
     this.updateNodesCb = this.updateNodesCb.bind(this);

@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
-export default class Nav extends Component {
+export default class Nav extends PureComponent {
 
   render() {
     const { navigation, onSelectItem } = this.props;

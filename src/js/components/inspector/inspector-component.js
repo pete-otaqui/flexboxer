@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import Tree from './tree-component';
 import Properties from './properties-component';
 
-export default class Inspector extends Component {
+export default class Inspector extends PureComponent {
   render() {
     const {
       baseKey,

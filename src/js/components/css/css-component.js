@@ -1,6 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
-export default class Css extends Component {
+export default class Css extends PureComponent {
 
   getCss(node) {
     if ( !node.selector ) return '';

@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import Inspector from '../components/inspector';
 import Demo from '../components/demo';
 
-export default class Editor extends Component {
+export default class Editor extends PureComponent {
   render() {
     const {
       onSelectNode,

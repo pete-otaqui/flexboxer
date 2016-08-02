@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 export const KEYS = {
   UP: 38,
@@ -24,7 +24,7 @@ export const NUMERIC_UNITS = [
   'vmax'
 ];
 
-export default class Property extends Component {
+export default class Property extends PureComponent {
   constructor(props) {
     super(props);
     this.onChangeProperty = this.onChangeProperty.bind(this);

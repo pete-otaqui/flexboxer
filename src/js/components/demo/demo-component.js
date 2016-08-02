@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Frame from 'react-frame-component';
 
 import Node from './node-component';
 
-export default class Demo extends Component {
+export default class Demo extends PureComponent {
 
   getInitialContent() {
     return `
