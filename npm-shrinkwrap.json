@@ -3349,9 +3349,9 @@
       "resolved": "https://registry.npmjs.org/range-parser/-/range-parser-1.0.3.tgz"
     },
     "react": {
-      "version": "15.2.1",
-      "from": "react@15.2.1",
-      "resolved": "https://registry.npmjs.org/react/-/react-15.2.1.tgz"
+      "version": "15.3.0",
+      "from": "react@15.3.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-15.3.0.tgz"
     },
     "react-deep-force-update": {
       "version": "1.0.1",
@@ -3359,9 +3359,9 @@
       "resolved": "https://registry.npmjs.org/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz"
     },
     "react-dom": {
-      "version": "15.2.1",
-      "from": "react-dom@15.2.1",
-      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.2.1.tgz"
+      "version": "15.3.0",
+      "from": "react-dom@15.3.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-15.3.0.tgz"
     },
     "react-frame-component": {
       "version": "0.6.2",
