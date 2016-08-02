@@ -9,6 +9,7 @@ export default class Editor extends Component {
       onSelectNode,
       onUpdateStyleProperty,
       onUpdateStyleValue,
+      onUpdateTextContent,
       tree,
       selectedNode
     } = this.props;
@@ -19,6 +20,7 @@ export default class Editor extends Component {
           onSelectNode={onSelectNode}
           onUpdateStyleProperty={onUpdateStyleProperty}
           onUpdateStyleValue={onUpdateStyleValue}
+          onUpdateTextContent={onUpdateTextContent}
           selectedNode={selectedNode}
           node={tree}
         />
@@ -34,6 +36,7 @@ Editor.propTypes = {
   onSelectNode: PropTypes.func,
   onUpdateStyleProperty: PropTypes.func,
   onUpdateStyleValue: PropTypes.func,
+  onUpdateTextContent: PropTypes.func,
   selectedNode: PropTypes.object,
   tree: PropTypes.object
 };

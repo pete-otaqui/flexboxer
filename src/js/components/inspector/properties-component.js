@@ -8,6 +8,7 @@ export default class Properties extends Component {
     super(props);
     this.onUpdateStyleProperty = this.onUpdateStyleProperty.bind(this);
     this.onUpdateStyleValue = this.onUpdateStyleValue.bind(this);
+    this.onUpdateTextContent = this.onUpdateTextContent.bind(this);
     this.createExistingPropItem = this.createExistingPropItem.bind(this);
   }
 
@@ -16,6 +17,9 @@ export default class Properties extends Component {
   }
   onUpdateStyleValue(index, value) {
     this.props.onUpdateStyleValue(this.props.node, index, value);
+  }
+  onUpdateTextContent(e) {
+    this.props.onUpdateTextContent(this.props.node, e.target.value);
   }
 
   createExistingPropItem(styleProp, index) {
@@ -37,7 +41,8 @@ export default class Properties extends Component {
     );
   }
 
-  createTextContent(textContent, onChange = () => {}) {
+  createTextContent(textContent) {
+    const onUpdateTextContent = this.onUpdateTextContent;
     return (
       <li className="property">
         <form className="property-form">
@@ -50,7 +55,7 @@ export default class Properties extends Component {
           <textarea
             id="text-content"
             className="property-input property-value"
-            onChange={onChange}
+            onChange={onUpdateTextContent}
             value={textContent}
           />
         </form>
@@ -58,7 +63,7 @@ export default class Properties extends Component {
     );
   }
 
-  createSelectorEditor(selector, onChange = () => {} ) {
+  createSelectorEditor(selector, onChange = () => {}) {
     return (
       <li className="property">
         <form className="property-form">
@@ -110,5 +115,6 @@ export default class Properties extends Component {
 Properties.propTypes = {
   node: PropTypes.object,
   onUpdateStyleProperty: PropTypes.func,
-  onUpdateStyleValue: PropTypes.func
+  onUpdateStyleValue: PropTypes.func,
+  onUpdateTextContent: PropTypes.func
 };

@@ -7,6 +7,7 @@ export const ADD_PROPERTY = 'ADD_PROPERTY';
 export const REMOVE_PROPERTY = 'REMOVE_PROPERTY';
 export const UPDATE_STYLE_PROPERTY = 'UPDATE_STYLE_PROPERTY';
 export const UPDATE_STYLE_VALUE = 'UPDATE_STYLE_VALUE';
+export const UPDATE_TEXT_CONTENT = 'UPDATE_TEXT_CONTENT';
 
 
 export function setNavigation(navigation) {
@@ -75,6 +76,14 @@ export function updateStyleValue(node, index, value) {
     type: UPDATE_STYLE_VALUE,
     node: node,
     index: index,
+    value: value
+  };
+}
+
+export function updateTextContent(node, value) {
+  return {
+    type: UPDATE_TEXT_CONTENT,
+    node: node,
     value: value
   };
 }

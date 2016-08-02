@@ -5,7 +5,8 @@ import {
   UPDATE_NODES,
   SELECT_NODE,
   UPDATE_STYLE_PROPERTY,
-  UPDATE_STYLE_VALUE
+  UPDATE_STYLE_VALUE,
+  UPDATE_TEXT_CONTENT
 } from '../actions';
 
 tape('reducers/nodes: Updates nodes', (assert) => {
@@ -109,4 +110,17 @@ tape('reducers/node: Uses default state', (assert) => {
   assert.plan(1);
   const newState = nodes(undefined, {type: 'UNRECOGNIZED'});
   assert.equal(newState[1].id, '1');
+});
+
+tape('reducers/node: Updates textContent', (assert) => {
+  assert.plan(1);
+  const state = {1: {id: 1, style: [], textContent: 'foo'}};
+  const action = {
+    type: UPDATE_TEXT_CONTENT,
+    node: state[1],
+    value: 'bar'
+  };
+  const newState = nodes(state, action);
+  const newValue = newState[1].textContent;
+  assert.equal(newValue, 'bar');
 });

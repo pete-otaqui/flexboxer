@@ -11,6 +11,7 @@ export default class Inspector extends Component {
       onSelectNode,
       onUpdateStyleProperty,
       onUpdateStyleValue,
+      onUpdateTextContent,
       selectedNode
     } = this.props;
     return (
@@ -25,6 +26,7 @@ export default class Inspector extends Component {
           node={selectedNode}
           onUpdateStyleProperty={onUpdateStyleProperty}
           onUpdateStyleValue={onUpdateStyleValue}
+          onUpdateTextContent={onUpdateTextContent}
         />
       </div>
     );
@@ -38,5 +40,6 @@ Inspector.propTypes = {
   onSelectNode: PropTypes.func.isRequired,
   onUpdateStyleProperty: PropTypes.func,
   onUpdateStyleValue: PropTypes.func,
+  onUpdateTextContent: PropTypes.func,
   selectedNode: PropTypes.object
 };

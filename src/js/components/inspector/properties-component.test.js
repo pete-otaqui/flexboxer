@@ -70,6 +70,22 @@ tape('components/Properties: Calls updateStyleValue with node', (assert) => {
   element.onUpdateStyleValue(0, '101px');
 });
 
+tape('components/Properties: Calls updateTextContent with node', (assert) => {
+  assert.plan(2);
+  const props = {
+    node: {
+      style: [],
+      textContent: 'foo'
+    },
+    onUpdateTextContent: function(node, value) {
+      assert.equal(node, props.node);
+      assert.equal(value, 'bar');
+    }
+  };
+  const element = new Properties(props);
+  element.onUpdateTextContent({target: {value: 'bar'}});
+});
+
 tape('components/Properties: Returns an empty div when no node prop', (assert) => {
   assert.plan(1);
   const wrapper = shallow( <Properties /> );

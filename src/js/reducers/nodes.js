@@ -3,7 +3,8 @@ import {
   UPDATE_NODES,
   SELECT_NODE,
   UPDATE_STYLE_PROPERTY,
-  UPDATE_STYLE_VALUE
+  UPDATE_STYLE_VALUE,
+  UPDATE_TEXT_CONTENT
 } from '../actions';
 
 const defaultNavigationState = defaultNavigation;
@@ -20,8 +21,16 @@ function updateNodeStyleAtIndex(state, action, propObject) {
     return s.property || s.value;
   }); 
   const node = Object.assign({}, oldNode, {style: strippedStyles});
-  const nodeObject = {};
+  let nodeObject = {};
   nodeObject[node.id] = node;
+  return Object.assign({}, state, nodeObject);
+}
+
+function updateNodeTextContent(state, action) {
+  const node = action.node;
+  const newNode = Object.assign({}, node, {textContent: action.value});
+  let nodeObject = {};
+  nodeObject[node.id] = newNode;
   return Object.assign({}, state, nodeObject);
 }
 
@@ -35,6 +44,8 @@ export default function nodes(state = defaultNodesState, action) {
       return updateNodeStyleAtIndex(state, action, {property: action.property});
     case UPDATE_STYLE_VALUE:
       return updateNodeStyleAtIndex(state, action, {value: action.value});
+    case UPDATE_TEXT_CONTENT:
+      return updateNodeTextContent(state, action);
     default:
       return state;
   }

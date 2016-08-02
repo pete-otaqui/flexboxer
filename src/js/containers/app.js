@@ -4,7 +4,8 @@ import {
   updateNodes,
   selectNode,
   updateStyleProperty,
-  updateStyleValue
+  updateStyleValue,
+  updateTextContent
 } from '../actions';
 import Header from '../components/header';
 import Editor from './editor';
@@ -18,6 +19,7 @@ class App extends Component {
     this.selectNodeCb = this.selectNodeCb.bind(this);
     this.onUpdateStylePropertyCb = this.onUpdateStylePropertyCb.bind(this);
     this.onUpdateStyleValueCb = this.onUpdateStyleValueCb.bind(this);
+    this.onUpdateTextContentCb = this.onUpdateTextContentCb.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +43,10 @@ class App extends Component {
     this.props.dispatch(updateStyleValue(node, index, value));
   }
 
+  onUpdateTextContentCb(node, value) {
+    this.props.dispatch(updateTextContent(node, value));
+  }
+
   render() {
     const { tree, navigation = [], selectedNode } = this.props;
     return (
@@ -52,6 +58,7 @@ class App extends Component {
             onSelectNode={this.selectNodeCb}
             onUpdateStyleProperty={this.onUpdateStylePropertyCb}
             onUpdateStyleValue={this.onUpdateStyleValueCb}
+            onUpdateTextContent={this.onUpdateTextContentCb}
             tree={tree}
           />
           <Output tree={tree} />
