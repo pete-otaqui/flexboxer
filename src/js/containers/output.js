@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import Html from '../components/html';
 import Css from '../components/css';
 
-export default class Output extends Component {
+export default class Output extends PureComponent {
   render() {
     const tree = this.props.tree;
     return (

@@ -104,3 +104,12 @@ tape('components/Tree: Clicking node stops event, selects node', (assert) => {
   assert.ok(stoppedPropagation);
   assert.ok(preventedDefault);
 });
+
+tape('components/Tree: Uses a noop onSelectNode fn by default', (assert) => {
+  assert.plan(1);
+  const node = {children: [{}]};
+  const wrapper = mount(<Tree node={node} />);
+  const tree = wrapper.find('Tree').last();
+  const props = tree.props();
+  assert.doesNotThrow(props.onSelectNode);
+});

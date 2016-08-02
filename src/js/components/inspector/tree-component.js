@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 const CLASS_CHILDREN = 'tree-children';
 const CLASS_SELECTED = 'tree--selected';
 const CLASS_POPULATED = 'tree--populated';
 
-export default class Tree extends Component {
+export default class Tree extends PureComponent {
   constructor(props) {
     super(props);
     this.onClickNode = this.onClickNode.bind(this);
@@ -56,5 +56,5 @@ Tree.propTypes = {
   baseKey: PropTypes.string,
   node: PropTypes.object,
   children: PropTypes.arrayOf(PropTypes.object),
-  onSelectNode: PropTypes.func.isRequired
+  onSelectNode: PropTypes.func
 };

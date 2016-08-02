@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 
 import Tree from './tree-component';
 import Properties from './properties-component';
 
-export default class Inspector extends Component {
+export default class Inspector extends PureComponent {
   render() {
     const {
       baseKey,
@@ -11,10 +11,12 @@ export default class Inspector extends Component {
       onSelectNode,
       onUpdateStyleProperty,
       onUpdateStyleValue,
+      onUpdateTextContent,
       selectedNode
     } = this.props;
     return (
-      <div>
+      <div className="inspector">
+        <h2>DOM Editor</h2>
         <Tree
           node={node}
           onSelectNode={onSelectNode}
@@ -24,6 +26,7 @@ export default class Inspector extends Component {
           node={selectedNode}
           onUpdateStyleProperty={onUpdateStyleProperty}
           onUpdateStyleValue={onUpdateStyleValue}
+          onUpdateTextContent={onUpdateTextContent}
         />
       </div>
     );
@@ -37,5 +40,6 @@ Inspector.propTypes = {
   onSelectNode: PropTypes.func.isRequired,
   onUpdateStyleProperty: PropTypes.func,
   onUpdateStyleValue: PropTypes.func,
+  onUpdateTextContent: PropTypes.func,
   selectedNode: PropTypes.object
 };

@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PureComponent, PropTypes } from 'react';
 import Frame from 'react-frame-component';
 
 import Node from './node-component';
 
-export default class Demo extends Component {
+export default class Demo extends PureComponent {
 
   getInitialContent() {
     return `
@@ -29,9 +29,12 @@ export default class Demo extends Component {
     const { node = {} } = this.props;
     const initialContent = this.getInitialContent();
     return (
-      <Frame initialContent={initialContent} className="demo">
-        <Node node={node} />
-      </Frame>
+      <div className="demo">
+        <h2>HTML Demo</h2>
+        <Frame initialContent={initialContent} className="demo-iframe">
+          <Node node={node} />
+        </Frame>
+      </div>
     );
   }
 }

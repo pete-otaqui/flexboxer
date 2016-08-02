@@ -5,7 +5,8 @@ import {
   UPDATE_NODES,
   SELECT_NODE,
   UPDATE_STYLE_PROPERTY,
-  UPDATE_STYLE_VALUE
+  UPDATE_STYLE_VALUE,
+  UPDATE_TEXT_CONTENT
 } from '../actions';
 
 tape('reducers/nodes: Updates nodes', (assert) => {
@@ -89,4 +90,37 @@ tape('reducers/nodes: Returns default state by default', (assert) => {
   const action = {type: 'UNRECOGNIZED'};
   const newState = nodes(state, action);
   assert.equal(newState, state);
+});
+
+tape('reducers/nodes: Uses a default empty node style', (assert) => {
+  assert.plan(1);
+  const state = {1: {id: 1, style: []}};
+  const action = {
+    type: UPDATE_STYLE_VALUE,
+    node: state[1],
+    index: 0,
+    value: 2
+  };
+  const newState = nodes(state, action);
+  const newStyle = newState[1].style;
+  assert.equal(newStyle.length, 1);
+});
+
+tape('reducers/node: Uses default state', (assert) => {
+  assert.plan(1);
+  const newState = nodes(undefined, {type: 'UNRECOGNIZED'});
+  assert.equal(newState[1].id, '1');
+});
+
+tape('reducers/node: Updates textContent', (assert) => {
+  assert.plan(1);
+  const state = {1: {id: 1, style: [], textContent: 'foo'}};
+  const action = {
+    type: UPDATE_TEXT_CONTENT,
+    node: state[1],
+    value: 'bar'
+  };
+  const newState = nodes(state, action);
+  const newValue = newState[1].textContent;
+  assert.equal(newValue, 'bar');
 });
