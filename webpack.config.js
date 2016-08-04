@@ -54,13 +54,12 @@ if ( ENV === ENV_DEV ) {
 } else {
   webpackPlugins.push(
     new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('production')
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
-      mangle: true
+      mangle: true,
+      compress: {warnings: false}
     }),
     copyIndexAndUpdateHashBundleInProd
   );
