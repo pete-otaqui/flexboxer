@@ -34,16 +34,6 @@ tape('components/Node: Adds child nodes', (assert) => {
 
 tape('components/Node: Picks a hash-derived semi-transparent BG color');
 
-tape('components/Node: Adds child hashes based on node props', (assert) => {
-  assert.plan(2);
-  const myNode = new Node();
-  const hash1 = myNode.getKey({p: 1}, 1);
-  const hash2 = myNode.getKey({p: 2}, 1);
-  const hash3 = myNode.getKey({p: 1}, 1);
-  assert.notEqual(hash1, hash2);
-  assert.equal(hash1, hash3);
-});
-
 tape('components/Node: Adds child hashes based on node index', (assert) => {
   assert.plan(1);
   const myNode = new Node();

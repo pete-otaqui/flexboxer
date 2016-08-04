@@ -1,12 +1,9 @@
 import React, { PureComponent, PropTypes } from 'react';
-import objectHash from 'object-hash';
 
 export default class Node extends PureComponent {
 
   getKey(node, index) {
-    const obj = Object.assign({}, node, {index: index});
-    const hash = objectHash(obj);
-    return `node-${hash}`;
+    return `node-${index}`;
   }
 
   getStyleObject(styles) {
