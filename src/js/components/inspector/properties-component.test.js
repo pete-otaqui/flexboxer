@@ -5,7 +5,9 @@ import { shallow } from 'enzyme';
 import Properties from './properties-component';
 import Property from './property-component';
 
-tape('components/Properties: Displays selector', (assert) => {
+const T = 'components/Properties: ';
+
+tape(`${T}Displays selector`, (assert) => {
   assert.plan(1);
   const node = { selector: '.foo' };
   const wrapper = shallow( <Properties node={node} /> );
@@ -13,7 +15,7 @@ tape('components/Properties: Displays selector', (assert) => {
   assert.ok(html.match(/.foo/), 'Finds selector');
 });
 
-tape('components/Properties: Displays textContent', (assert) => {
+tape(`${T}Displays textContent`, (assert) => {
   assert.plan(1);
   const node = { textContent: 'Foo' };
   const wrapper = shallow( <Properties node={node} /> );
@@ -21,7 +23,7 @@ tape('components/Properties: Displays textContent', (assert) => {
   assert.ok(html.match(/Foo/), 'Finds textContent');
 });
 
-tape('components/Properties: Displays styles with empty extra', (assert) => {
+tape(`${T}Displays styles with empty extra`, (assert) => {
   assert.plan(1);
   const node = {
     style: [
@@ -34,7 +36,7 @@ tape('components/Properties: Displays styles with empty extra', (assert) => {
   assert.equal(propertyNodes.length, 3, 'Has two nodes');
 });
 
-tape('components/Properties: Calls updateStyleProperty with node', (assert) => {
+tape(`${T}Calls updateStyleProperty with node`, (assert) => {
   assert.plan(3);
   const props = {
     node: {
@@ -52,7 +54,7 @@ tape('components/Properties: Calls updateStyleProperty with node', (assert) => {
   element.onUpdateStyleProperty(0, 'height');
 });
 
-tape('components/Properties: Calls updateStyleValue with node', (assert) => {
+tape(`${T}Calls updateStyleValue with node`, (assert) => {
   assert.plan(3);
   const props = {
     node: {
@@ -70,7 +72,7 @@ tape('components/Properties: Calls updateStyleValue with node', (assert) => {
   element.onUpdateStyleValue(0, '101px');
 });
 
-tape('components/Properties: Calls updateTextContent with node', (assert) => {
+tape(`${T}Calls updateTextContent with node`, (assert) => {
   assert.plan(2);
   const props = {
     node: {
@@ -86,7 +88,7 @@ tape('components/Properties: Calls updateTextContent with node', (assert) => {
   element.onUpdateTextContent({target: {value: 'bar'}});
 });
 
-tape('components/Properties: Returns an empty div when no node prop', (assert) => {
+tape(`${T}Returns an empty div when no node prop`, (assert) => {
   assert.plan(1);
   const wrapper = shallow( <Properties /> );
   const html = wrapper.html();
