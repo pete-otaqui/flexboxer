@@ -3,18 +3,17 @@ FlexBoxer
 
 ## TODO
 
-* Editable textContent in `Inspector`
+* Add and remove child nodes
+* Move child nodes up/down amongst siblings
 * Editable selector in `Inspector`
-* Datalist support in `Inspector`
 * Resizeable `Demo`
+* Datalist support in `Inspector`
 * Editable list of "layouts" / navigation
 * Save with LocalStorage
 * Fullscreen (full viewport) `Demo`
-* Add and remove child nodes
-* Move child nodes up/down amongst siblings
 * Typeahead for both prop and value and `Inspector`
 * Tidy up layout
-* Look at implementing local state in `Property` while "invalid" 
+* Look at implementing local state in `Property` while "invalid"
 * Prettify html and css output
 * Allow `id` as well as `className` in `selector`
 * Write converter for `selector` => `id / className`
