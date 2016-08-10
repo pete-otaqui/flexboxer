@@ -54,7 +54,7 @@ export default class Properties extends PureComponent {
           </label>
           <textarea
             id="text-content"
-            className="property-input property-value"
+            className="property-input property-value text-content"
             onChange={onUpdateTextContent}
             value={textContent}
           />
@@ -75,7 +75,7 @@ export default class Properties extends PureComponent {
           </label>
           <input
             id="selector"
-            className="property-input property-value"
+            className="property-input property-value selector"
             value={selector}
             onChange={onChange}
           />

@@ -10,17 +10,17 @@ const T = 'components/Properties: ';
 tape(`${T}Displays selector`, (assert) => {
   assert.plan(1);
   const node = { selector: '.foo' };
-  const wrapper = shallow( <Properties node={node} /> );
-  const html = wrapper.html();
-  assert.ok(html.match(/.foo/), 'Finds selector');
+  const wrapper = shallow( <Properties key="foo" node={node} /> );
+  const selector = wrapper.find('input.selector').props().value;
+  assert.equal(selector, '.foo', 'Finds selector');
 });
 
 tape(`${T}Displays textContent`, (assert) => {
   assert.plan(1);
   const node = { textContent: 'Foo' };
   const wrapper = shallow( <Properties node={node} /> );
-  const html = wrapper.html();
-  assert.ok(html.match(/Foo/), 'Finds textContent');
+  const textContent = wrapper.find('textarea.text-content').props().value;
+  assert.equal(textContent, 'Foo', 'Finds textContent');
 });
 
 tape(`${T}Displays styles with empty extra`, (assert) => {
