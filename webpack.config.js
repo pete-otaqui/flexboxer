@@ -41,6 +41,29 @@ function copyIndexAndUpdateHashBundleInProd() {
   });
 }
 
+function copyImagesInProd() {
+  this.plugin('done', function(stats) {
+    if ( !stats.compilation.errors.length ) {
+      // work out where we are
+      const SOURCE_DIR = path.join(__dirname, PATH_SRC, 'img');
+      const TARGET_DIR = path.join(__dirname, PATH_DIST, 'img');
+      // make /dist/img if needed
+      if ( !fs.existsSync(TARGET_DIR) ) {
+        fs.mkdirSync(TARGET_DIR);
+      }
+      // get the top-level list of files in /src/img
+      const files = fs.readdirSync(SOURCE_DIR);
+      // copy each one into /dist/img
+      files.forEach(function(file) {
+        var curSource = path.join( SOURCE_DIR, file );
+        var curTarget = path.join( TARGET_DIR, file );
+        if ( fs.lstatSync(curSource).isDirectory() ) return;
+        fs.writeFileSync(curTarget, fs.readFileSync(curSource));
+      });
+    }
+  });
+}
+
 
 let webpackPlugins = [];
 let babelQueryPresets = ['es2015', 'react'];
@@ -61,7 +84,8 @@ if ( ENV === ENV_DEV ) {
       mangle: true,
       compress: {warnings: false}
     }),
-    copyIndexAndUpdateHashBundleInProd
+    copyIndexAndUpdateHashBundleInProd,
+    copyImagesInProd
   );
 }
 
