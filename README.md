@@ -58,4 +58,28 @@ tool like `gulp` or `grunt`.  The following scripts are available:
 
 * `npm run build` - build the project into the `dist/` directory.
 * `npm start` - serve the project from `src/` in dev mode.
-* `npm test` - lint the project and run the tests.
+
+## Running Tests
+
+* `npm test` - lint the project, run the tests, generate code coverage.
+* `babel-node tests.js` - just run the tests with native TAP output.
+
+## Project Structure
+
+The following libraries and tools are used in FlexBoxer:
+
+* `react`
+* `redux`
+* `less` for styling
+* `babel` for transpiling ES6 / JSX
+* webpack
+  * compiles styles
+  * dev server
+  * hmre
+  * custom plugin functions to create the `dist` directory and hash the JS file
+* `tape` for running tests
+  * `enzyme` for react element rendering
+  * `JSDOM` so that enzyme can run on node
+  * `faucet` for formatting the tape output
+* `istanbul` for code coverage
+  * run by using the `nyc` command line part of istanbul
