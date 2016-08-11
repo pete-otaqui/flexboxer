@@ -31,10 +31,10 @@ export function selectNode(node) {
   };
 }
 
-export function addNode(node) {
+export function addNode(parent) {
   return {
     type: ADD_NODE,
-    node: node
+    parent: parent
   };
 }
 

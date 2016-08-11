@@ -12,6 +12,8 @@ export default class Inspector extends PureComponent {
       onUpdateStyleProperty,
       onUpdateStyleValue,
       onUpdateTextContent,
+      onAddNode,
+      onRemoveNode,
       selectedNode
     } = this.props;
     return (
@@ -20,6 +22,8 @@ export default class Inspector extends PureComponent {
         <Tree
           node={node}
           onSelectNode={onSelectNode}
+          onAddNode={onAddNode}
+          onRemoveNode={onRemoveNode}
           baseKey={baseKey}
         />
         <Properties
@@ -41,5 +45,7 @@ Inspector.propTypes = {
   onUpdateStyleProperty: PropTypes.func,
   onUpdateStyleValue: PropTypes.func,
   onUpdateTextContent: PropTypes.func,
+  onAddNode: PropTypes.func,
+  onRemoveNode: PropTypes.func,
   selectedNode: PropTypes.object
 };

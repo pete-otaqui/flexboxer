@@ -10,6 +10,8 @@ export default class Editor extends PureComponent {
       onUpdateStyleProperty,
       onUpdateStyleValue,
       onUpdateTextContent,
+      onAddNode,
+      onRemoveNode,
       tree,
       selectedNode
     } = this.props;
@@ -22,6 +24,8 @@ export default class Editor extends PureComponent {
           onUpdateStyleValue={onUpdateStyleValue}
           onUpdateTextContent={onUpdateTextContent}
           selectedNode={selectedNode}
+          onAddNode={onAddNode}
+          onRemoveNode={onRemoveNode}
           node={tree}
         />
         <Demo
@@ -37,6 +41,8 @@ Editor.propTypes = {
   onUpdateStyleProperty: PropTypes.func,
   onUpdateStyleValue: PropTypes.func,
   onUpdateTextContent: PropTypes.func,
+  onAddNode: PropTypes.func,
+  onRemoveNode: PropTypes.func,
   selectedNode: PropTypes.object,
   tree: PropTypes.object
 };

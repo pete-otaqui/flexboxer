@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {
   updateNodes,
   selectNode,
+  addNode,
+  removeNode,
   updateStyleProperty,
   updateStyleValue,
   updateTextContent
@@ -17,6 +19,8 @@ class App extends PureComponent {
     super(props);
     this.updateNodesCb = this.updateNodesCb.bind(this);
     this.selectNodeCb = this.selectNodeCb.bind(this);
+    this.onAddNodeCb = this.onAddNodeCb.bind(this);
+    this.onRemoveNodeCb = this.onRemoveNodeCb.bind(this);
     this.onUpdateStylePropertyCb = this.onUpdateStylePropertyCb.bind(this);
     this.onUpdateStyleValueCb = this.onUpdateStyleValueCb.bind(this);
     this.onUpdateTextContentCb = this.onUpdateTextContentCb.bind(this);
@@ -33,6 +37,14 @@ class App extends PureComponent {
 
   selectNodeCb(node) {
     this.props.dispatch(selectNode(node));
+  }
+
+  onAddNodeCb(parent) {
+    this.props.dispatch(addNode(parent));
+  }
+
+  onRemoveNodeCb(parent) {
+    this.props.dispatch(removeNode(parent));
   }
 
   onUpdateStylePropertyCb(node, index, value) {
@@ -59,6 +71,8 @@ class App extends PureComponent {
             onUpdateStyleProperty={this.onUpdateStylePropertyCb}
             onUpdateStyleValue={this.onUpdateStyleValueCb}
             onUpdateTextContent={this.onUpdateTextContentCb}
+            onAddNode={this.onAddNodeCb}
+            onRemoveNode={this.onRemoveNodeCb}
             tree={tree}
           />
           <Output tree={tree} />

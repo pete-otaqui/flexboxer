@@ -4,6 +4,11 @@ FlexBoxer
 ## TODO
 
 * Add and remove child nodes
+  * Proper ID handling, not just hopeful
+  * Should not remove root
+  * Fix Navigation (leaving state cruft when changing!)
+  * Button styling
+  * Lots of other bugs with adding / removing / nav
 * Move child nodes up/down amongst siblings
 * Editable selector in `Inspector`
 * Resizeable `Demo`

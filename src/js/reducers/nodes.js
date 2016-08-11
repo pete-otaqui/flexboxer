@@ -2,6 +2,8 @@ import defaultNavigation from '../../data/defaults.json';
 import {
   UPDATE_NODES,
   SELECT_NODE,
+  ADD_NODE,
+  REMOVE_NODE,
   UPDATE_STYLE_PROPERTY,
   UPDATE_STYLE_VALUE,
   UPDATE_TEXT_CONTENT
@@ -19,7 +21,7 @@ function updateNodeStyleAtIndex(state, action, propObject) {
   styles[index] = propMap;
   const strippedStyles = styles.filter((s) => {
     return s.property || s.value;
-  }); 
+  });
   const node = Object.assign({}, oldNode, {style: strippedStyles});
   let nodeObject = {};
   nodeObject[node.id] = node;
@@ -34,6 +36,41 @@ function updateNodeTextContent(state, action) {
   return Object.assign({}, state, nodeObject);
 }
 
+function uniqid() {
+  return Math.round(Math.random() * 1000000);
+}
+
+function addNodeToParent(state, action) {
+  const parent = action.parent;
+  const newId = uniqid();
+  const newSelector = '.child';
+  const child = {
+    id: newId,
+    selector: newSelector,
+    childIds: [],
+    textContent: ''
+  };
+  const childObject = {};
+  childObject[newId] = child;
+  const childIds = parent.childIds.concat(newId);
+  const newParent = Object.assign({}, parent, {childIds});
+  const parentObject = {};
+  parentObject[parent.id] = newParent;
+  return Object.assign({}, state, parentObject, childObject);
+}
+
+function removeNode(state, action) {
+  const node = action.node;
+  let nextState = Object.assign({}, state);
+  delete nextState[node.id];
+  Object.values(nextState).forEach((other) => {
+    other.childIds = other.childIds.filter((childId) => {
+      return childId !== node.id;
+    });
+  });
+  return nextState;
+}
+
 export default function nodes(state = defaultNodesState, action) {
   switch (action.type) {
     case UPDATE_NODES:
@@ -46,6 +83,10 @@ export default function nodes(state = defaultNodesState, action) {
       return updateNodeStyleAtIndex(state, action, {value: action.value});
     case UPDATE_TEXT_CONTENT:
       return updateNodeTextContent(state, action);
+    case ADD_NODE:
+      return addNodeToParent(state, action);
+    case REMOVE_NODE:
+      return removeNode(state, action);
     default:
       return state;
   }
