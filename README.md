@@ -3,6 +3,9 @@ FlexBoxer
 
 ## TODO
 
+* ACTIONS SHOULD ACCEPT NODE IDs, NOT NODE OBJECTS
+  * FLATTEN OUT PROPS IN <Tree> and <Node>
+  * <Output> could use the unmapped lists of Nodes, couldn't it?
 * Add and remove child nodes
   * Proper ID handling, not just hopeful
   * Should not remove root
