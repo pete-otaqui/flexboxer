@@ -59,22 +59,32 @@ function addNodeToParent(state, action) {
   return Object.assign({}, state, parentObject, childObject);
 }
 
+function removeNodeId(state, id) {
+  const node = state[id];
+  node.childIds.forEach((childId) => {
+    removeNodeId(state, childId);
+  });
+  Object.entries(state)
+    .filter(([key]) => key !== 'selectedNode')
+    .forEach((entry) => {
+      const other = entry[1];
+      other.childIds = other.childIds
+        .filter(childId => childId !== id);
+    });
+  delete state[id];
+}
+
 function removeNode(state, action) {
   const node = action.node;
   let nextState = Object.assign({}, state);
-  delete nextState[node.id];
-  Object.values(nextState).forEach((other) => {
-    other.childIds = other.childIds.filter((childId) => {
-      return childId !== node.id;
-    });
-  });
+  removeNodeId(nextState, node.id);
   return nextState;
 }
 
 export default function nodes(state = defaultNodesState, action) {
   switch (action.type) {
     case UPDATE_NODES:
-      return Object.assign({}, state, action.nodes);
+      return Object.assign({}, action.nodes);
     case SELECT_NODE:
       return Object.assign({}, state, { selectedNode: action.node.id });
     case UPDATE_STYLE_PROPERTY:
