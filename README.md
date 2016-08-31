@@ -1,7 +1,7 @@
 FlexBoxer
 =========
 
-![Build status](https://travis-ci.org/pete-otaqui/flexboxer.svg?branch=redux)
+[![Build status](https://travis-ci.org/pete-otaqui/flexboxer.svg?branch=redux)](https://travis-ci.org/pete-otaqui/flexboxer)
 
 ## TODO
 
