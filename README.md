@@ -3,6 +3,8 @@ FlexBoxer
 
 [![Build status](https://travis-ci.org/pete-otaqui/flexboxer.svg?branch=redux)](https://travis-ci.org/pete-otaqui/flexboxer)
 
+[![Dependency status](https://david-dm.org/pete-otaqui/flexboxer/redux.svg)](https://david-dm.org/pete-otaqui/flexboxer/redux)
+
 ## TODO
 
 * ACTIONS SHOULD ACCEPT NODE IDs, NOT NODE OBJECTS
