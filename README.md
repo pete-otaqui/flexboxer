@@ -1,6 +1,8 @@
 FlexBoxer
 =========
 
+![Build status](https://travis-ci.org/pete-otaqui/flexboxer.svg?branch=redux)
+
 ## TODO
 
 * ACTIONS SHOULD ACCEPT NODE IDs, NOT NODE OBJECTS
@@ -63,6 +65,44 @@ tool like `gulp` or `grunt`.  The following scripts are available:
 
 * `npm test` - lint the project, run the tests, generate code coverage.
 * `babel-node tests.js` - just run the tests with native TAP output.
+
+### Full `npm test` command
+
+The full test command looks like this:
+
+`eslint src *.js && BABEL_ENV=test nyc --reporter=lcov babel-node tests.js | faucet && nyc report`
+
+Which is a mouthful.  Let's break it down.
+
+The first part is `eslint src *.js`.  This lints both the `src/` directory and
+any `*.js` files in the current directory.  The configuration for `eslint` is
+stored in the `package.json` file.
+
+The second command (after the `&&`), which runs only if the part is ok, runs
+the tests.  Taking the most basic part, we have this:
+
+`babel-node tests.js`, which executes `tests.js` using `babel-node`.
+
+That outputs raw TAP which isn't pretty - so we pipe it into `faucet` which
+makes things look nicer.  So now we have this:
+
+`babel-node tests.js | faucet`
+
+Let's think of that as the "ACTUAL_TEST_COMMAND"
+
+We also get code coverage though, so we need to actually run `nyc` first and
+pass the command above into it.  We want the `lcov` reporter, so we use that
+argument.  Now we have this:
+
+`nyc --reporter=lcov $ACTUAL_TEST_COMMAND`
+
+We want to tell babel that we are running the tests, so we specify the
+environment variable `BABEL_ENV` first though.
+
+Finally, as well as the HTML output we get from the `lcov` reporter, it's also
+nice to see an overview in the command line - so we add a third command after
+another `&&` which dumps out such a table to the command line.
+
 
 ## Project Structure
 
