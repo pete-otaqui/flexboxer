@@ -3,5 +3,5 @@ node_js:
   - "node"
 branches:
   only:
-    -redux
+    - redux
 
