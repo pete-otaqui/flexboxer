@@ -16,7 +16,7 @@ function updateNodeStyleAtIndex(state, action, propObject) {
   const oldNode = action.node;
   const index = action.index;
   const styles = oldNode.style.slice();
-  const baseProps = styles[index] ? styles[index] : {value: '', property: ''};
+  const baseProps = styles[index] || {value: '', property: ''};
   const propMap = Object.assign({}, baseProps, propObject);
   styles[index] = propMap;
   const strippedStyles = styles.filter((s) => {

@@ -6,7 +6,8 @@ import {
   SELECT_NODE,
   UPDATE_STYLE_PROPERTY,
   UPDATE_STYLE_VALUE,
-  UPDATE_TEXT_CONTENT
+  UPDATE_TEXT_CONTENT,
+  ADD_NODE
 } from '../actions';
 
 tape('reducers/nodes: Updates nodes', (assert) => {
@@ -123,4 +124,18 @@ tape('reducers/node: Updates textContent', (assert) => {
   const newState = nodes(state, action);
   const newValue = newState[1].textContent;
   assert.equal(newValue, 'bar');
+});
+
+tape('reducers/node: Add node to parent', (assert) => {
+  assert.plan(2);
+  const state = {1: {id: 1, childIds: []}};
+  const action = {
+    type: ADD_NODE,
+    parent: state[1]
+  };
+  const newState = nodes(state, action);
+  const newChildId = newState[1].childIds[0];
+  const newChild = newState[newChildId];
+  assert.ok(newChildId);
+  assert.ok(newChild);
 });
