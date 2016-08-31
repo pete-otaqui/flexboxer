@@ -7,7 +7,8 @@ import {
   UPDATE_STYLE_PROPERTY,
   UPDATE_STYLE_VALUE,
   UPDATE_TEXT_CONTENT,
-  ADD_NODE
+  ADD_NODE,
+  REMOVE_NODE
 } from '../actions';
 
 tape('reducers/nodes: Updates nodes', (assert) => {
@@ -138,4 +139,20 @@ tape('reducers/node: Add node to parent', (assert) => {
   const newChild = newState[newChildId];
   assert.ok(newChildId);
   assert.ok(newChild);
+});
+
+tape('reducers/node: Removes nodes', (assert) => {
+  assert.plan(2);
+  const state = {
+    1: {id: 1, childIds:[2]},
+    2: {id: 2, childIds: [3]},
+    3: {id: 3, childIds: []}
+  };
+  const action = {
+    type: REMOVE_NODE,
+    node: state[2]
+  };
+  const newState = nodes(state, action);
+  assert.notOk(newState[2]);
+  assert.equal(newState[1].childIds.length, 0);
 });
