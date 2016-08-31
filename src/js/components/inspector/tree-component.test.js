@@ -113,3 +113,44 @@ tape(`${T}Uses a noop onSelectNode fn by default`, (assert) => {
   const props = tree.props();
   assert.doesNotThrow(props.onSelectNode);
 });
+
+tape(`${T}Calls onAddNode with node onClick`, (assert) => {
+  assert.plan(3);
+  let addedTo = false;
+  let stoppedPropagation = false;
+  let preventedDefault = false;
+  const node = {};
+  const onAddNode = function(arg) {
+    addedTo = arg;
+  };
+  const event = {
+    stopPropagation: () => { stoppedPropagation = true; },
+    preventDefault: () => { preventedDefault = true; }
+  };
+  const wrapper = shallow(<Tree node={node} onAddNode={onAddNode} />);
+  wrapper.find('.tree-actions-add').simulate('click', event);
+  assert.ok(stoppedPropagation);
+  assert.ok(preventedDefault);
+  assert.equal(addedTo, node);
+});
+
+tape(`${T}Calls onRemoveNode with node onClick`, (assert) => {
+  assert.plan(3);
+  let removed = false;
+  let stoppedPropagation = false;
+  let preventedDefault = false;
+  const node = {};
+  const onRemoveNode = function(arg) {
+    removed = arg;
+  };
+  const event = {
+    stopPropagation: () => { stoppedPropagation = true; },
+    preventDefault: () => { preventedDefault = true; }
+  };
+  const wrapper = shallow(<Tree node={node} onRemoveNode={onRemoveNode} />);
+  wrapper.find('.tree-actions-remove').simulate('click', event);
+  assert.ok(stoppedPropagation);
+  assert.ok(preventedDefault);
+  assert.equal(removed, node);
+});
+

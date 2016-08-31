@@ -64,8 +64,14 @@ export default class Tree extends PureComponent {
         <div className="tree-self">
           <span className="tree-selector">{selector}</span>
           <span className="tree-actions">
-            <button onClick={this.onAddNode}>+</button>
-            <button onClick={this.onRemoveNode}>-</button>
+            <button
+              className="tree-actions-add"
+              onClick={this.onAddNode}
+            >+</button>
+            <button
+              className="tree-actions-remove"
+              onClick={this.onRemoveNode}
+            >-</button>
           </span>
         </div>
         <div className={childrenClassname}>{childNodes}</div>
