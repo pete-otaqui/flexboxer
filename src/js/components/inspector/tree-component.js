@@ -35,8 +35,8 @@ export default class Tree extends PureComponent {
       baseKey = 'tree',
       node = {},
       onSelectNode = function() {},
-      onAddNode = function() {},
-      onRemoveNode = function() {}
+      onAddNode,
+      onRemoveNode
     } = this.props;
     const {
       selector = '',
