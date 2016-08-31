@@ -153,4 +153,3 @@ tape(`${T}Calls onRemoveNode with node onClick`, (assert) => {
   assert.ok(preventedDefault);
   assert.equal(removed, node);
 });
-
