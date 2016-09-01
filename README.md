@@ -90,7 +90,7 @@ makes things look nicer.  So now we have this:
 
 `babel-node tests.js | faucet`
 
-Let's think of that as the "ACTUAL_TEST_COMMAND"
+Let's think of that as the `$ACTUAL_TEST_COMMAND`
 
 We also get code coverage though, so we need to actually run `nyc` first and
 pass the command above into it.  We want the `lcov` reporter, so we use that
@@ -125,3 +125,4 @@ The following libraries and tools are used in FlexBoxer:
   * `faucet` for formatting the tape output
 * `istanbul` for code coverage
   * run by using the `nyc` command line part of istanbul
+* `eslint` for linting
