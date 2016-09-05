@@ -20,7 +20,7 @@ export function setNavigation(navigation) {
 export function updateNodes(nodes) {
   return {
     type: UPDATE_NODES,
-    nodes: nodes
+    nodes: JSON.parse(JSON.stringify(nodes))
   };
 }
 
