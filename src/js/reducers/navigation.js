@@ -6,9 +6,11 @@ import {
 const defaultNavigationState = defaultNavigation;
 
 export default function navigation(state = defaultNavigationState, action) {
+  let nav;
   switch(action.type) {
     case SET_NAVIGATION:
-      return Object.assign({}, state, action.navigation);
+      nav = JSON.parse(JSON.stringify(action.navigation || {}));
+      return Object.assign({}, state, nav);
     default:
       return state;
   }
