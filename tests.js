@@ -19,10 +19,8 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
-/*
- * Manually require test index files,
- * since ES6 imports cannot be dynamic
- */
-
-import './src/js/components/component-tests';
-import './src/js/reducers/reducer-tests';
+/* global require, __dirname */
+import glob from 'glob';
+glob.sync(`${__dirname}/src/js/**/*.test.js`).forEach((file) => {
+  require(file);
+});
