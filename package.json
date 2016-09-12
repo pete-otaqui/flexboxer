@@ -41,7 +41,6 @@
       "src/**/*.js"
     ],
     "exclude": [
-      "src/js/actions/**/*.js",
       "src/js/**/*.test.js",
       "src/js/**/*-tests.js"
     ],
