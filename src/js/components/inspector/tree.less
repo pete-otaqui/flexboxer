@@ -14,7 +14,6 @@
 }
 
 .tree-self {
-  display: inline-block;
   padding: @margin / 2 @margin / 4;
 }
 
@@ -28,7 +27,8 @@
   overflow: auto;
 }
 
-.tree--selected {
+.tree--selected,
+.tree:hover {
   background-color: rgba(0, 120, 255, 0.2);
   color: rgb(0, 0, 0);
 }
@@ -37,7 +37,17 @@
   font-weight: bold;
 }
 
-.tree--populated::before {
+.tree--populated .tree-self::before {
   font-size: @margin * 1.1;
   content: '▼';
 }
+
+.tree-actions {
+  visibility: hidden;
+  float:right;
+}
+.tree--selected > .tree-self > .tree-actions,
+.tree-self:hover > .tree-actions {
+  visibility: visible;
+}
+
