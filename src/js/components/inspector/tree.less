@@ -27,8 +27,13 @@
   overflow: auto;
 }
 
+.tree:hover{
+  background-color: rgba(0, 120, 255, 0.15);
+  color: rgb(0, 0, 0);
+}
+
 .tree--selected,
-.tree:hover {
+.tree--selected:hover  {
   background-color: rgba(0, 120, 255, 0.2);
   color: rgb(0, 0, 0);
 }
@@ -46,6 +51,7 @@
   visibility: hidden;
   float:right;
 }
+
 .tree--selected > .tree-self > .tree-actions,
 .tree-self:hover > .tree-actions {
   visibility: visible;
