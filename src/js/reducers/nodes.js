@@ -48,7 +48,8 @@ function addNodeToParent(state, action) {
     id: newId,
     selector: newSelector,
     childIds: [],
-    textContent: ''
+    textContent: '',
+    style: []
   };
   const childObject = {};
   childObject[newId] = child;
