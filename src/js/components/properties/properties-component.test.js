@@ -3,7 +3,7 @@ import tape from 'tape';
 import { shallow } from 'enzyme';
 
 import Properties from './properties-component';
-import Property from './property-component';
+import Property from '../property';
 
 const T = 'components/Properties: ';
 

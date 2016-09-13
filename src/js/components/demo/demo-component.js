@@ -1,7 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react';
 import Frame from 'react-frame-component';
 
-import Node from './node-component';
+import DemoNode from '../demo-node';
 
 export default class Demo extends PureComponent {
 
@@ -32,7 +32,7 @@ export default class Demo extends PureComponent {
       <div className="demo">
         <h2>HTML Demo</h2>
         <Frame initialContent={initialContent} className="demo-iframe">
-          <Node node={node} />
+          <DemoNode node={node} />
         </Frame>
       </div>
     );

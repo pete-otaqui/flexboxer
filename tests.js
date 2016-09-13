@@ -1,3 +1,4 @@
+import 'ignore-styles';
 
 /*
  * Setup JSDOM to allow node.js based react dom rendering

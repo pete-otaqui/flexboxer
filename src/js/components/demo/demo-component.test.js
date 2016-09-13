@@ -3,7 +3,7 @@ import tape from 'tape';
 import { shallow } from 'enzyme';
 
 import Demo from './demo-component';
-import Node from './node-component';
+import DemoNode from '../demo-node';
 
 tape('components/Demo: Outputs an iframe', (assert) => {
   assert.plan(1);
@@ -35,7 +35,7 @@ tape('components/Demo: Has a Node child', (assert) => {
   const frame = wrapper.find('.demo-iframe').first();
   const props = frame.props();
   const child = props.children;
-  assert.equals(child.type, Node, 'Has a Node child');
+  assert.equals(child.type, DemoNode, 'Has a Node child');
 });
 
 tape('components/Demo: Uses an empty default node', (assert) => {

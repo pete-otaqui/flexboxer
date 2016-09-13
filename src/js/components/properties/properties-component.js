@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-import Property from './property-component';
+import Property from '../property';
 
 export default class Properties extends PureComponent {
 

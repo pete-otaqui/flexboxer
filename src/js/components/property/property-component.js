@@ -142,7 +142,6 @@ export default class Property extends PureComponent {
 }
 
 Property.propTypes = {
-  node: PropTypes.object,
   property: PropTypes.string.isRequired,
   value: PropTypes.string,
   index: PropTypes.number,

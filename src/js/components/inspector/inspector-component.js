@@ -1,7 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-import Tree from './tree-component';
-import Properties from './properties-component';
+import Tree from '../tree';
+import Properties from '../properties';
 
 export default class Inspector extends PureComponent {
   render() {

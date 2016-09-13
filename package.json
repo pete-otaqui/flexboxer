@@ -97,6 +97,7 @@
     "extend-tape": "^1.2.0",
     "faucet": "0.0.1",
     "glob": "^7.0.6",
+    "ignore-styles": "^5.0.1",
     "less": "^2.7.1",
     "nyc": "^8.1.0",
     "react-addons-test-utils": "^15.2.1",
@@ -121,6 +122,7 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
+    "reselect": "^2.5.3",
     "style-loader": "^0.13.1"
   }
 }

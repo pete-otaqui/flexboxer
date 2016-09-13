@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-import Nav from './nav-component';
+import Nav from '../nav';
 
 export default class Header extends PureComponent {
   // @TODO Load navItems by fetch()

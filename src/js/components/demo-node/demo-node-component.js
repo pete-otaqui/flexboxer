@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-export default class Node extends PureComponent {
+export default class DemoNode extends PureComponent {
 
   getKey(node, index) {
     return `node-${index}`;
@@ -24,7 +24,7 @@ export default class Node extends PureComponent {
     const childNodes = children.map((child, index) => {
       const key = this.getKey(child, index);
       return (
-        <Node
+        <DemoNode
           key={key}
           node={child}
         />
@@ -40,6 +40,6 @@ export default class Node extends PureComponent {
 
 }
 
-Node.propTypes = {
+DemoNode.propTypes = {
   node: PropTypes.object
 };
