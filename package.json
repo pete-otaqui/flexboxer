@@ -42,7 +42,8 @@
     ],
     "exclude": [
       "src/js/**/*.test.js",
-      "src/js/**/*-tests.js"
+      "src/js/**/*-tests.js",
+      "src/js/components/*/index.js"
     ],
     "require": [
       "babel-register"
