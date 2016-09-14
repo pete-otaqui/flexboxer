@@ -9,21 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
-var html_output_component_1 = require('./html-output.component');
-var AppModule = (function () {
-    function AppModule() {
+var flexbox_layout_1 = require('./flexbox-layout');
+var HtmlOutputComponent = (function () {
+    function HtmlOutputComponent() {
     }
-    AppModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [app_component_1.AppComponent, html_output_component_1.HtmlOutputComponent],
-            bootstrap: [app_component_1.AppComponent]
+    HtmlOutputComponent.prototype.ngOnInit = function () { };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', flexbox_layout_1.FlexboxLayout)
+    ], HtmlOutputComponent.prototype, "fbLayout", void 0);
+    HtmlOutputComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'html-output',
+            templateUrl: 'html-output.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], HtmlOutputComponent);
+    return HtmlOutputComponent;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.HtmlOutputComponent = HtmlOutputComponent;
+//# sourceMappingURL=html-output.component.js.map

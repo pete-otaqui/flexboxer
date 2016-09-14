@@ -1,0 +1,6 @@
+<div *ngIf="fbLayout">
+  <pre>
+    <div *ngFor="let node of fbLayout.nodes">{{'<'}}{{node.tagName}} class="{{node.className}}"{{' />'}}</div>
+  </pre>
+
+</div>
