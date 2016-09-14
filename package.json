@@ -94,7 +94,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
-    "eslint-plugin-react": "^6.1.2",
+    "eslint-plugin-react": "^6.2.1",
     "extend-tape": "^1.2.0",
     "faucet": "0.0.1",
     "glob": "^7.0.6",

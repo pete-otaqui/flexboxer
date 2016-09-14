@@ -1388,9 +1388,9 @@
       }
     },
     "eslint-plugin-react": {
-      "version": "6.2.0",
-      "from": "eslint-plugin-react@>=6.1.2 <7.0.0",
-      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-6.2.0.tgz"
+      "version": "6.2.1",
+      "from": "eslint-plugin-react@6.2.1",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react/-/eslint-plugin-react-6.2.1.tgz"
     },
     "espree": {
       "version": "3.1.7",
@@ -2456,6 +2456,11 @@
       "version": "3.1.5",
       "from": "ignore@>=3.1.5 <4.0.0",
       "resolved": "https://registry.npmjs.org/ignore/-/ignore-3.1.5.tgz"
+    },
+    "ignore-styles": {
+      "version": "5.0.1",
+      "from": "ignore-styles@latest",
+      "resolved": "https://registry.npmjs.org/ignore-styles/-/ignore-styles-5.0.1.tgz"
     },
     "image-size": {
       "version": "0.5.0",
