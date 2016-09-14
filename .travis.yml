@@ -4,4 +4,4 @@ node_js:
 branches:
   only:
     - redux
-
+    - angular2
